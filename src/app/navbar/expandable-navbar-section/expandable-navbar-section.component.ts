@@ -12,7 +12,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLinkActive } from '@angular/router';
-import { isNotEmpty } from '@dspace/shared/utils/empty.util';
 import { Observable } from 'rxjs';
 import {
   first,
@@ -20,6 +19,7 @@ import {
 } from 'rxjs/operators';
 
 import { slide } from '../../shared/animations/slide';
+import { isNotEmpty } from '../../shared/empty.util';
 import { HostWindowService } from '../../shared/host-window.service';
 import { MenuService } from '../../shared/menu/menu.service';
 import { MenuID } from '../../shared/menu/menu-id.model';

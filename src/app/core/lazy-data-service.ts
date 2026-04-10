@@ -4,8 +4,8 @@ import {
   Observable,
 } from 'rxjs';
 
+import { LazyDataServicesMap } from '../../config/app-config.interface';
 import { HALDataService } from './data/base/hal-data-service.interface';
-import { LazyDataServicesMap } from './data-services-map-type';
 import { GenericConstructor } from './shared/generic-constructor';
 
 /**

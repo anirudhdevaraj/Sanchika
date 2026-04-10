@@ -7,15 +7,15 @@ import {
   Router,
   RouterLink,
 } from '@angular/router';
-import { RequestService } from '@dspace/core/data/request.service';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   TranslateModule,
   TranslateService,
 } from '@ngx-translate/core';
 
-import { SearchService } from '../../../search/search.service';
+import { RequestService } from '../../../../core/data/request.service';
+import { SearchService } from '../../../../core/shared/search/search.service';
+import { NotificationsService } from '../../../notifications/notifications.service';
 import { ClaimedTaskActionsAbstractComponent } from '../abstract/claimed-task-actions-abstract.component';
 
 export const WORKFLOW_TASK_OPTION_EDIT_METADATA = 'submit_edit_metadata';
@@ -26,7 +26,7 @@ export const WORKFLOW_TASK_OPTION_EDIT_METADATA = 'submit_edit_metadata';
   templateUrl: './claimed-task-actions-edit-metadata.component.html',
   imports: [
     AsyncPipe,
-    NgbTooltip,
+    NgbTooltipModule,
     RouterLink,
     TranslateModule,
   ],

@@ -1,11 +1,11 @@
-import { Community } from '@dspace/core/shared/community.model';
-import { RouterMock } from '@dspace/core/testing/router.mock';
+import { first } from 'rxjs/operators';
+
+import { Community } from '../../core/shared/community.model';
+import { RouterMock } from '../../shared/mocks/router.mock';
 import {
   createFailedRemoteDataObject$,
   createSuccessfulRemoteDataObject$,
-} from '@dspace/core/utilities/remote-data.utils';
-import { first } from 'rxjs/operators';
-
+} from '../../shared/remote-data.utils';
 import { createCollectionPageGuard } from './create-collection-page.guard';
 
 describe('createCollectionPageGuard', () => {

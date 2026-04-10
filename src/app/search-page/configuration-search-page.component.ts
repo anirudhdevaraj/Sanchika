@@ -9,20 +9,19 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+
 import {
   APP_CONFIG,
   AppConfig,
-} from '@dspace/config/app-config.interface';
-import { SearchManager } from '@dspace/core/browse/search-manager';
-import { RouteService } from '@dspace/core/services/route.service';
-import { TranslateModule } from '@ngx-translate/core';
-
+} from '../../config/app-config.interface';
+import { RouteService } from '../core/services/route.service';
+import { SearchService } from '../core/shared/search/search.service';
+import { SearchConfigurationService } from '../core/shared/search/search-configuration.service';
 import { SEARCH_CONFIG_SERVICE } from '../my-dspace-page/my-dspace-configuration.service';
 import { pushInOut } from '../shared/animations/push';
 import { HostWindowService } from '../shared/host-window.service';
 import { SearchComponent } from '../shared/search/search.component';
-import { SearchService } from '../shared/search/search.service';
-import { SearchConfigurationService } from '../shared/search/search-configuration.service';
 import { SearchLabelsComponent } from '../shared/search/search-labels/search-labels.component';
 import { ThemedSearchResultsComponent } from '../shared/search/search-results/themed-search-results.component';
 import { ThemedSearchSidebarComponent } from '../shared/search/search-sidebar/themed-search-sidebar.component';
@@ -67,9 +66,8 @@ export class ConfigurationSearchPageComponent extends SearchComponent {
               protected routeService: RouteService,
               protected router: Router,
               @Inject(APP_CONFIG) protected appConfig: AppConfig,
-              @Inject(PLATFORM_ID) public platformId: string,
-              protected searchManager: SearchManager,
+              @Inject(PLATFORM_ID) public platformId: any,
   ) {
-    super(service, sidebarService, windowService, searchConfigService, routeService, router, appConfig, platformId, searchManager);
+    super(service, sidebarService, windowService, searchConfigService, routeService, router, appConfig, platformId);
   }
 }

@@ -7,14 +7,14 @@ import {
   TestBed,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { JsonPatchOperationsBuilder } from '@dspace/core/json-patch/builder/json-patch-operations-builder';
-import { SherpaDataResponse } from '@dspace/core/testing/section-sherpa-policies.service.mock';
-import { SectionsServiceStub } from '@dspace/core/testing/sections-service.stub';
-import { SubmissionServiceStub } from '@dspace/core/testing/submission-service.stub';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
+import { JsonPatchOperationsBuilder } from '../../../core/json-patch/builder/json-patch-operations-builder';
 import { AlertComponent } from '../../../shared/alert/alert.component';
+import { SherpaDataResponse } from '../../../shared/mocks/section-sherpa-policies.service.mock';
+import { SectionsServiceStub } from '../../../shared/testing/sections-service.stub';
+import { SubmissionServiceStub } from '../../../shared/testing/submission-service.stub';
 import { SubmissionService } from '../../submission.service';
 import { SectionsService } from '../sections.service';
 import { MetadataInformationComponent } from './metadata-information/metadata-information.component';

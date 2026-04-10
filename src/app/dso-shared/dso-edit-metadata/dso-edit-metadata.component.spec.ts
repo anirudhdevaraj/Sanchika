@@ -13,23 +13,19 @@ import {
   By,
 } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ArrayMoveChangeAnalyzer } from '@dspace/core/data/array-move-change-analyzer.service';
-import { APP_DATA_SERVICES_MAP } from '@dspace/core/data-services-map-type';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { Item } from '@dspace/core/shared/item.model';
-import { ITEM } from '@dspace/core/shared/item.resource-type';
-import { MetadataValue } from '@dspace/core/shared/metadata.models';
-import { MetadataSecurityConfigurationService } from '@dspace/core/submission/metadatasecurityconfig-data.service';
-import { MetadataSecurityConfiguration } from '@dspace/core/submission/models/metadata-security-configuration';
-import { TestDataService } from '@dspace/core/testing/test-data-service.mock';
-import { createSuccessfulRemoteDataObject$ } from '@dspace/core/utilities/remote-data.utils';
 import { TranslateModule } from '@ngx-translate/core';
-import { mockSecurityConfig } from 'src/app/submission/utils/submission.mock';
 
+import { APP_DATA_SERVICES_MAP } from '../../../config/app-config.interface';
+import { ArrayMoveChangeAnalyzer } from '../../core/data/array-move-change-analyzer.service';
+import { DSpaceObject } from '../../core/shared/dspace-object.model';
+import { Item } from '../../core/shared/item.model';
+import { ITEM } from '../../core/shared/item.resource-type';
+import { MetadataValue } from '../../core/shared/metadata.models';
 import { AlertComponent } from '../../shared/alert/alert.component';
 import { BtnDisabledDirective } from '../../shared/btn-disabled.directive';
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { NotificationsService } from '../../shared/notifications/notifications.service';
+import { TestDataService } from '../../shared/testing/test-data-service.mock';
 import { VarDirective } from '../../shared/utils/var.directive';
 import { DsoEditMetadataComponent } from './dso-edit-metadata.component';
 import { DsoEditMetadataFieldValuesComponent } from './dso-edit-metadata-field-values/dso-edit-metadata-field-values.component';
@@ -44,12 +40,8 @@ const SAVE_BTN = 'save';
 const DISCARD_BTN = 'discard';
 
 const mockDataServiceMap: any = new Map([
-  [ITEM.value, () => import('@dspace/core/testing/test-data-service.mock').then(m => m.TestDataService)],
+  [ITEM.value, () => import('../../shared/testing/test-data-service.mock').then(m => m.TestDataService)],
 ]);
-
-const metadataSecurityConfigDataServiceSpy = jasmine.createSpyObj('metadataSecurityConfigDataService', {
-  findById: createSuccessfulRemoteDataObject$(mockSecurityConfig),
-});
 
 describe('DsoEditMetadataComponent', () => {
   let component: DsoEditMetadataComponent;
@@ -108,7 +100,6 @@ describe('DsoEditMetadataComponent', () => {
       providers: [
         { provide: APP_DATA_SERVICES_MAP, useValue: mockDataServiceMap },
         { provide: NotificationsService, useValue: notificationsService },
-        { provide: MetadataSecurityConfigurationService, useValue: metadataSecurityConfigDataServiceSpy },
         ArrayMoveChangeAnalyzer,
         TestDataService,
       ],
@@ -136,10 +127,6 @@ describe('DsoEditMetadataComponent', () => {
     component.dso = dso;
     fixture.detectChanges();
   }));
-
-  it('should set security configuration object', () => {
-    expect(component.securitySettings$.value).toEqual(mockSecurityConfig);
-  });
 
   describe('when no changes have been made', () => {
     assertButton(ADD_BTN, true, false);
@@ -215,35 +202,20 @@ describe('DsoEditMetadataComponent', () => {
         expect(fixture.debugElement.query(By.css('ds-dso-edit-metadata-value'))).toBeNull();
       });
     });
-
-    it('should fetch security settings for Item', () => {
-      component.dso = Object.assign(new Item(), {
-        ...dso,
-        entityType: 'Person',
-      });
-      component.getSecuritySettings().subscribe((securitySettings: MetadataSecurityConfiguration) => {
-        expect(securitySettings).toBeDefined();
-      });
-    });
   });
 
   function assertButton(name: string, exists: boolean, disabled: boolean = false): void {
     describe(`${name} button`, () => {
       let btn: DebugElement;
 
-      beforeEach(waitForAsync(() => {
-        fixture.detectChanges();
+      beforeEach(() => {
         btn = fixture.debugElement.query(By.css(`#dso-${name}-btn`));
-      }));
+      });
 
       if (exists) {
-        it('form should be initialized', waitForAsync(() => {
-          expect(component.isFormInitialized$.value).toBeTrue();
-        }));
-
-        it('should exist', waitForAsync(() => {
+        it('should exist', () => {
           expect(btn).toBeTruthy();
-        }));
+        });
 
         it(`should${disabled ? ' ' : ' not '}be disabled`, () => {
           if (disabled) {
@@ -255,9 +227,9 @@ describe('DsoEditMetadataComponent', () => {
           }
         });
       } else {
-        it('should not exist', waitForAsync(() => {
+        it('should not exist', () => {
           expect(btn).toBeNull();
-        }));
+        });
       }
     });
   }

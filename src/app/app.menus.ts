@@ -10,8 +10,6 @@ import { MenuID } from './shared/menu/menu-id.model';
 import { MenuRoute } from './shared/menu/menu-route.model';
 import { AccessControlMenuProvider } from './shared/menu/providers/access-control.menu';
 import { AdminSearchMenuProvider } from './shared/menu/providers/admin-search.menu';
-import { AuditLogsMenuProvider } from './shared/menu/providers/audit-item.menu';
-import { AuditOverviewMenuProvider } from './shared/menu/providers/audit-overview.menu';
 import { BrowseMenuProvider } from './shared/menu/providers/browse.menu';
 import { CoarNotifyMenuProvider } from './shared/menu/providers/coar-notify.menu';
 import { SubscribeMenuProvider } from './shared/menu/providers/comcol-subscribe.menu';
@@ -21,9 +19,6 @@ import { CurationMenuProvider } from './shared/menu/providers/curation.menu';
 import { DSpaceObjectEditMenuProvider } from './shared/menu/providers/dso-edit.menu';
 import { DsoOptionMenuProvider } from './shared/menu/providers/dso-option.menu';
 import { EditMenuProvider } from './shared/menu/providers/edit.menu';
-import { EditCMSMetadataMenuProvider } from './shared/menu/providers/edit-cms-metadata.menu';
-import { EditItemMenuProvider } from './shared/menu/providers/edit-item-details.menu';
-import { EditUserAgreementMenuProvider } from './shared/menu/providers/edit-user-agreement.menu';
 import { ExportMenuProvider } from './shared/menu/providers/export.menu';
 import { HealthMenuProvider } from './shared/menu/providers/health.menu';
 import { ImportMenuProvider } from './shared/menu/providers/import.menu';
@@ -77,15 +72,9 @@ export const MENUS = buildMenuStructure({
     HealthMenuProvider,
     SystemWideAlertMenuProvider,
     CoarNotifyMenuProvider,
-    AuditOverviewMenuProvider,
-    EditCMSMetadataMenuProvider,
-    EditUserAgreementMenuProvider,
   ],
   [MenuID.DSO_EDIT]: [
     DsoOptionMenuProvider.withSubs([
-      EditItemMenuProvider.onRoute(
-        MenuRoute.ITEM_PAGE,
-      ),
       SubscribeMenuProvider.onRoute(
         MenuRoute.COMMUNITY_PAGE,
         MenuRoute.COLLECTION_PAGE,
@@ -99,11 +88,6 @@ export const MENUS = buildMenuStructure({
         MenuRoute.ITEM_PAGE,
       ),
       VersioningMenuProvider.onRoute(
-        MenuRoute.ITEM_PAGE,
-      ),
-      AuditLogsMenuProvider.onRoute(
-        MenuRoute.COMMUNITY_PAGE,
-        MenuRoute.COLLECTION_PAGE,
         MenuRoute.ITEM_PAGE,
       ),
       OrcidMenuProvider.onRoute(

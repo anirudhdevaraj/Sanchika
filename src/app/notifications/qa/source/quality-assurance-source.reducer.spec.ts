@@ -1,8 +1,7 @@
 import {
   qualityAssuranceSourceObjectMoreAbstract,
   qualityAssuranceSourceObjectMorePid,
-} from '@dspace/core/testing/notifications.mock';
-
+} from '../../../shared/mocks/notifications.mock';
 import {
   AddSourceAction,
   RetrieveAllSourceAction,

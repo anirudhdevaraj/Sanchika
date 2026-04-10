@@ -10,14 +10,13 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { Context } from '@dspace/core/shared/context.model';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { MetadataSecurityConfiguration } from '@dspace/core/submission/models/metadata-security-configuration';
 import {
   BehaviorSubject,
   Observable,
 } from 'rxjs';
 
+import { Context } from '../../../core/shared/context.model';
+import { DSpaceObject } from '../../../core/shared/dspace-object.model';
 import {
   DsoEditMetadataChangeType,
   DsoEditMetadataForm,
@@ -74,10 +73,6 @@ export class DsoEditMetadataFieldValuesComponent {
   @Input() draggingMdField$: BehaviorSubject<string>;
 
   /**
-   * Security Settings configuration for the current entity
-   */
-  @Input() metadataSecurityConfiguration: MetadataSecurityConfiguration;
-  /**
    * Emit when the value has been saved within the form
    */
   @Output() valueSaved: EventEmitter<any> = new EventEmitter<any>();
@@ -110,16 +105,5 @@ export class DsoEditMetadataFieldValuesComponent {
     // Update the form statuses
     this.form.resetReinstatable();
     this.valueSaved.emit();
-  }
-
-  /**
-   * Update the security level for the field at the given index
-   */
-  onUpdateSecurityLevelValue(securityLevel: number, index: number) {
-    if (this.form.fields[this.mdField]?.length > 0) {
-      this.form.fields[this.mdField][index].change = DsoEditMetadataChangeType.UPDATE;
-      this.form.fields[this.mdField][index].newValue.securityLevel = securityLevel;
-      this.valueSaved.emit();
-    }
   }
 }

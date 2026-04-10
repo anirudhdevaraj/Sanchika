@@ -2,7 +2,6 @@ export enum ParserType {
   Date = 'date',
   Dropdown = 'dropdown',
   RelationGroup = 'group',
-  InlineGroup = 'inline-group',
   List = 'list',
   Lookup = 'lookup',
   LookupName = 'lookup-name',

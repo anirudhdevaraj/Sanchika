@@ -1,17 +1,16 @@
-import { MetadataIconConfig } from '@dspace/config/submission-config.interface';
-import { PLACEHOLDER_PARENT_METADATA } from '@dspace/core/shared/form/ds-dynamic-form-constants';
-import { FormFieldMetadataValueObject } from '@dspace/core/shared/form/models/form-field-metadata-value.model';
-import { VocabularyEntry } from '@dspace/core/submission/vocabularies/models/vocabulary-entry.model';
-import {
-  hasValue,
-  isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
 import findIndex from 'lodash/findIndex';
 import isEqual from 'lodash/isEqual';
 import isObject from 'lodash/isObject';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
+import { MetadataIconConfig } from '../../../../../config/submission-config.interface';
+import { VocabularyEntry } from '../../../../core/submission/vocabularies/models/vocabulary-entry.model';
+import {
+  hasValue,
+  isNotEmpty,
+} from '../../../empty.util';
+import { PLACEHOLDER_PARENT_METADATA } from '../../builder/ds-dynamic-form-ui/ds-dynamic-form-constants';
+import { FormFieldMetadataValueObject } from '../../builder/models/form-field-metadata-value.model';
 import { ChipsItem } from './chips-item.model';
 
 export class Chips {
@@ -19,7 +18,6 @@ export class Chips {
   displayField: string;
   displayObj: string;
   iconsConfig: MetadataIconConfig[];
-  triggerUpdate = false;
 
   private _items: ChipsItem[];
 
@@ -116,8 +114,6 @@ export class Chips {
 
     const defaultConfigIndex: number = findIndex(this.iconsConfig, { name: 'default' });
     const defaultConfig: MetadataIconConfig = (defaultConfigIndex !== -1) ? this.iconsConfig[defaultConfigIndex] : undefined;
-    const iconsVisibleWithNoAuthority = environment.submission.icons.iconsVisibleWithNoAuthority ?? [];
-
     let config: MetadataIconConfig;
     let configIndex: number;
     let value: any;
@@ -131,7 +127,7 @@ export class Chips {
         config = (configIndex !== -1) ? this.iconsConfig[configIndex] : defaultConfig;
 
         if (hasValue(value) && isNotEmpty(config) && !this.hasPlaceholder(value)) {
-          const visibleWhenAuthorityEmpty = this.displayObj !== metadata || (iconsVisibleWithNoAuthority.includes(config.style));
+          const visibleWhenAuthorityEmpty = this.displayObj !== metadata;
 
           // Set icon
           const icon = {

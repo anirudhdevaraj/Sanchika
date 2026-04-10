@@ -4,25 +4,19 @@ import {
   TestBed,
 } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { APP_CONFIG } from '@dspace/config/app-config.interface';
-import { AdminNotifyMessage } from '@dspace/core/coar-notify/notify-info/models/admin-notify-message.model';
-import { AdminNotifySearchResult } from '@dspace/core/coar-notify/notify-info/models/admin-notify-message-search-result.model';
-import { buildPaginatedList } from '@dspace/core/data/paginated-list.model';
-import { ActivatedRouteStub } from '@dspace/core/testing/active-router.stub';
-import { createSuccessfulRemoteDataObject$ } from '@dspace/core/utilities/remote-data.utils';
-import {
-  NgbNav,
-  NgbNavContent,
-  NgbNavItem,
-  NgbNavLink,
-  NgbNavOutlet,
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { APP_CONFIG } from '../../../config/app-config.interface';
 import { environment } from '../../../environments/environment.test';
-import { SearchService } from '../../shared/search/search.service';
+import { buildPaginatedList } from '../../core/data/paginated-list.model';
+import { SearchService } from '../../core/shared/search/search.service';
+import { createSuccessfulRemoteDataObject$ } from '../../shared/remote-data.utils';
+import { ActivatedRouteStub } from '../../shared/testing/active-router.stub';
 import { AdminNotifyDashboardComponent } from './admin-notify-dashboard.component';
 import { AdminNotifyMetricsComponent } from './admin-notify-metrics/admin-notify-metrics.component';
+import { AdminNotifyMessage } from './models/admin-notify-message.model';
+import { AdminNotifySearchResult } from './models/admin-notify-message-search-result.model';
 
 describe('AdminNotifyDashboardComponent', () => {
   let component: AdminNotifyDashboardComponent;
@@ -131,13 +125,7 @@ describe('AdminNotifyDashboardComponent', () => {
     results = buildPaginatedList(undefined, [searchResult1, searchResult2, searchResult3]);
 
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot(),
-        NgbNav,
-        NgbNavContent,
-        NgbNavItem,
-        NgbNavLink,
-        NgbNavOutlet,
-        AdminNotifyDashboardComponent],
+      imports: [TranslateModule.forRoot(), NgbNavModule, AdminNotifyDashboardComponent],
       providers: [
         { provide: APP_CONFIG, useValue: environment },
         { provide: SearchService, useValue: { search: () => createSuccessfulRemoteDataObject$(results) } },

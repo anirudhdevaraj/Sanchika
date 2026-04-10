@@ -3,13 +3,14 @@ import {
   Component,
   Input,
 } from '@angular/core';
-import { EPersonDataService } from '@dspace/core/eperson/eperson-data.service';
-import { EPerson } from '@dspace/core/eperson/models/eperson.model';
+import { Observable } from 'rxjs';
+
+import { EPersonDataService } from '../../../../core/eperson/eperson-data.service';
+import { EPerson } from '../../../../core/eperson/models/eperson.model';
 import {
   getFirstCompletedRemoteData,
   getRemoteDataPayload,
-} from '@dspace/core/shared/operators';
-import { Observable } from 'rxjs';
+} from '../../../../core/shared/operators';
 
 @Component({
   selector: 'ds-eperson-data',

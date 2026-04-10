@@ -3,11 +3,12 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import {
   hasValue,
   isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
-import { Subscription } from 'rxjs';
+} from '../../../shared/empty.util';
 
 @Component({
   selector: 'ds-abstract-incremental-list',

@@ -20,10 +20,8 @@ import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 
 @Component({
   selector: 'ds-themed-item-page',
-  // styleUrls: ['./item-page.component.scss'],
-  styleUrls: ['../../../../../app/item-page/simple/item-page.component.scss'],
-  // templateUrl: './item-page.component.html',
-  templateUrl: '../../../../../app/item-page/simple/item-page.component.html',
+  styleUrls: ['./item-page.component.scss'],
+  templateUrl: './item-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
   imports: [

@@ -1,9 +1,10 @@
-import { hasNoValue } from '@dspace/shared/utils/empty.util';
 import { all } from 'deepmerge';
 
+import { hasNoValue } from '../app/shared/empty.util';
+import { BASE_THEME_NAME } from '../app/shared/theme-support/theme.constants';
+import { environment } from '../environments/environment';
 import { AppConfig } from './app-config.interface';
 import {
-  BASE_THEME_NAME,
   NamedThemeConfig,
   ThemeConfig,
 } from './theme.config';
@@ -16,7 +17,7 @@ import {
  */
 const extendEnvironmentWithAppConfig = (env: any, appConfig: AppConfig): void => {
   mergeConfig(env, appConfig);
-  console.info(`Environment extended with app config`);
+  console.log(`Environment extended with app config`);
 };
 
 /**
@@ -40,7 +41,7 @@ const mergeConfig = (destinationConfig: any, sourceConfig: AppConfig): void => {
  *
  * @returns default theme config
  */
-const getDefaultThemeConfig = (environment: AppConfig): ThemeConfig => {
+const getDefaultThemeConfig = (): ThemeConfig => {
   return environment.themes.find((themeConfig: any) =>
     hasNoValue(themeConfig.regex) &&
     hasNoValue(themeConfig.handle) &&

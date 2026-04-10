@@ -3,7 +3,6 @@ import {
   Injectable,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { isNotEmpty } from '@dspace/shared/utils/empty.util';
 import {
   AddOperation,
   RemoveOperation,
@@ -17,6 +16,7 @@ import {
   switchMap,
 } from 'rxjs/operators';
 
+import { isNotEmpty } from '../../shared/empty.util';
 import { ConfigurationDataService } from '../data/configuration-data.service';
 import { RemoteData } from '../data/remote-data';
 import { ResearcherProfile } from '../profile/model/researcher-profile.model';

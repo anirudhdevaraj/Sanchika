@@ -1,15 +1,16 @@
 import {
-  hasNoValue,
-  hasValue,
-  isUndefined,
-} from '@dspace/shared/utils/empty.util';
-import {
   autoserialize,
   autoserializeAs,
   deserialize,
   deserializeAs,
 } from 'cerialize';
 
+import {
+  hasNoValue,
+  hasValue,
+  isUndefined,
+} from '../../shared/empty.util';
+import { ListableObject } from '../../shared/object-collection/shared/listable-object.model';
 import { typedObject } from '../cache/builders/build-decorators';
 import { CacheableObject } from '../cache/cacheable-object.model';
 import { excludeFromEquals } from '../utilities/equals.decorators';
@@ -24,7 +25,6 @@ import {
   MetadatumViewModel,
 } from './metadata.models';
 import { Metadata } from './metadata.utils';
-import { ListableObject } from './object-collection/listable-object.model';
 import { ResourceType } from './resource-type';
 
 /**
@@ -125,20 +125,6 @@ export class DSpaceObject extends ListableObject implements CacheableObject {
   allMetadata(keyOrKeys: string | string[], valueFilter?: MetadataValueFilter, escapeHTML?: boolean): MetadataValue[] {
     return Metadata.all(this.metadata, keyOrKeys, undefined, valueFilter, escapeHTML);
   }
-
-
-  /**
-   * Gets all matching metadata in this DSpaceObject, up to a limit.
-   *
-   * @param {string|string[]} keyOrKeys The metadata key(s) in scope. Wildcards are supported; see [[Metadata]].
-   * @param {number} limit The maximum number of results to return.
-   * @param {MetadataValueFilter} valueFilter The value filter to use. If unspecified, no filtering will be done.
-   * @returns {MetadataValue[]} the matching values or an empty array.
-   */
-  limitedMetadata(keyOrKeys: string | string[], limit: number, valueFilter?: MetadataValueFilter): MetadataValue[] {
-    return Metadata.all(this.metadata, keyOrKeys, null, valueFilter, false, limit);
-  }
-
 
   /**
    * Like [[allMetadata]], but only returns string values.

@@ -14,25 +14,24 @@ import {
   HostListener,
   Input,
   OnChanges,
-  OnDestroy,
   Output,
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
-import { ConfidenceIconConfig } from '@dspace/config/submission-config.interface';
-import { ConfidenceType } from '@dspace/core/shared/confidence-type';
-import { FormFieldMetadataValueObject } from '@dspace/core/shared/form/models/form-field-metadata-value.model';
-import { MetadataValue } from '@dspace/core/shared/metadata.models';
-import { VocabularyEntry } from '@dspace/core/submission/vocabularies/models/vocabulary-entry.model';
-import { VocabularyEntryDetail } from '@dspace/core/submission/vocabularies/models/vocabulary-entry-detail.model';
-import {
-  isNotEmpty,
-  isNull,
-} from '@dspace/shared/utils/empty.util';
 import { TranslateService } from '@ngx-translate/core';
 import findIndex from 'lodash/findIndex';
 
+import { ConfidenceIconConfig } from '../../../../config/submission-config.interface';
 import { environment } from '../../../../environments/environment';
+import { ConfidenceType } from '../../../core/shared/confidence-type';
+import { MetadataValue } from '../../../core/shared/metadata.models';
+import { VocabularyEntry } from '../../../core/submission/vocabularies/models/vocabulary-entry.model';
+import { VocabularyEntryDetail } from '../../../core/submission/vocabularies/models/vocabulary-entry-detail.model';
+import {
+  isNotEmpty,
+  isNull,
+} from '../../empty.util';
+import { FormFieldMetadataValueObject } from '../builder/models/form-field-metadata-value.model';
 
 /**
  * Directive to add to the element a bootstrap utility class based on metadata confidence value
@@ -40,7 +39,7 @@ import { environment } from '../../../../environments/environment';
 @Directive({
   selector: '[dsAuthorityConfidenceState]',
 })
-export class AuthorityConfidenceStateDirective implements OnChanges, AfterViewInit, OnDestroy {
+export class AuthorityConfidenceStateDirective implements OnChanges, AfterViewInit {
 
   /**
    * The metadata value
@@ -59,11 +58,6 @@ export class AuthorityConfidenceStateDirective implements OnChanges, AfterViewIn
   @Input() iconMode = false;
 
   /**
-   * A boolean representing if to show html icon if authority value is empty
-   */
-  @Input() showTooltip = true;
-
-  /**
    * The css class applied before directive changes
    */
   private previousClass: string = null;
@@ -79,11 +73,6 @@ export class AuthorityConfidenceStateDirective implements OnChanges, AfterViewIn
   @Output() whenClickOnConfidenceNotAccepted: EventEmitter<ConfidenceType> = new EventEmitter<ConfidenceType>();
 
   /**
-   * Listener to hover event
-   */
-  private onHoverUnsubscribe: () => void;
-
-  /**
    * Listener to click event
    */
   @HostListener('click') onClick() {
@@ -97,26 +86,12 @@ export class AuthorityConfidenceStateDirective implements OnChanges, AfterViewIn
    *
    * @param {ElementRef} elem
    * @param {Renderer2} renderer
-   * @param {TranslateService} translate
    */
   constructor(
     private elem: ElementRef,
     private renderer: Renderer2,
     private translate: TranslateService,
   ) {
-    // show the cursor pointer on hover
-    this.elem.nativeElement.classList.add('authority-confidence-clickable');
-  }
-
-  /**
-   * Listener to hover event
-   */
-  onHover() {
-    this.renderer.setAttribute(
-      this.elem.nativeElement,
-      'title',
-      this.translate.instant('authority-confidence.search-label'),
-    );
   }
 
   /**
@@ -143,21 +118,6 @@ export class AuthorityConfidenceStateDirective implements OnChanges, AfterViewIn
         this.renderer.setAttribute(this.elem.nativeElement, 'title', this.translate.instant(`confidence.indicator.help-text.${confidenceName}`));
       }
     }
-
-    if (this.showTooltip && this.onHoverUnsubscribe == null) {
-      this.listenOnMouseOver();
-    }
-
-    if (!changes.showTooltip?.firstChange && !!changes.showTooltip?.currentValue) {
-      if (this.onHoverUnsubscribe != null) {
-        this.onHoverUnsubscribe();
-      }
-      this.listenOnMouseOver();
-    }
-  }
-
-  private listenOnMouseOver() {
-    this.onHoverUnsubscribe = this.renderer.listen(this.elem.nativeElement, 'mouseover', () => this.onHover());
   }
 
   /**
@@ -237,12 +197,6 @@ export class AuthorityConfidenceStateDirective implements OnChanges, AfterViewIn
       return confidenceText.replace('CF_', '').toLowerCase();
     } else {
       return 'unknown';
-    }
-  }
-
-  public ngOnDestroy() {
-    if (this.onHoverUnsubscribe != null) {
-      this.onHoverUnsubscribe();
     }
   }
 

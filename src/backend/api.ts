@@ -16,10 +16,10 @@ export function serverApi(req, res) {
   const key = USER_ID + '/data.json';
   const cache = fakeDemoRedisCache.get(key);
   if (cache !== undefined) {
-    console.info('/data.json Cache Hit');
+    console.log('/data.json Cache Hit');
     return res.json(cache);
   }
-  console.info('/data.json Cache Miss');
+  console.log('/data.json Cache Miss');
 
   fakeDataBase.get()
     .then((data) => {
@@ -49,7 +49,7 @@ export function createMockApi() {
   const router = Router();
 
   router.route('/communities').get((req, res) => {
-    console.info('GET');
+    console.log('GET');
     // 70ms latency
     setTimeout(() => {
       res.json(toHALResponse(req, COMMUNITIES));
@@ -75,7 +75,7 @@ export function createMockApi() {
   });
 
   router.route('/collections').get((req, res) => {
-    console.info('GET');
+    console.log('GET');
     // 70ms latency
     setTimeout(() => {
       res.json(toHALResponse(req, COLLECTIONS));
@@ -101,7 +101,7 @@ export function createMockApi() {
   });
 
   router.route('/items').get((req, res) => {
-    console.info('GET');
+    console.log('GET');
     // 70ms latency
     setTimeout(() => {
       res.json(toHALResponse(req, ITEMS));
@@ -127,7 +127,7 @@ export function createMockApi() {
   });
 
   router.route('/bundles').get((req, res) => {
-    console.info('GET');
+    console.log('GET');
     // 70ms latency
     setTimeout(() => {
       res.json(toHALResponse(req, BUNDLES));
@@ -154,7 +154,7 @@ export function createMockApi() {
   });
 
   router.route('/bitstreams').get((req, res) => {
-    console.info('GET');
+    console.log('GET');
     // 70ms latency
     setTimeout(() => {
       res.json(toHALResponse(req, BITSTREAMS));

@@ -16,32 +16,6 @@ import {
   ActivatedRoute,
   Router,
 } from '@angular/router';
-import { DSONameService } from '@dspace/core/breadcrumbs/dso-name.service';
-import { DSpaceObjectDataService } from '@dspace/core/data/dspace-object-data.service';
-import { AuthorizationDataService } from '@dspace/core/data/feature-authorization/authorization-data.service';
-import { FeatureID } from '@dspace/core/data/feature-authorization/feature-id';
-import { PaginatedList } from '@dspace/core/data/paginated-list.model';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { RequestService } from '@dspace/core/data/request.service';
-import { GroupDataService } from '@dspace/core/eperson/group-data.service';
-import { Group } from '@dspace/core/eperson/models/group.model';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { Collection } from '@dspace/core/shared/collection.model';
-import { Community } from '@dspace/core/shared/community.model';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { followLink } from '@dspace/core/shared/follow-link-config.model';
-import { NoContent } from '@dspace/core/shared/NoContent.model';
-import {
-  getAllCompletedRemoteData,
-  getFirstCompletedRemoteData,
-  getFirstSucceededRemoteData,
-  getRemoteDataPayload,
-} from '@dspace/core/shared/operators';
-import {
-  hasValue,
-  hasValueOperator,
-  isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   DynamicFormControlModel,
@@ -69,17 +43,42 @@ import {
 import { environment } from '../../../../environments/environment';
 import { getCollectionEditRolesRoute } from '../../../collection-page/collection-page-routing-paths';
 import { getCommunityEditRolesRoute } from '../../../community-page/community-page-routing-paths';
+import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { DSpaceObjectDataService } from '../../../core/data/dspace-object-data.service';
+import { AuthorizationDataService } from '../../../core/data/feature-authorization/authorization-data.service';
+import { FeatureID } from '../../../core/data/feature-authorization/feature-id';
+import { PaginatedList } from '../../../core/data/paginated-list.model';
+import { RemoteData } from '../../../core/data/remote-data';
+import { RequestService } from '../../../core/data/request.service';
+import { GroupDataService } from '../../../core/eperson/group-data.service';
+import { Group } from '../../../core/eperson/models/group.model';
+import { Collection } from '../../../core/shared/collection.model';
+import { Community } from '../../../core/shared/community.model';
+import { DSpaceObject } from '../../../core/shared/dspace-object.model';
+import { NoContent } from '../../../core/shared/NoContent.model';
+import {
+  getAllCompletedRemoteData,
+  getFirstCompletedRemoteData,
+  getFirstSucceededRemoteData,
+  getRemoteDataPayload,
+} from '../../../core/shared/operators';
 import { AlertComponent } from '../../../shared/alert/alert.component';
 import { AlertType } from '../../../shared/alert/alert-type';
 import { ConfirmationModalComponent } from '../../../shared/confirmation-modal/confirmation-modal.component';
 import { ContextHelpDirective } from '../../../shared/context-help.directive';
+import {
+  hasValue,
+  hasValueOperator,
+  isNotEmpty,
+} from '../../../shared/empty.util';
 import { FormBuilderService } from '../../../shared/form/builder/form-builder.service';
 import { FormComponent } from '../../../shared/form/form.component';
+import { NotificationsService } from '../../../shared/notifications/notifications.service';
+import { followLink } from '../../../shared/utils/follow-link-config.model';
 import {
   getGroupEditRoute,
   getGroupsRoute,
 } from '../../access-control-routing-paths';
-import { GroupRegistryService } from '../group-registry.service';
 import { MembersListComponent } from './members-list/members-list.component';
 import { SubgroupsListComponent } from './subgroup-list/subgroups-list.component';
 import { ValidateGroupExists } from './validators/group-exists.validator';
@@ -190,7 +189,6 @@ export class GroupFormComponent implements OnInit, OnDestroy {
 
   constructor(
     public groupDataService: GroupDataService,
-    public groupRegistryService: GroupRegistryService,
     protected dSpaceObjectDataService: DSpaceObjectDataService,
     protected formBuilderService: FormBuilderService,
     protected translateService: TranslateService,
@@ -209,7 +207,7 @@ export class GroupFormComponent implements OnInit, OnDestroy {
     if (this.route.snapshot.params.groupId !== 'newGroup') {
       this.setActiveGroup(this.route.snapshot.params.groupId);
     }
-    this.activeGroup$ = this.groupRegistryService.getActiveGroup();
+    this.activeGroup$ = this.groupDataService.getActiveGroup();
     this.activeGroupLinkedDSO$ = this.getActiveGroupLinkedDSO();
     this.linkedEditRolesRoute$ = this.getLinkedEditRolesRoute();
     this.canEdit$ = this.activeGroupLinkedDSO$.pipe(
@@ -312,7 +310,7 @@ export class GroupFormComponent implements OnInit, OnDestroy {
    * Stop editing the currently selected group
    */
   onCancel() {
-    this.groupRegistryService.cancelEditGroup();
+    this.groupDataService.cancelEditGroup();
     this.cancelForm.emit();
     void this.router.navigate([getGroupsRoute()]);
   }
@@ -430,13 +428,13 @@ export class GroupFormComponent implements OnInit, OnDestroy {
    * @param groupId   ID of group to set as active
    */
   setActiveGroup(groupId: string) {
-    this.groupRegistryService.cancelEditGroup();
+    this.groupDataService.cancelEditGroup();
     this.groupDataService.findById(groupId)
       .pipe(
         getFirstSucceededRemoteData(),
         getRemoteDataPayload())
       .subscribe((group: Group) => {
-        this.groupRegistryService.editGroup(group);
+        this.groupDataService.editGroup(group);
       });
   }
 
@@ -447,13 +445,13 @@ export class GroupFormComponent implements OnInit, OnDestroy {
   setActiveGroupWithLink(groupSelfLink: string) {
     this.activeGroup$.pipe(take(1)).subscribe((activeGroup: Group) => {
       if (activeGroup === null) {
-        this.groupRegistryService.cancelEditGroup();
+        this.groupDataService.cancelEditGroup();
         this.groupDataService.findByHref(groupSelfLink, false, false, followLink('subgroups'), followLink('epersons'), followLink('object'))
           .pipe(
             getFirstSucceededRemoteData(),
             getRemoteDataPayload())
           .subscribe((group: Group) => {
-            this.groupRegistryService.editGroup(group);
+            this.groupDataService.editGroup(group);
           });
       }
     });
@@ -498,7 +496,7 @@ export class GroupFormComponent implements OnInit, OnDestroy {
    */
   @HostListener('window:beforeunload')
   ngOnDestroy(): void {
-    this.groupRegistryService.cancelEditGroup();
+    this.groupDataService.cancelEditGroup();
     this.subs.filter((sub) => hasValue(sub)).forEach((sub) => sub.unsubscribe());
 
     if ( hasValue(this.groupNameValueChangeSubscribe) ) {

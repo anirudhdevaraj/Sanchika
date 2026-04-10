@@ -4,7 +4,6 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { HealthResponse } from '@dspace/core/shared/health-component.model';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   TranslateModule,
@@ -12,6 +11,7 @@ import {
 } from '@ngx-translate/core';
 
 import { ObjNgFor } from '../../shared/utils/object-ngfor.pipe';
+import { HealthResponse } from '../models/health-component.model';
 import { HealthComponentComponent } from './health-component/health-component.component';
 import { HealthStatusComponent } from './health-status/health-status.component';
 

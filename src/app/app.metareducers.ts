@@ -1,4 +1,4 @@
-import { StoreActionTypes } from '@dspace/core/ngrx/type';
+import { StoreActionTypes } from './store.actions';
 
 // fallback ngrx debugger
 let actionCounter = 0;
@@ -6,10 +6,10 @@ let actionCounter = 0;
 export function debugMetaReducer(reducer) {
   return (state, action) => {
     actionCounter++;
-    console.debug('@ngrx action', actionCounter, action.type);
-    console.debug('state', JSON.stringify(state));
-    console.debug('action', JSON.stringify(action));
-    console.debug('------------------------------------');
+    console.log('@ngrx action', actionCounter, action.type);
+    console.log('state', JSON.stringify(state));
+    console.log('action', JSON.stringify(action));
+    console.log('------------------------------------');
     return reducer(state, action);
   };
 }

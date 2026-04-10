@@ -1,5 +1,4 @@
-import { FilterType } from '@dspace/core/shared/search/models/filter-type.model';
-
+import { FilterType } from '../../models/filter-type.model';
 import { SearchAuthorityFilterComponent } from './search-authority-filter/search-authority-filter.component';
 import { SearchBooleanFilterComponent } from './search-boolean-filter/search-boolean-filter.component';
 import { SearchHierarchyFilterComponent } from './search-hierarchy-filter/search-hierarchy-filter.component';

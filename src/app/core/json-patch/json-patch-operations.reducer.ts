@@ -3,8 +3,7 @@ import {
   isNotEmpty,
   isNotUndefined,
   isNull,
-} from '@dspace/shared/utils/empty.util';
-
+} from '../../shared/empty.util';
 import {
   JsonPatchOperationModel,
   JsonPatchOperationType,

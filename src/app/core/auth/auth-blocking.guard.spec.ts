@@ -12,15 +12,18 @@ import {
 } from '@ngrx/store/testing';
 import { cold } from 'jasmine-marbles';
 
-import { CoreState } from '../core-state.model';
+import {
+  AppState,
+  storeModuleConfig,
+} from '../../app.reducer';
 import { authReducer } from './auth.reducer';
 import { authBlockingGuard } from './auth-blocking.guard';
 
 describe('authBlockingGuard', () => {
   let guard: any;
   let initialState;
-  let store: Store<CoreState>;
-  let mockStore: MockStore<CoreState>;
+  let store: Store<AppState>;
+  let mockStore: MockStore<AppState>;
 
   initialState = {
     core: {
@@ -34,17 +37,10 @@ describe('authBlockingGuard', () => {
     },
   };
 
-  const mockStoreModuleConfig = {
-    runtimeChecks: {
-      strictStateImmutability: true,
-      strictActionImmutability: true,
-    },
-  };
-
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        StoreModule.forRoot(authReducer, mockStoreModuleConfig),
+        StoreModule.forRoot(authReducer, storeModuleConfig),
       ],
       providers: [
         provideMockStore({ initialState }),
@@ -55,7 +51,7 @@ describe('authBlockingGuard', () => {
 
   beforeEach(() => {
     store = TestBed.inject(Store);
-    mockStore = store as MockStore<CoreState>;
+    mockStore = store as MockStore<AppState>;
     guard = authBlockingGuard;
   });
 

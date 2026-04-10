@@ -7,12 +7,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BulkAccessConfigDataService } from '@dspace/core/config/bulk-access-config-data.service';
-import { BulkAccessConditionOptions } from '@dspace/core/config/models/bulk-access-condition-options.model';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { Item } from '@dspace/core/shared/item.model';
-import { getFirstCompletedRemoteData } from '@dspace/core/shared/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { UiSwitchModule } from 'ngx-ui-switch';
@@ -26,6 +20,12 @@ import {
   take,
 } from 'rxjs/operators';
 
+import { BulkAccessConfigDataService } from '../../core/config/bulk-access-config-data.service';
+import { BulkAccessConditionOptions } from '../../core/config/models/bulk-access-condition-options.model';
+import { RemoteData } from '../../core/data/remote-data';
+import { DSpaceObject } from '../../core/shared/dspace-object.model';
+import { Item } from '../../core/shared/item.model';
+import { getFirstCompletedRemoteData } from '../../core/shared/operators';
 import { AlertComponent } from '../alert/alert.component';
 import { AlertType } from '../alert/alert-type';
 import { BtnDisabledDirective } from '../btn-disabled.directive';
@@ -102,6 +102,11 @@ export class AccessControlFormContainerComponent<T extends DSpaceObject> impleme
    * Will be used from a parent component to read the value of the form
    */
   getFormValue() {
+    console.log({
+      bitstream: this.bitstreamAccessCmp.getValue(),
+      item: this.itemAccessCmp.getValue(),
+      state: this.state,
+    });
     return {
       bitstream: this.bitstreamAccessCmp.getValue(),
       item: this.itemAccessCmp.getValue(),
@@ -137,6 +142,7 @@ export class AccessControlFormContainerComponent<T extends DSpaceObject> impleme
       [ this.itemRD.payload.uuid ],
       file,
     ).pipe(take(1)).subscribe((res) => {
+      console.log('success', res);
     });
   }
 

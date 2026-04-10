@@ -1,8 +1,7 @@
-import { FormFieldMetadataValueObject } from '@dspace/core/shared/form/models/form-field-metadata-value.model';
-import { isNotEmpty } from '@dspace/shared/utils/empty.util';
-
+import { isNotEmpty } from '../../../empty.util';
 import { DynamicListCheckboxGroupModel } from '../ds-dynamic-form-ui/models/list/dynamic-list-checkbox-group.model';
 import { DynamicListRadioGroupModel } from '../ds-dynamic-form-ui/models/list/dynamic-list-radio-group.model';
+import { FormFieldMetadataValueObject } from '../models/form-field-metadata-value.model';
 import { FieldParser } from './field-parser';
 
 export class ListFieldParser extends FieldParser {
@@ -24,11 +23,8 @@ export class ListFieldParser extends FieldParser {
             listModelConfig.value.push(valueObj);
           }
         });
-        if (!listModelConfig.repeatable) {
-          listModelConfig.value = listModelConfig.value[0];
-        }
       }
-      this.setVocabularyOptions(listModelConfig, this.parserOptions.collectionUUID);
+      this.setVocabularyOptions(listModelConfig);
     }
 
     let listModel;

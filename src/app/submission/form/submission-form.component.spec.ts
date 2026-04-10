@@ -9,17 +9,6 @@ import {
   TestBed,
   waitForAsync,
 } from '@angular/core/testing';
-import { AuthService } from '@dspace/core/auth/auth.service';
-import { HALEndpointService } from '@dspace/core/shared/hal-endpoint.service';
-import { Item } from '@dspace/core/shared/item.model';
-import { MetadataSecurityConfigurationService } from '@dspace/core/submission/metadatasecurityconfig-data.service';
-import { SubmissionVisibilityValue } from '@dspace/core/submission/models/section-visibility.model';
-import { SubmissionScopeType } from '@dspace/core/submission/submission-scope-type';
-import { AuthServiceStub } from '@dspace/core/testing/auth-service.stub';
-import { HALEndpointServiceStub } from '@dspace/core/testing/hal-endpoint-service.stub';
-import { SubmissionServiceStub } from '@dspace/core/testing/submission-service.stub';
-import { createTestComponent } from '@dspace/core/testing/utils.test';
-import { createSuccessfulRemoteDataObject$ } from '@dspace/core/utilities/remote-data.utils';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   cold,
@@ -28,22 +17,28 @@ import {
 import { of } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 
+import { AuthService } from '../../core/auth/auth.service';
+import { HALEndpointService } from '../../core/shared/hal-endpoint.service';
+import { Item } from '../../core/shared/item.model';
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
-import { ThemedSubmissionSectionContainerComponent } from '../sections/container/themed-section-container.component';
-import { SectionsService } from '../sections/sections.service';
-import { SubmissionService } from '../submission.service';
 import {
   mockSectionsData,
   mockSectionsList,
   mockSubmissionCollectionId,
   mockSubmissionDefinition,
-  mockSubmissionDefinitionWithHiddenCollection,
   mockSubmissionId,
-  mockSubmissionObject,
   mockSubmissionObjectNew,
   mockSubmissionSelfUrl,
   mockSubmissionState,
-} from '../utils/submission.mock';
+} from '../../shared/mocks/submission.mock';
+import { AuthServiceStub } from '../../shared/testing/auth-service.stub';
+import { HALEndpointServiceStub } from '../../shared/testing/hal-endpoint-service.stub';
+import { SubmissionServiceStub } from '../../shared/testing/submission-service.stub';
+import { createTestComponent } from '../../shared/testing/utils.test';
+import { ThemedSubmissionSectionContainerComponent } from '../sections/container/themed-section-container.component';
+import { SectionsService } from '../sections/sections.service';
+import { VisibilityType } from '../sections/visibility-type';
+import { SubmissionService } from '../submission.service';
 import { SubmissionFormCollectionComponent } from './collection/submission-form-collection.component';
 import { ThemedSubmissionFormFooterComponent } from './footer/themed-submission-form-footer.component';
 import { SubmissionFormSectionAddComponent } from './section-add/submission-form-section-add.component';
@@ -57,9 +52,7 @@ describe('SubmissionFormComponent', () => {
   let fixture: ComponentFixture<SubmissionFormComponent>;
   let authServiceStub: AuthServiceStub;
   let scheduler: TestScheduler;
-  let metadataSecurityConfigDataService: MetadataSecurityConfigurationService;
 
-  const submissionObject: any = mockSubmissionObject;
   const submissionServiceStub: SubmissionServiceStub = new SubmissionServiceStub();
   const submissionId = mockSubmissionId;
   const collectionId = mockSubmissionCollectionId;
@@ -71,9 +64,6 @@ describe('SubmissionFormComponent', () => {
   const sectionsData: any = mockSectionsData;
 
   beforeEach(waitForAsync(() => {
-    metadataSecurityConfigDataService = jasmine.createSpyObj('metadataSecurityConfigDataService', {
-      findById: createSuccessfulRemoteDataObject$(submissionObject.metadataSecurityConfiguration),
-    });
     TestBed.configureTestingModule({
       imports: [
         SubmissionFormComponent,
@@ -84,14 +74,7 @@ describe('SubmissionFormComponent', () => {
         { provide: AuthService, useClass: AuthServiceStub },
         { provide: HALEndpointService, useValue: new HALEndpointServiceStub('workspaceitems') },
         { provide: SubmissionService, useValue: submissionServiceStub },
-        { provide: MetadataSecurityConfigurationService, useValue: metadataSecurityConfigDataService },
-        { provide: SectionsService, useValue:
-          {
-            isSectionTypeAvailable: () => of(true),
-            isSectionReadOnlyByType: () => of(true),
-            isSectionReadOnly: () => of(false),
-          },
-        },
+        { provide: SectionsService, useValue: { isSectionTypeAvailable: () => of(true) } },
         ChangeDetectorRef,
         SubmissionFormComponent,
       ],
@@ -143,7 +126,6 @@ describe('SubmissionFormComponent', () => {
       comp = fixture.componentInstance;
       compAsAny = comp;
       authServiceStub = TestBed.inject(AuthService as any);
-      submissionServiceStub.isSectionReadOnly.and.returnValue(of(false));
       submissionServiceStub.startAutoSave.calls.reset();
       submissionServiceStub.resetSubmissionObject.calls.reset();
       submissionServiceStub.dispatchInit.calls.reset();
@@ -176,7 +158,7 @@ describe('SubmissionFormComponent', () => {
       comp.sections = sectionsData;
       comp.submissionErrors = null;
       comp.item = new Item();
-      comp.entityType = 'publication';
+
       submissionServiceStub.getSubmissionObject.and.returnValue(of(submissionState));
       submissionServiceStub.getSubmissionSections.and.returnValue(of(sectionsList));
       spyOn(authServiceStub, 'buildAuthHeader').and.returnValue('token');
@@ -199,8 +181,7 @@ describe('SubmissionFormComponent', () => {
         submissionDefinition,
         sectionsData,
         comp.item,
-        null,
-        undefined);
+        null);
       expect(submissionServiceStub.startAutoSave).toHaveBeenCalled();
       done();
     });
@@ -210,20 +191,23 @@ describe('SubmissionFormComponent', () => {
       fixture.detectChanges();
       const result = compAsAny.getCollectionVisibility();
       expect(result).toEqual({
-        workflow: SubmissionVisibilityValue.Hidden,
+        main: VisibilityType.HIDDEN,
+        other: VisibilityType.HIDDEN,
       });
     });
 
     it('should return true if collection section visibility is hidden', () => {
-      submissionServiceStub.getSubmissionScope.and.returnValue(SubmissionScopeType.WorkflowItem);
-      comp.submissionDefinition = mockSubmissionDefinitionWithHiddenCollection;
+      comp.submissionDefinition = submissionDefinition;
       fixture.detectChanges();
       expect(comp.isSectionHidden).toBe(true);
     });
 
     it('should return false for isSectionReadonly when collection section visibility is not READONLY', () => {
-      submissionServiceStub.getSubmissionScope.and.returnValue(SubmissionScopeType.WorkspaceItem);
-      comp.submissionDefinition = submissionDefinition;
+      const visibility = {
+        main: VisibilityType.READONLY,
+        other: VisibilityType.READONLY,
+      };
+      comp.submissionDefinition = Object.assign({}, submissionDefinition, { visibility: visibility });
       fixture.detectChanges();
       expect(comp.isSectionReadonly).toBe(false);
     });
@@ -235,7 +219,6 @@ describe('SubmissionFormComponent', () => {
       comp.selfUrl = selfUrl;
       comp.sections = sectionsData;
       comp.item = new Item();
-      comp.entityType = 'publication';
 
       scheduler.schedule(() => {
         comp.onCollectionChange(submissionObjectNew);
@@ -254,7 +237,6 @@ describe('SubmissionFormComponent', () => {
         submissionObjectNew.submissionDefinition,
         submissionObjectNew.sections,
         comp.item,
-        submissionObject.metadataSecurityConfiguration,
       );
       done();
     });
@@ -267,7 +249,6 @@ describe('SubmissionFormComponent', () => {
       comp.selfUrl = selfUrl;
       comp.sections = sectionsData;
       comp.item = new Item();
-      comp.entityType = 'publication';
 
       scheduler.schedule(() => {
         comp.onCollectionChange({

@@ -18,13 +18,13 @@ import {
   ControlValueAccessor,
   FormsModule,
 } from '@angular/forms';
-import {
-  hasValue,
-  isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
 import { TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 
+import {
+  hasValue,
+  isNotEmpty,
+} from '../empty.util';
 import { ClickOutsideDirective } from '../utils/click-outside.directive';
 import { DebounceDirective } from '../utils/debounce.directive';
 

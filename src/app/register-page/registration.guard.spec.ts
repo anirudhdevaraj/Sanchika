@@ -3,16 +3,16 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { AuthService } from '@dspace/core/auth/auth.service';
-import { EpersonRegistrationService } from '@dspace/core/data/eperson-registration.service';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { Registration } from '@dspace/core/shared/registration.model';
+import { of } from 'rxjs';
+
+import { AuthService } from '../core/auth/auth.service';
+import { EpersonRegistrationService } from '../core/data/eperson-registration.service';
+import { RemoteData } from '../core/data/remote-data';
+import { Registration } from '../core/shared/registration.model';
 import {
   createFailedRemoteDataObject$,
   createSuccessfulRemoteDataObject,
-} from '@dspace/core/utilities/remote-data.utils';
-import { of } from 'rxjs';
-
+} from '../shared/remote-data.utils';
 import { registrationGuard } from './registration.guard';
 
 describe('registrationGuard', () => {

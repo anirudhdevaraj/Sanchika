@@ -10,12 +10,13 @@ import {
   Injectable,
   PLATFORM_ID,
 } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import {
   APP_CONFIG,
   AppConfig,
-} from '@dspace/config/app-config.interface';
-import { isEmpty } from '@dspace/shared/utils/empty.util';
-import { Observable } from 'rxjs';
+} from '../../../config/app-config.interface';
+import { isEmpty } from '../../shared/empty.util';
 
 @Injectable()
 /**

@@ -7,7 +7,6 @@ import {
   ComponentFixture,
   TestBed,
 } from '@angular/core/testing';
-import { TranslateLoaderMock } from '@dspace/core/testing/translate-loader.mock';
 import {
   TranslateLoader,
   TranslateModule,
@@ -15,6 +14,7 @@ import {
 } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
+import { TranslateLoaderMock } from '../../../shared/mocks/translate-loader.mock';
 import { ConfirmationSentComponent } from './confirmation-sent.component';
 
 describe('ConfirmationSentComponent', () => {

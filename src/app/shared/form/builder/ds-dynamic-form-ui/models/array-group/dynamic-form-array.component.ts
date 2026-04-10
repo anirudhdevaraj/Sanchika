@@ -20,8 +20,6 @@ import {
   ReactiveFormsModule,
   UntypedFormGroup,
 } from '@angular/forms';
-import { Relationship } from '@dspace/core/shared/item-relationships/relationship.model';
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import {
   DynamicFormArrayComponent,
   DynamicFormControlCustomEvent,
@@ -38,6 +36,8 @@ import {
   TranslateService,
 } from '@ngx-translate/core';
 
+import { Relationship } from '../../../../../../core/shared/item-relationships/relationship.model';
+import { hasValue } from '../../../../../empty.util';
 import { LiveRegionService } from '../../../../../live-region/live-region.service';
 import { DsDynamicFormControlContainerComponent } from '../../ds-dynamic-form-control-container.component';
 import { DynamicRowArrayModel } from '../ds-dynamic-row-array-model';
@@ -120,7 +120,7 @@ export class DsDynamicFormArrayComponent extends DynamicFormArrayComponent {
    * If the drag feature is disabled for this DynamicRowArrayModel.
    */
   get dragDisabled(): boolean {
-    return this.model.groups.length === 1 || !this.model.isDraggable || this.model.notRepeatable;
+    return this.model.groups.length === 1 || !this.model.isDraggable;
   }
 
   /**

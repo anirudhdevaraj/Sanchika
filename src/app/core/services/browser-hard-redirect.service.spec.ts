@@ -1,13 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
-import { environment } from '../../../environments/environment';
 import { BrowserHardRedirectService } from './browser-hard-redirect.service';
 
 describe('BrowserHardRedirectService', () => {
   let origin: string;
   let mockLocation: Location;
   let service: BrowserHardRedirectService;
-  let originalBaseUrl;
 
   beforeEach(() => {
     origin = 'https://test-host.com:4000';
@@ -22,20 +20,9 @@ describe('BrowserHardRedirectService', () => {
     } as Location;
     spyOn(mockLocation, 'replace');
 
-    // Store original environment variable to restore after tests
-    originalBaseUrl = environment.ui.baseUrl;
-
-    // Set environment variable to match our mock location origin for testing
-    environment.ui.baseUrl = origin;
-
     service = new BrowserHardRedirectService(mockLocation);
 
     TestBed.configureTestingModule({});
-  });
-
-  afterEach(() => {
-    // Restore original environment variable after tests
-    environment.ui.baseUrl = originalBaseUrl;
   });
 
   it('should be created', () => {
@@ -65,7 +52,7 @@ describe('BrowserHardRedirectService', () => {
   describe('when requesting the origin', () => {
 
     it('should return the location origin', () => {
-      expect(service.getBaseUrl()).toEqual(origin);
+      expect(service.getCurrentOrigin()).toEqual(origin);
     });
   });
 

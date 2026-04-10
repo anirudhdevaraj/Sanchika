@@ -18,18 +18,6 @@ import {
   UntypedFormControl,
   UntypedFormGroup,
 } from '@angular/forms';
-import { APP_DATA_SERVICES_MAP } from '@dspace/core/data-services-map-type';
-import { FormFieldMetadataValueObject } from '@dspace/core/shared/form/models/form-field-metadata-value.model';
-import { VocabularyEntry } from '@dspace/core/submission/vocabularies/models/vocabulary-entry.model';
-import { VocabularyOptions } from '@dspace/core/submission/vocabularies/models/vocabulary-options.model';
-import { VocabularyService } from '@dspace/core/submission/vocabularies/vocabulary.service';
-import {
-  mockDynamicFormLayoutService,
-  mockDynamicFormValidationService,
-} from '@dspace/core/testing/dynamic-form-mock-services';
-import { SubmissionServiceStub } from '@dspace/core/testing/submission-service.stub';
-import { createTestComponent } from '@dspace/core/testing/utils.test';
-import { VocabularyServiceStub } from '@dspace/core/testing/vocabulary-service.stub';
 import {
   NgbModule,
   NgbTypeaheadSelectItemEvent,
@@ -39,13 +27,21 @@ import {
   DynamicFormsCoreModule,
   DynamicFormValidationService,
 } from '@ng-dynamic-forms/core';
-import { provideMockStore } from '@ngrx/store/testing';
+import { DynamicFormsNGBootstrapUIModule } from '@ng-dynamic-forms/ui-ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { SubmissionService } from 'src/app/submission/submission.service';
 
+import { VocabularyEntry } from '../../../../../../core/submission/vocabularies/models/vocabulary-entry.model';
+import { VocabularyOptions } from '../../../../../../core/submission/vocabularies/models/vocabulary-options.model';
+import { VocabularyService } from '../../../../../../core/submission/vocabularies/vocabulary.service';
+import {
+  mockDynamicFormLayoutService,
+  mockDynamicFormValidationService,
+} from '../../../../../testing/dynamic-form-mock-services';
+import { createTestComponent } from '../../../../../testing/utils.test';
+import { VocabularyServiceStub } from '../../../../../testing/vocabulary-service.stub';
 import { Chips } from '../../../../chips/models/chips.model';
-import { FormBuilderService } from '../../../form-builder.service';
+import { FormFieldMetadataValueObject } from '../../../models/form-field-metadata-value.model';
 import { DsDynamicTagComponent } from './dynamic-tag.component';
 import { DynamicTagModel } from './dynamic-tag.model';
 
@@ -105,6 +101,7 @@ describe('DsDynamicTagComponent test suite', () => {
       imports: [
         TranslateModule.forRoot(),
         DynamicFormsCoreModule,
+        DynamicFormsNGBootstrapUIModule,
         FormsModule,
         NgbModule,
         ReactiveFormsModule,
@@ -117,10 +114,6 @@ describe('DsDynamicTagComponent test suite', () => {
         { provide: VocabularyService, useValue: vocabularyServiceStub },
         { provide: DynamicFormLayoutService, useValue: mockDynamicFormLayoutService },
         { provide: DynamicFormValidationService, useValue: mockDynamicFormValidationService },
-        { provide: FormBuilderService },
-        { provide: SubmissionService, useClass: SubmissionServiceStub },
-        provideMockStore(),
-        { provide: APP_DATA_SERVICES_MAP, useValue: {} },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
@@ -241,9 +234,9 @@ describe('DsDynamicTagComponent test suite', () => {
         tagComp.group = TAG_TEST_GROUP;
         tagComp.model = new DynamicTagModel(TAG_TEST_MODEL_CONFIG);
         modelValue = [
-          new FormFieldMetadataValueObject('a', null, null, 'test001'),
-          new FormFieldMetadataValueObject('b', null, null, 'test002'),
-          new FormFieldMetadataValueObject('c', null, null, 'test003'),
+          new FormFieldMetadataValueObject('a', null, 'test001'),
+          new FormFieldMetadataValueObject('b', null, 'test002'),
+          new FormFieldMetadataValueObject('c', null, 'test003'),
         ];
         tagComp.model.value = modelValue;
         tagFixture.detectChanges();
@@ -318,6 +311,7 @@ describe('DsDynamicTagComponent test suite', () => {
   selector: 'ds-test-cmp',
   template: ``,
   imports: [DynamicFormsCoreModule,
+    DynamicFormsNGBootstrapUIModule,
     FormsModule,
     NgbModule,
     ReactiveFormsModule],

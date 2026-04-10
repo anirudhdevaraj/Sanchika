@@ -1,4 +1,4 @@
-import { isEmpty } from '@dspace/shared/utils/empty.util';
+import { isEmpty } from '../../shared/empty.util';
 
 /**
  * Combines a variable number of strings representing parts

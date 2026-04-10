@@ -14,7 +14,6 @@ import {
   FormsModule,
   UntypedFormGroup,
 } from '@angular/forms';
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import {
   DynamicFormControlComponent,
   DynamicFormLayoutService,
@@ -23,6 +22,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import isEqual from 'lodash/isEqual';
 
+import { hasValue } from '../../../../../empty.util';
 import { NumberPickerComponent } from '../../../../number-picker/number-picker.component';
 import { DynamicDsDatePickerModel } from './date-picker.model';
 

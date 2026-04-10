@@ -10,14 +10,13 @@ import {
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { APP_CONFIG } from '@dspace/config/app-config.interface';
-import { RestRequestMethod } from '@dspace/config/rest-request-method';
 
-import { CookieService } from '../cookies/cookie.service';
+import { CookieServiceMock } from '../../shared/mocks/cookie.service.mock';
+import { HttpXsrfTokenExtractorMock } from '../../shared/mocks/http-xsrf-token-extractor.mock';
 import { RequestError } from '../data/request-error.model';
+import { RestRequestMethod } from '../data/rest-request-method';
 import { DspaceRestService } from '../dspace-rest/dspace-rest.service';
-import { CookieServiceMock } from '../testing/cookie.service.mock';
-import { HttpXsrfTokenExtractorMock } from '../testing/http-xsrf-token-extractor.mock';
+import { CookieService } from '../services/cookie.service';
 import { XsrfInterceptor } from './xsrf.interceptor';
 
 describe(`XsrfInterceptor`, () => {
@@ -41,28 +40,22 @@ describe(`XsrfInterceptor`, () => {
   beforeEach(() => {
     const tokenExtractor = new HttpXsrfTokenExtractorMock(testToken);
     cookieService = new CookieServiceMock();
+    const interceptor = new XsrfInterceptor(tokenExtractor,cookieService as any);
 
     TestBed.configureTestingModule({
       imports: [],
       providers: [
         DspaceRestService,
-        { provide: HttpXsrfTokenExtractor, useClass: HttpXsrfTokenExtractorMock },
-        { provide: CookieService, useValue: cookieService },
-        { provide: APP_CONFIG, useValue: { rest: { baseUrl: 'https://rest.com/server' } } },
         {
           provide: HTTP_INTERCEPTORS,
-          useFactory: (extractor: HttpXsrfTokenExtractor, cookieSvc: CookieService) =>
-            new XsrfInterceptor(extractor, cookieSvc),
-          deps: [HttpXsrfTokenExtractor, CookieService],
+          useValue: interceptor,
           multi: true,
         },
+        { provide: HttpXsrfTokenExtractor, useValue: tokenExtractor },
+        { provide: CookieService, useValue: cookieService },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
-    });
-
-    TestBed.overrideProvider(HttpXsrfTokenExtractor, {
-      useFactory: () => new HttpXsrfTokenExtractorMock(testToken),
     });
 
     service = TestBed.inject(DspaceRestService);

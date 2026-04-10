@@ -3,17 +3,18 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { EPersonDataService } from '@dspace/core/eperson/eperson-data.service';
-import { EPerson } from '@dspace/core/eperson/models/eperson.model';
-import { ResolvedAction } from '@dspace/core/resolving/resolver.actions';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { RemoteData } from '../../core/data/remote-data';
+import { EPersonDataService } from '../../core/eperson/eperson-data.service';
+import { EPerson } from '../../core/eperson/models/eperson.model';
+import { ResolvedAction } from '../../core/resolving/resolver.actions';
+import { getFirstCompletedRemoteData } from '../../core/shared/operators';
 import {
   followLink,
   FollowLinkConfig,
-} from '@dspace/core/shared/follow-link-config.model';
-import { getFirstCompletedRemoteData } from '@dspace/core/shared/operators';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+} from '../../shared/utils/follow-link-config.model';
 
 export const EPERSON_EDIT_FOLLOW_LINKS: FollowLinkConfig<EPerson>[] = [
   followLink('groups'),

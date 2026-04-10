@@ -8,13 +8,6 @@ import {
   NavigationExtras,
   Router,
 } from '@angular/router';
-import {
-  SortDirection,
-  SortOptions,
-} from '@dspace/core/cache/models/sort-options.model';
-import { ActionType } from '@dspace/core/resource-policy/models/action-type.model';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { DSpaceObjectType } from '@dspace/core/shared/dspace-object-type.model';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -23,6 +16,12 @@ import {
   COLLECTION_PARENT_PARAMETER,
   getCollectionCreateRoute,
 } from '../../../../collection-page/collection-page-routing-paths';
+import {
+  SortDirection,
+  SortOptions,
+} from '../../../../core/cache/models/sort-options.model';
+import { DSpaceObject } from '../../../../core/shared/dspace-object.model';
+import { DSpaceObjectType } from '../../../../core/shared/dspace-object-type.model';
 import { AuthorizedCommunitySelectorComponent } from '../../dso-selector/authorized-community-selector/authorized-community-selector.component';
 import {
   DSOSelectorModalWrapperComponent,
@@ -45,7 +44,6 @@ export class CreateCollectionParentSelectorComponent extends DSOSelectorModalWra
   objectType = DSpaceObjectType.COLLECTION;
   selectorTypes = [DSpaceObjectType.COMMUNITY];
   action = SelectorActionType.CREATE;
-  rpActionType = ActionType.ADD;
   header = 'dso-selector.create.collection.sub-level';
   defaultSort = new SortOptions(environment.comcolSelectionSort.sortField, environment.comcolSelectionSort.sortDirection as SortDirection);
 

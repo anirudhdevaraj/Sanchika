@@ -9,8 +9,6 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProcessStatus } from '@dspace/core/processes/process-status.model';
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import {
@@ -19,6 +17,8 @@ import {
 } from 'rxjs';
 
 import { BtnDisabledDirective } from '../../shared/btn-disabled.directive';
+import { hasValue } from '../../shared/empty.util';
+import { ProcessStatus } from '../processes/process-status.model';
 import { ProcessBulkDeleteService } from './process-bulk-delete.service';
 import {
   ProcessOverviewService,

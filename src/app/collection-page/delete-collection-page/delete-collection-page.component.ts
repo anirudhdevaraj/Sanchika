@@ -4,18 +4,17 @@ import {
   ActivatedRoute,
   Router,
 } from '@angular/router';
-import { DSONameService } from '@dspace/core/breadcrumbs/dso-name.service';
-import { CollectionDataService } from '@dspace/core/data/collection-data.service';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { Collection } from '@dspace/core/shared/collection.model';
 import {
   TranslateModule,
   TranslateService,
 } from '@ngx-translate/core';
 
-import { ScriptDataService } from '../../core/data/processes/script-data.service';
+import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
+import { CollectionDataService } from '../../core/data/collection-data.service';
+import { Collection } from '../../core/shared/collection.model';
 import { BtnDisabledDirective } from '../../shared/btn-disabled.directive';
 import { DeleteComColPageComponent } from '../../shared/comcol/comcol-forms/delete-comcol-page/delete-comcol-page.component';
+import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { VarDirective } from '../../shared/utils/var.directive';
 
 /**
@@ -42,8 +41,7 @@ export class DeleteCollectionPageComponent extends DeleteComColPageComponent<Col
     protected route: ActivatedRoute,
     protected notifications: NotificationsService,
     protected translate: TranslateService,
-    protected scriptDataService: ScriptDataService,
   ) {
-    super(dsoDataService, dsoNameService, router, route, notifications, translate, scriptDataService);
+    super(dsoDataService, dsoNameService, router, route, notifications, translate);
   }
 }

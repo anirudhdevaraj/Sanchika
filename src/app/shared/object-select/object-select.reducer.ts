@@ -1,5 +1,4 @@
-import { isEmpty } from '@dspace/shared/utils/empty.util';
-
+import { isEmpty } from '../empty.util';
 import {
   ObjectSelectionAction,
   ObjectSelectionActionTypes,

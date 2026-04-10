@@ -10,23 +10,6 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { DSONameService } from '@dspace/core/breadcrumbs/dso-name.service';
-import { CollectionDataService } from '@dspace/core/data/collection-data.service';
-import { FindListOptions } from '@dspace/core/data/find-list-options.model';
-import {
-  buildPaginatedList,
-  PaginatedList,
-} from '@dspace/core/data/paginated-list.model';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { ActionType } from '@dspace/core/resource-policy/models/action-type.model';
-import { Collection } from '@dspace/core/shared/collection.model';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { followLink } from '@dspace/core/shared/follow-link-config.model';
-import { CollectionSearchResult } from '@dspace/core/shared/object-collection/collection-search-result.model';
-import { getFirstCompletedRemoteData } from '@dspace/core/shared/operators';
-import { SearchResult } from '@dspace/core/shared/search/models/search-result.model';
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import {
   TranslateModule,
   TranslateService,
@@ -35,10 +18,26 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+import { CollectionDataService } from '../../../../core/data/collection-data.service';
+import { FindListOptions } from '../../../../core/data/find-list-options.model';
+import {
+  buildPaginatedList,
+  PaginatedList,
+} from '../../../../core/data/paginated-list.model';
+import { RemoteData } from '../../../../core/data/remote-data';
+import { Collection } from '../../../../core/shared/collection.model';
+import { DSpaceObject } from '../../../../core/shared/dspace-object.model';
+import { getFirstCompletedRemoteData } from '../../../../core/shared/operators';
+import { SearchService } from '../../../../core/shared/search/search.service';
+import { hasValue } from '../../../empty.util';
 import { HoverClassDirective } from '../../../hover-class.directive';
 import { ThemedLoadingComponent } from '../../../loading/themed-loading.component';
+import { NotificationsService } from '../../../notifications/notifications.service';
+import { CollectionSearchResult } from '../../../object-collection/shared/collection-search-result.model';
 import { ListableObjectComponentLoaderComponent } from '../../../object-collection/shared/listable-object/listable-object-component-loader.component';
-import { SearchService } from '../../../search/search.service';
+import { SearchResult } from '../../../search/models/search-result.model';
+import { followLink } from '../../../utils/follow-link-config.model';
 import { DSOSelectorComponent } from '../dso-selector.component';
 
 @Component({
@@ -67,9 +66,10 @@ export class AuthorizedCollectionSelectorComponent extends DSOSelectorComponent 
   @Input() entityType: string;
 
   /**
-   * The action type to determine which authorized collections to fetch, defaults to ADMIN
+   * Search endpoint to use for finding authorized collections.
+   * Defaults to 'findSubmitAuthorized', but can be overridden (e.g. to 'findAdminAuthorized')
    */
-  @Input() action: ActionType = ActionType.ADMIN;
+  @Input() searchHref = 'findSubmitAuthorized';
 
   constructor(
     protected searchService: SearchService,
@@ -101,24 +101,15 @@ export class AuthorizedCollectionSelectorComponent extends DSOSelectorComponent 
       elementsPerPage: this.defaultPagination.pageSize,
     };
 
-    if (this.action === ActionType.WRITE) {
+    if (this.entityType) {
       searchListService$ = this.collectionDataService
-        .getEditAuthorizedCollection(query, findOptions, useCache, false, followLink('parentCommunity'));
-    } else if (this.action === ActionType.ADD) {
-      if (this.entityType) {
-        searchListService$ = this.collectionDataService
-          .getAuthorizedCollectionByEntityType(
-            query,
-            this.entityType,
-            findOptions);
-      } else {
-        searchListService$ = this.collectionDataService
-          .getSubmitAuthorizedCollection(query, findOptions, useCache, false, followLink('parentCommunity'));
-      }
+        .getAuthorizedCollectionByEntityType(
+          query,
+          this.entityType,
+          findOptions);
     } else {
-      // By default, search for admin authorized collections
       searchListService$ = this.collectionDataService
-        .getAdminAuthorizedCollection(query, findOptions, useCache, false, followLink('parentCommunity'));
+        .getAuthorizedCollection(query, findOptions, useCache, false, this.searchHref, followLink('parentCommunity'));
     }
     return searchListService$.pipe(
       getFirstCompletedRemoteData(),

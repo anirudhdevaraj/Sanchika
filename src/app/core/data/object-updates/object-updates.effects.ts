@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  hasNoValue,
-  hasValue,
-} from '@dspace/shared/utils/empty.util';
-import {
   Actions,
   createEffect,
   ofType,
@@ -23,14 +19,18 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { NoOpAction } from '../../ngrx/no-op.action';
-import { INotification } from '../../notification-system/models/notification.model';
+import {
+  hasNoValue,
+  hasValue,
+} from '../../../shared/empty.util';
+import { NoOpAction } from '../../../shared/ngrx/no-op.action';
+import { INotification } from '../../../shared/notifications/models/notification.model';
 import {
   NotificationsActions,
   NotificationsActionTypes,
   RemoveNotificationAction,
-} from '../../notification-system/notifications.actions';
-import { NotificationsService } from '../../notification-system/notifications.service';
+} from '../../../shared/notifications/notifications.actions';
+import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import {
   DiscardObjectUpdatesAction,
   ObjectUpdatesAction,

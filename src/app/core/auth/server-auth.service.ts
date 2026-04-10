@@ -5,10 +5,6 @@ import {
   Optional,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  hasValue,
-  isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
@@ -18,12 +14,16 @@ import {
   REQUEST,
   RESPONSE,
 } from '../../../express.tokens';
-import { CookieService } from '../cookies/cookie.service';
-import { CoreState } from '../core-state.model';
+import { AppState } from '../../app.reducer';
+import {
+  hasValue,
+  isNotEmpty,
+} from '../../shared/empty.util';
+import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { RemoteData } from '../data/remote-data';
 import { HttpOptions } from '../dspace-rest/dspace-rest.service';
 import { EPersonDataService } from '../eperson/eperson-data.service';
-import { NotificationsService } from '../notification-system/notifications.service';
+import { CookieService } from '../services/cookie.service';
 import { HardRedirectService } from '../services/hard-redirect.service';
 import { RouteService } from '../services/route.service';
 import {
@@ -53,7 +53,7 @@ export class ServerAuthService extends AuthService {
     protected router: Router,
     protected routeService: RouteService,
     protected storage: CookieService,
-    protected store: Store<CoreState>,
+    protected store: Store<AppState>,
     protected hardRedirectService: HardRedirectService,
     protected notificationService: NotificationsService,
     protected translateService: TranslateService,

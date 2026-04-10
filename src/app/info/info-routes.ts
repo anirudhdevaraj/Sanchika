@@ -2,27 +2,59 @@ import {
   Route,
   Routes,
 } from '@angular/router';
-import { i18nBreadcrumbResolver } from '@dspace/core/breadcrumbs/i18n-breadcrumb.resolver';
-import { notifyInfoGuard } from '@dspace/core/coar-notify/notify-info/notify-info.guard';
-import { feedbackGuard } from '@dspace/core/feedback/feedback.guard';
-import {
-  ACCESSIBILITY_SETTINGS_PATH,
-  COAR_NOTIFY_SUPPORT,
-  END_USER_AGREEMENT_PATH,
-  FEEDBACK_PATH,
-  PRIVACY_PATH,
-} from '@dspace/core/router/info-routing-paths';
-import { hasValue } from '@dspace/shared/utils/empty.util';
 
 import { environment } from '../../environments/environment';
+import { i18nBreadcrumbResolver } from '../core/breadcrumbs/i18n-breadcrumb.resolver';
+import { notifyInfoGuard } from '../core/coar-notify/notify-info/notify-info.guard';
+import { feedbackGuard } from '../core/feedback/feedback.guard';
+import { hasValue } from '../shared/empty.util';
+import { ThemedAboutComponent } from './about/themed-about.component';
 import { AccessibilitySettingsComponent } from './accessibility-settings/accessibility-settings.component';
+import { ThemedContributorsComponent } from './contributors/themed-contributors.component';
+import { ThemedHelpComponent } from './help/themed-help.component';
 import { ThemedEndUserAgreementComponent } from './end-user-agreement/themed-end-user-agreement.component';
 import { ThemedFeedbackComponent } from './feedback/themed-feedback.component';
-import { NotifyInfoComponent } from './notify-info/notify-info.component';
+import { ThemedCitationComponent } from './citation/themed-citation.component';
+import {
+  ABOUT_PATH,
+  ACCESSIBILITY_SETTINGS_PATH,
+  CITATION_PATH,
+  COAR_NOTIFY_SUPPORT,
+  CONTRIBUTORS_PATH,
+  END_USER_AGREEMENT_PATH,
+  FEEDBACK_PATH,
+  HELP_PATH,
+  PRIVACY_PATH,
+} from './info-routing-paths';
+import { ThemedNotifyInfoComponent } from './notify-info/themed-notify-info.component';
 import { ThemedPrivacyComponent } from './privacy/themed-privacy.component';
 
 
 export const ROUTES: Routes = [
+  {
+    path: ABOUT_PATH,
+    component: ThemedAboutComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.about.title', breadcrumbKey: 'info.about' },
+  },
+  {
+    path: CONTRIBUTORS_PATH,
+    component: ThemedContributorsComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.contributors.title', breadcrumbKey: 'info.contributors' },
+  },
+  {
+    path: HELP_PATH,
+    component: ThemedHelpComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.help.title', breadcrumbKey: 'info.help' },
+  },
+  {
+    path: CITATION_PATH,
+    component: ThemedCitationComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.citation.title', breadcrumbKey: 'info.citation' },
+  },
   {
     path: FEEDBACK_PATH,
     component: ThemedFeedbackComponent,
@@ -50,7 +82,7 @@ export const ROUTES: Routes = [
   } : undefined,
   environment.info.enableCOARNotifySupport ? {
     path: COAR_NOTIFY_SUPPORT,
-    component: NotifyInfoComponent,
+    component: ThemedNotifyInfoComponent,
     canActivate: [notifyInfoGuard],
     resolve: {
       breadcrumb: i18nBreadcrumbResolver,

@@ -19,16 +19,13 @@ import { of } from 'rxjs';
 
 import { ComColDataService } from '../../../../core/data/comcol-data.service';
 import { CommunityDataService } from '../../../../core/data/community-data.service';
-import { ScriptDataService } from '../../../../core/data/processes/script-data.service';
-import { NotificationsService } from '../../../../core/notification-system/notifications.service';
 import { Community } from '../../../../core/shared/community.model';
-import { NotificationsServiceStub } from '../../../../core/testing/notifications-service.stub';
+import { NotificationsService } from '../../../notifications/notifications.service';
 import {
   createFailedRemoteDataObject$,
   createNoContentRemoteDataObject$,
-  createSuccessfulRemoteDataObject$,
-} from '../../../../core/utilities/remote-data.utils';
-import { getProcessDetailRoute } from '../../../../process-page/process-page-routing.paths';
+} from '../../../remote-data.utils';
+import { NotificationsServiceStub } from '../../../testing/notifications-service.stub';
 import { DeleteComColPageComponent } from './delete-comcol-page.component';
 
 describe('DeleteComColPageComponent', () => {
@@ -44,8 +41,9 @@ describe('DeleteComColPageComponent', () => {
   let routeStub;
   let notificationsService;
   let translateServiceStub;
+  let requestServiceStub;
+
   let scheduler;
-  let scriptService;
 
   const validUUID = 'valid-uuid';
   const invalidUUID = 'invalid-uuid';
@@ -100,16 +98,11 @@ describe('DeleteComColPageComponent', () => {
 
   beforeEach(waitForAsync(() => {
     initializeVars();
-    scriptService = jasmine.createSpyObj('scriptService', {
-      invoke: createSuccessfulRemoteDataObject$({ processId: '123' }),
-    });
-    router = jasmine.createSpyObj('router', ['navigateByUrl', 'navigate']);
     TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot(), CommonModule, RouterTestingModule],
       providers: [
         { provide: ComColDataService, useValue: dsoDataService },
-        { provide: ScriptDataService, useValue: scriptService },
-        { provide: Router, useValue: router },
+        { provide: Router, useValue: routerStub },
         { provide: ActivatedRoute, useValue: routeStub },
         { provide: NotificationsService, useValue: new NotificationsServiceStub() },
         { provide: TranslateService, useValue: translateServiceStub },
@@ -166,7 +159,8 @@ describe('DeleteComColPageComponent', () => {
     });
 
     it('should show an error notification on failure', () => {
-      (scriptService.invoke as any).and.returnValue(createFailedRemoteDataObject$('Error', 500));
+      (dsoDataService.delete as any).and.returnValue(createFailedRemoteDataObject$('Error', 500));
+      spyOn(router, 'navigate');
       scheduler.schedule(() => comp.onConfirm(data2));
       scheduler.flush();
       fixture.detectChanges();
@@ -175,17 +169,18 @@ describe('DeleteComColPageComponent', () => {
     });
 
     it('should show a success notification on success and navigate', () => {
+      spyOn(router, 'navigate');
       scheduler.schedule(() => comp.onConfirm(data1));
       scheduler.flush();
       fixture.detectChanges();
       expect(notificationsService.success).toHaveBeenCalled();
-      expect(router.navigateByUrl).toHaveBeenCalledWith(getProcessDetailRoute('123'));
+      expect(router.navigate).toHaveBeenCalled();
     });
 
-    it('should call script service invoke', () => {
+    it('should call delete on the data service', () => {
       comp.onConfirm(data1);
       fixture.detectChanges();
-      expect(scriptService.invoke).toHaveBeenCalled();
+      expect(dsoDataService.delete).toHaveBeenCalledWith(data1.id);
     });
   });
 
@@ -203,6 +198,7 @@ describe('DeleteComColPageComponent', () => {
 
     it('should redirect to the edit page', () => {
       const redirectURL = frontendURL + '/' + validUUID + '/edit';
+      spyOn(router, 'navigate');
       comp.onCancel(data1);
       fixture.detectChanges();
       expect(router.navigate).toHaveBeenCalledWith([redirectURL]);

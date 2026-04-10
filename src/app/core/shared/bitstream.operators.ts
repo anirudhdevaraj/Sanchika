@@ -1,4 +1,3 @@
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import {
   Observable,
   of,
@@ -8,6 +7,7 @@ import {
   switchMap,
 } from 'rxjs/operators';
 
+import { hasValue } from '../../shared/empty.util';
 import { AuthorizationDataService } from '../data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../data/feature-authorization/feature-id';
 import { Bitstream } from './bitstream.model';

@@ -1,18 +1,12 @@
-import {
-  Inject,
-  Injectable,
-} from '@angular/core';
-import {
-  APP_CONFIG,
-  AppConfig,
-} from '@dspace/config/app-config.interface';
+import { Injectable } from '@angular/core';
+import { deepClone } from 'fast-json-patch';
+
 import {
   isEmpty,
   isNotEmpty,
   isNotNull,
-} from '@dspace/shared/utils/empty.util';
-import { deepClone } from 'fast-json-patch';
-
+} from '../../shared/empty.util';
+import { FormFieldMetadataValueObject } from '../../shared/form/builder/models/form-field-metadata-value.model';
 import { ObjectCacheService } from '../cache/object-cache.service';
 import { ParsedResponse } from '../cache/response.models';
 import { ConfigObject } from '../config/models/config.model';
@@ -21,8 +15,6 @@ import { DSOResponseParsingService } from '../data/dso-response-parsing.service'
 import { ResponseParsingService } from '../data/parsing.service';
 import { RestRequest } from '../data/rest-request.model';
 import { RawRestResponse } from '../dspace-rest/raw-rest-response.model';
-import { FormFieldMetadataValueObject } from '../shared/form/models/form-field-metadata-value.model';
-import { EditItem } from './models/edititem.model';
 import { SubmissionObject } from './models/submission-object.model';
 import { WorkflowItem } from './models/workflowitem.model';
 import { WorkspaceItem } from './models/workspaceitem.model';
@@ -57,13 +49,11 @@ export function normalizeSectionData(obj: any, objIndex?: number) {
       result = new FormFieldMetadataValueObject(
         obj.value,
         obj.language,
-        obj.securityLevel,
         obj.authority,
         (obj.display || obj.value),
         obj.place || objIndex,
         obj.confidence,
         obj.otherInformation,
-        obj.source,
       );
     } else if (Array.isArray(obj)) {
       result = [];
@@ -103,10 +93,8 @@ export class SubmissionResponseParsingService extends BaseResponseParsingService
 
   constructor(protected objectCache: ObjectCacheService,
               protected dsoParser: DSOResponseParsingService,
-              @Inject(APP_CONFIG) protected appConfig: AppConfig,
   ) {
     super();
-    this.defaultResponseMsToLive = this.appConfig?.cache.msToLive.default;
   }
 
   /**
@@ -147,8 +135,7 @@ export class SubmissionResponseParsingService extends BaseResponseParsingService
       // item = Object.assign({}, item);
       // In case data is an Instance of WorkspaceItem normalize field value of all the section of type form
       if (item instanceof WorkspaceItem
-        || item instanceof WorkflowItem
-        || item instanceof EditItem) {
+        || item instanceof WorkflowItem) {
         if (item.sections) {
           const precessedSection = Object.create({});
           // Iterate over all workspaceitem's sections

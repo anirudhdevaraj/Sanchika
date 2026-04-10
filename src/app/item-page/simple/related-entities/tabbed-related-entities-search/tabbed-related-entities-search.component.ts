@@ -8,18 +8,12 @@ import {
   ActivatedRoute,
   Router,
 } from '@angular/router';
-import { Item } from '@dspace/core/shared/item.model';
-import {
-  NgbNav,
-  NgbNavContent,
-  NgbNavItem,
-  NgbNavLink,
-  NgbNavOutlet,
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { Item } from '../../../../core/shared/item.model';
 import { VarDirective } from '../../../../shared/utils/var.directive';
 import { RelatedEntitiesSearchComponent } from '../related-entities-search/related-entities-search.component';
 
@@ -28,11 +22,7 @@ import { RelatedEntitiesSearchComponent } from '../related-entities-search/relat
   templateUrl: './tabbed-related-entities-search.component.html',
   imports: [
     AsyncPipe,
-    NgbNav,
-    NgbNavContent,
-    NgbNavItem,
-    NgbNavLink,
-    NgbNavOutlet,
+    NgbNavModule,
     RelatedEntitiesSearchComponent,
     TranslateModule,
     VarDirective,
@@ -76,8 +66,8 @@ export class TabbedRelatedEntitiesSearchComponent implements OnInit {
    */
   activeTab$: Observable<string>;
 
-  constructor(protected route: ActivatedRoute,
-              protected router: Router) {
+  constructor(private route: ActivatedRoute,
+              private router: Router) {
   }
 
   /**

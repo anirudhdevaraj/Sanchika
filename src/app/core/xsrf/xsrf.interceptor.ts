@@ -7,14 +7,7 @@ import {
   HttpResponse,
   HttpXsrfTokenExtractor,
 } from '@angular/common/http';
-import {
-  inject,
-  Injectable,
-} from '@angular/core';
-import {
-  APP_CONFIG,
-  AppConfig,
-} from '@dspace/config/app-config.interface';
+import { Injectable } from '@angular/core';
 import {
   Observable,
   throwError,
@@ -24,7 +17,7 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { CookieService } from '../cookies/cookie.service';
+import { CookieService } from '../services/cookie.service';
 import { RESTURLCombiner } from '../url-combiner/rest-url-combiner';
 import {
   XSRF_COOKIE,
@@ -59,12 +52,8 @@ import {
  */
 @Injectable()
 export class XsrfInterceptor implements HttpInterceptor {
-  protected readonly appConfig: AppConfig = inject(APP_CONFIG);
 
-  constructor(
-    private tokenExtractor: HttpXsrfTokenExtractor,
-    private cookieService: CookieService,
-  ) {
+  constructor(private tokenExtractor: HttpXsrfTokenExtractor, private cookieService: CookieService) {
   }
 
   /**
@@ -86,7 +75,7 @@ export class XsrfInterceptor implements HttpInterceptor {
     const reqUrl = req.url.toLowerCase();
 
     // Get root URL of configured REST API
-    const restUrl = new RESTURLCombiner(this.appConfig.rest.baseUrl, '/').toString().toLowerCase();
+    const restUrl = new RESTURLCombiner('/').toString().toLowerCase();
 
     // Skip any non-mutating request. This is because our REST API does NOT
     // require CSRF verification for read-only requests like GET or HEAD

@@ -16,25 +16,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { FormFieldMetadataValueObject } from '@dspace/core/shared/form/models/form-field-metadata-value.model';
-import { getFirstCompletedRemoteData } from '@dspace/core/shared/operators';
-import { PageInfo } from '@dspace/core/shared/page-info.model';
-import { Vocabulary } from '@dspace/core/submission/vocabularies/models/vocabulary.model';
-import { VocabularyEntry } from '@dspace/core/submission/vocabularies/models/vocabulary-entry.model';
-import { VocabularyEntryDetail } from '@dspace/core/submission/vocabularies/models/vocabulary-entry-detail.model';
-import { VocabularyOptions } from '@dspace/core/submission/vocabularies/models/vocabulary-options.model';
-import { VocabularyService } from '@dspace/core/submission/vocabularies/vocabulary.service';
-import {
-  hasValue,
-  isEmpty,
-  isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   Observable,
-  of,
   Subscription,
 } from 'rxjs';
 import {
@@ -42,11 +27,25 @@ import {
   switchMap,
   tap,
 } from 'rxjs/operators';
+import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
 
+import { RemoteData } from '../../../core/data/remote-data';
+import { PageInfo } from '../../../core/shared/page-info.model';
+import { Vocabulary } from '../../../core/submission/vocabularies/models/vocabulary.model';
+import { VocabularyEntry } from '../../../core/submission/vocabularies/models/vocabulary-entry.model';
+import { VocabularyEntryDetail } from '../../../core/submission/vocabularies/models/vocabulary-entry-detail.model';
+import { VocabularyOptions } from '../../../core/submission/vocabularies/models/vocabulary-options.model';
+import { VocabularyService } from '../../../core/submission/vocabularies/vocabulary.service';
 import { AlertComponent } from '../../alert/alert.component';
 import { AlertType } from '../../alert/alert-type';
 import { BtnDisabledDirective } from '../../btn-disabled.directive';
+import {
+  hasValue,
+  isEmpty,
+  isNotEmpty,
+} from '../../empty.util';
 import { ThemedLoadingComponent } from '../../loading/themed-loading.component';
+import { FormFieldMetadataValueObject } from '../builder/models/form-field-metadata-value.model';
 import { VocabularyTreeFlatDataSource } from './vocabulary-tree-flat-data-source';
 import { VocabularyTreeFlattener } from './vocabulary-tree-flattener';
 import { VocabularyTreeviewService } from './vocabulary-treeview.service';
@@ -72,7 +71,7 @@ export type VocabularyTreeItemType = FormFieldMetadataValueObject | VocabularyEn
     BtnDisabledDirective,
     CdkTreeModule,
     FormsModule,
-    NgbTooltip,
+    NgbTooltipModule,
     ThemedLoadingComponent,
     TranslateModule,
   ],
@@ -168,14 +167,11 @@ export class VocabularyTreeviewComponent implements OnDestroy, OnInit, OnChanges
 
   readonly AlertType = AlertType;
 
-  public showNextPage$: Observable<boolean>;
-
-  public showPreviousPage$: Observable<boolean>;
-
   /**
    * Initialize instance variables
    *
    * @param {VocabularyTreeviewService} vocabularyTreeviewService
+   * @param {VocabularyService} vocabularyService
    */
   constructor(
     private vocabularyTreeviewService: VocabularyTreeviewService,
@@ -274,12 +270,6 @@ export class VocabularyTreeviewComponent implements OnDestroy, OnInit, OnChanges
    * Initialize the component, setting up the data to build the tree
    */
   ngOnInit(): void {
-
-    // Initialize observables to false when component loads
-    // Ensures pagination buttons are hidden on first load or after navigation
-    this.showNextPage$ = of(false);
-    this.showPreviousPage$ = of(false);
-
     this.subs.push(
       this.vocabularyService.findVocabularyById(this.vocabularyOptions.name).pipe(
         // Retrieve the configured preloadLevel from REST
@@ -349,47 +339,12 @@ export class VocabularyTreeviewComponent implements OnDestroy, OnInit, OnChanges
    * Search for a vocabulary entry by query
    */
   search() {
-
-    // Reassign observables after performing each new search
-    // Updates pagination button visibility based on available pages
-    this.showNextPage$ = this.vocabularyTreeviewService.showNextPageSubject
-      ? this.vocabularyTreeviewService.showNextPageSubject.asObservable()
-      : of(false);
-
-    this.showPreviousPage$ = this.vocabularyTreeviewService.showPreviousPageSubject
-      ? this.vocabularyTreeviewService.showPreviousPageSubject.asObservable()
-      : of(false);
-
     if (isNotEmpty(this.searchText)) {
       if (isEmpty(this.storedNodeMap)) {
         this.storedNodeMap = this.nodeMap;
       }
       this.nodeMap = new Map<string, TreeviewFlatNode>();
       this.vocabularyTreeviewService.searchByQuery(this.searchText, this.getSelectedEntryIds());
-    }
-  }
-
-  /**
-   * Loads the next page of vocabulary search results.
-   * Increments the current page in the service and re-triggers the query with the same search term and selection.
-   */
-  loadNextPage(): void {
-    const svc = this.vocabularyTreeviewService;
-
-    if (svc.currentPage < svc.totalPages) {
-      svc.searchByQueryAndPage(svc.queryInProgress, [], svc.currentPage + 1);
-    }
-  }
-
-  /**
-   * Loads the previous page of vocabulary search results.
-   * Decrements the current page in the service and re-triggers the query with the same search term and selection.
-   */
-  loadPreviousPage(): void {
-    const svc = this.vocabularyTreeviewService;
-
-    if (svc.currentPage > 1) {
-      svc.searchByQueryAndPage(svc.queryInProgress, [], svc.currentPage - 1);
     }
   }
 
@@ -419,9 +374,6 @@ export class VocabularyTreeviewComponent implements OnDestroy, OnInit, OnChanges
     if (this.searchInput) {
       this.searchInput.nativeElement.focus();
     }
-
-    this.showNextPage$ = of(false);
-    this.showPreviousPage$ = of(false);
   }
 
   add() {

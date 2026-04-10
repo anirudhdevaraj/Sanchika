@@ -9,25 +9,20 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { APP_CONFIG } from '@dspace/config/app-config.interface';
-import { MetadataValue } from '@dspace/core/shared/metadata.models';
-import { VocabularyService } from '@dspace/core/submission/vocabularies/vocabulary.service';
-import { TranslateLoaderMock } from '@dspace/core/testing/translate-loader.mock';
-import { isNotEmpty } from '@dspace/shared/utils/empty.util';
 import {
   TranslateLoader,
   TranslateModule,
 } from '@ngx-translate/core';
 
+import { APP_CONFIG } from '../../../../config/app-config.interface';
 import { environment } from '../../../../environments/environment';
+import { MetadataValue } from '../../../core/shared/metadata.models';
+import { isNotEmpty } from '../../../shared/empty.util';
+import { TranslateLoaderMock } from '../../../shared/mocks/translate-loader.mock';
 import { MetadataUriValuesComponent } from './metadata-uri-values.component';
 
 let comp: MetadataUriValuesComponent;
 let fixture: ComponentFixture<MetadataUriValuesComponent>;
-const vocabularyServiceMock = {
-  getPublicVocabularyEntryByID: jasmine.createSpy('getPublicVocabularyEntryByID'),
-};
-
 
 const mockMetadata = [
   {
@@ -43,7 +38,6 @@ const mockSeperator = '<br/>';
 const mockLabel = 'fake.message';
 const mockLinkText = 'fake link text';
 
-
 describe('MetadataUriValuesComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -55,7 +49,6 @@ describe('MetadataUriValuesComponent', () => {
       }), MetadataUriValuesComponent],
       providers: [
         { provide: APP_CONFIG, useValue: environment },
-        { provide: VocabularyService, useValue: vocabularyServiceMock },
       ],
       schemas: [NO_ERRORS_SCHEMA],
     }).overrideComponent(MetadataUriValuesComponent, {

@@ -1,5 +1,5 @@
 // import actions
-import { StoreActionTypes } from '../ngrx/type';
+import { StoreActionTypes } from '../../store.actions';
 import {
   AddAuthenticationMessageAction,
   AuthActions,

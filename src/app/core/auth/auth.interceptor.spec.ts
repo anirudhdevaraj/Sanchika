@@ -9,12 +9,14 @@ import {
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { RestRequestMethod } from '@dspace/config/rest-request-method';
-import { provideMockStore } from '@ngrx/store/testing';
+import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
 
+import { AuthServiceStub } from '../../shared/testing/auth-service.stub';
+import { RouterStub } from '../../shared/testing/router.stub';
+import { TruncatablesState } from '../../shared/truncatable/truncatable.reducer';
+import { RestRequestMethod } from '../data/rest-request-method';
 import { DspaceRestService } from '../dspace-rest/dspace-rest.service';
-import { AuthServiceStub } from '../testing/auth-service.stub';
-import { RouterStub } from '../testing/router.stub';
 import { AuthInterceptor } from './auth.interceptor';
 import { AuthService } from './auth.service';
 
@@ -23,6 +25,10 @@ describe(`AuthInterceptor`, () => {
   let httpMock: HttpTestingController;
 
   const authServiceStub = new AuthServiceStub();
+  const store: Store<TruncatablesState> = jasmine.createSpyObj('store', {
+    dispatch: {},
+    select: of(true),
+  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -36,7 +42,7 @@ describe(`AuthInterceptor`, () => {
           useClass: AuthInterceptor,
           multi: true,
         },
-        provideMockStore({}),
+        { provide: Store, useValue: store },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],

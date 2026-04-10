@@ -1,9 +1,7 @@
-import { AppConfig } from '@dspace/config/app-config.interface';
-
+import { getMockObjectCacheService } from '../../shared/mocks/object-cache.service.mock';
 import { FilteredDiscoveryQueryResponse } from '../cache/response.models';
 import { RawRestResponse } from '../dspace-rest/raw-rest-response.model';
 import { GenericConstructor } from '../shared/generic-constructor';
-import { getMockObjectCacheService } from '../testing/object-cache.service.mock';
 import { FilteredDiscoveryPageResponseParsingService } from './filtered-discovery-page-response-parsing.service';
 import { ResponseParsingService } from './parsing.service';
 import { GetRequest } from './request.models';
@@ -12,9 +10,7 @@ describe('FilteredDiscoveryPageResponseParsingService', () => {
   let service: FilteredDiscoveryPageResponseParsingService;
 
   beforeEach(() => {
-    service = new FilteredDiscoveryPageResponseParsingService(getMockObjectCacheService(), {
-      cache: { msToLive: { default: 15 * 60 * 1000  } },
-    } as AppConfig);
+    service = new FilteredDiscoveryPageResponseParsingService(getMockObjectCacheService());
   });
 
   describe('parse', () => {

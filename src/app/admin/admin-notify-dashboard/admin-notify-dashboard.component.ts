@@ -5,19 +5,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {
-  AdminNotifyMetricsBox,
-  AdminNotifyMetricsRow,
-} from '@dspace/config/admin-notify-metrics.config';
-import {
-  APP_CONFIG,
-  AppConfig,
-} from '@dspace/config/app-config.interface';
-import { PaginationComponentOptions } from '@dspace/core/pagination/pagination-component-options.model';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { getFirstCompletedRemoteData } from '@dspace/core/shared/operators';
-import { PaginatedSearchOptions } from '@dspace/core/shared/search/models/paginated-search-options.model';
-import { SearchObjects } from '@dspace/core/shared/search/models/search-objects.model';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   BehaviorSubject,
@@ -25,10 +12,23 @@ import {
 } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import {
+  APP_CONFIG,
+  AppConfig,
+} from '../../../config/app-config.interface';
+import { DSpaceObject } from '../../core/shared/dspace-object.model';
+import { getFirstCompletedRemoteData } from '../../core/shared/operators';
+import { SearchService } from '../../core/shared/search/search.service';
+import { SearchConfigurationService } from '../../core/shared/search/search-configuration.service';
 import { SEARCH_CONFIG_SERVICE } from '../../my-dspace-page/my-dspace-configuration.service';
-import { SearchService } from '../../shared/search/search.service';
-import { SearchConfigurationService } from '../../shared/search/search-configuration.service';
+import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
+import { PaginatedSearchOptions } from '../../shared/search/models/paginated-search-options.model';
+import { SearchObjects } from '../../shared/search/models/search-objects.model';
 import { AdminNotifyMetricsComponent } from './admin-notify-metrics/admin-notify-metrics.component';
+import {
+  AdminNotifyMetricsBox,
+  AdminNotifyMetricsRow,
+} from './admin-notify-metrics/admin-notify-metrics.model';
 
 @Component({
   selector: 'ds-admin-notify-dashboard',

@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { SEARCH_CONFIG_SERVICE } from 'src/app/my-dspace-page/my-dspace-configuration.service';
 
+import { SearchConfigurationService } from '../../../../app/core/shared/search/search-configuration.service';
 import { SearchPageComponent as BaseComponent } from '../../../../app/search-page/search-page.component';
-import { SearchConfigurationService } from '../../../../app/shared/search/search-configuration.service';
 import { ThemedSearchComponent } from '../../../../app/shared/search/themed-search.component';
 
 @Component({
   selector: 'ds-themed-search-page',
-  // styleUrls: ['./search-page.component.scss'],
-  // templateUrl: './search-page.component.html'
-  templateUrl: '../../../../app/search-page/search-page.component.html',
+  styleUrls: ['./search-page.component.scss'],
+  templateUrl: './search-page.component.html',
   providers: [
     {
       provide: SEARCH_CONFIG_SERVICE,
@@ -18,6 +18,7 @@ import { ThemedSearchComponent } from '../../../../app/shared/search/themed-sear
   ],
   imports: [
     ThemedSearchComponent,
+    TranslateModule,
   ],
 })
 export class SearchPageComponent extends BaseComponent {

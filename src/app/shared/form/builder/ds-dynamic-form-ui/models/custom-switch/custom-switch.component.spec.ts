@@ -36,7 +36,7 @@ describe('CustomSwitchComponent', () => {
         TranslateModule.forRoot(),
         ReactiveFormsModule,
         NoopAnimationsModule,
-        DynamicFormsCoreModule,
+        DynamicFormsCoreModule.forRoot(),
         CustomSwitchComponent,
       ],
     }).compileComponents().then(() => {

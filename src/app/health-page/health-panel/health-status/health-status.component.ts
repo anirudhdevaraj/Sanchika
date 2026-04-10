@@ -3,9 +3,10 @@ import {
   Component,
   Input,
 } from '@angular/core';
-import { HealthStatus } from '@dspace/core/shared/health-component.model';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { HealthStatus } from '../../models/health-component.model';
 
 /**
  * Show a health status object
@@ -15,7 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './health-status.component.html',
   styleUrls: ['./health-status.component.scss'],
   imports: [
-    NgbTooltip,
+    NgbTooltipModule,
     TranslateModule,
   ],
 })

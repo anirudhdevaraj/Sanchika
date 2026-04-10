@@ -8,10 +8,8 @@ import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed
 
 @Component({
   selector: 'ds-browse-by-title',
-  // styleUrls: ['./browse-by-title.component.scss'],
-  styleUrls: ['../../../../../app/browse-by/browse-by-metadata/browse-by-metadata.component.scss'],
-  // templateUrl: './browse-by-title.component.html',
-  templateUrl: '../../../../../app/browse-by/browse-by-metadata/browse-by-metadata.component.html',
+  styleUrls: ['../browse-by-metadata/browse-by-metadata.component.scss'],
+  templateUrl: './browse-by-title.component.html',
   imports: [
     AsyncPipe,
     ThemedBrowseByComponent,
@@ -20,4 +18,17 @@ import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed
   ],
 })
 export class BrowseByTitleComponent extends BaseComponent {
+
+  private static readonly BROWSE_LABELS: Record<string, string> = {
+    author: 'Author',
+    title: 'Title',
+    subject: 'Subject',
+    language: 'Language',
+    media: 'Media',
+    linguistictype: 'Linguistic Data Type',
+  };
+
+  getBrowseLabel(): string {
+    return BrowseByTitleComponent.BROWSE_LABELS[this.browseId] ?? this.browseId;
+  }
 }

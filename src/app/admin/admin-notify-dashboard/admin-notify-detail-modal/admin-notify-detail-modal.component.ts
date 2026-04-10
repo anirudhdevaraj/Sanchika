@@ -4,11 +4,11 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { AdminNotifyMessage } from '@dspace/core/coar-notify/notify-info/models/admin-notify-message.model';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { fadeIn } from '../../../shared/animations/fade';
+import { AdminNotifyMessage } from '../models/admin-notify-message.model';
 
 @Component({
   selector: 'ds-admin-notify-detail-modal',

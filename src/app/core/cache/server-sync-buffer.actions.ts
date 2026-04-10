@@ -1,8 +1,8 @@
 /* eslint-disable max-classes-per-file */
-import { RestRequestMethod } from '@dspace/config/rest-request-method';
 import { Action } from '@ngrx/store';
 
-import { type } from '../ngrx/type';
+import { type } from '../../shared/ngrx/type';
+import { RestRequestMethod } from '../data/rest-request-method';
 
 /**
  * The list of ServerSyncBufferAction type definitions

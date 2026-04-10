@@ -6,8 +6,6 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { AuthService } from '@dspace/core/auth/auth.service';
-import { returnForbiddenUrlTreeOrLoginOnAllFalse } from '@dspace/core/shared/authorized.operators';
 import {
   combineLatest as observableCombineLatest,
   Observable,
@@ -15,6 +13,8 @@ import {
 } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
+import { AuthService } from '../../../auth/auth.service';
+import { returnForbiddenUrlTreeOrLoginOnAllFalse } from '../../../shared/authorized.operators';
 import { AuthorizationDataService } from '../authorization-data.service';
 import { FeatureID } from '../feature-id';
 

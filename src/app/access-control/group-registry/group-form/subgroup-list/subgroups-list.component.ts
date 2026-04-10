@@ -13,21 +13,6 @@ import {
   Router,
   RouterLink,
 } from '@angular/router';
-import { DSONameService } from '@dspace/core/breadcrumbs/dso-name.service';
-import { PaginatedList } from '@dspace/core/data/paginated-list.model';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { GroupDataService } from '@dspace/core/eperson/group-data.service';
-import { Group } from '@dspace/core/eperson/models/group.model';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { PaginationService } from '@dspace/core/pagination/pagination.service';
-import { PaginationComponentOptions } from '@dspace/core/pagination/pagination-component-options.model';
-import { followLink } from '@dspace/core/shared/follow-link-config.model';
-import { NoContent } from '@dspace/core/shared/NoContent.model';
-import {
-  getAllCompletedRemoteData,
-  getFirstCompletedRemoteData,
-} from '@dspace/core/shared/operators';
-import { PageInfo } from '@dspace/core/shared/page-info.model';
 import {
   TranslateModule,
   TranslateService,
@@ -43,10 +28,23 @@ import {
   take,
 } from 'rxjs/operators';
 
+import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+import { PaginatedList } from '../../../../core/data/paginated-list.model';
+import { RemoteData } from '../../../../core/data/remote-data';
+import { GroupDataService } from '../../../../core/eperson/group-data.service';
+import { Group } from '../../../../core/eperson/models/group.model';
+import { PaginationService } from '../../../../core/pagination/pagination.service';
+import { NoContent } from '../../../../core/shared/NoContent.model';
+import {
+  getAllCompletedRemoteData,
+  getFirstCompletedRemoteData,
+} from '../../../../core/shared/operators';
+import { PageInfo } from '../../../../core/shared/page-info.model';
 import { ContextHelpDirective } from '../../../../shared/context-help.directive';
+import { NotificationsService } from '../../../../shared/notifications/notifications.service';
 import { PaginationComponent } from '../../../../shared/pagination/pagination.component';
-import { getGroupEditPageRouterLink } from '../../../access-control-routing-paths';
-import { GroupRegistryService } from '../../group-registry.service';
+import { PaginationComponentOptions } from '../../../../shared/pagination/pagination-component-options.model';
+import { followLink } from '../../../../shared/utils/follow-link-config.model';
 
 /**
  * Keys to keep track of specific subscriptions
@@ -122,10 +120,7 @@ export class SubgroupsListComponent implements OnInit, OnDestroy {
   // current active group being edited
   groupBeingEdited: Group;
 
-  protected readonly getGroupEditPageRouterLink = getGroupEditPageRouterLink;
-
   constructor(public groupDataService: GroupDataService,
-              public groupRegistryService: GroupRegistryService,
               private translateService: TranslateService,
               private notificationsService: NotificationsService,
               private formBuilder: UntypedFormBuilder,
@@ -140,7 +135,7 @@ export class SubgroupsListComponent implements OnInit, OnDestroy {
     this.searchForm = this.formBuilder.group(({
       query: '',
     }));
-    this.subs.set(SubKey.ActiveGroup, this.groupRegistryService.getActiveGroup().subscribe((activeGroup: Group) => {
+    this.subs.set(SubKey.ActiveGroup, this.groupDataService.getActiveGroup().subscribe((activeGroup: Group) => {
       if (activeGroup != null) {
         this.groupBeingEdited = activeGroup;
         this.retrieveSubGroups();
@@ -181,7 +176,7 @@ export class SubgroupsListComponent implements OnInit, OnDestroy {
    * @param subgroup  Group we want to delete from the subgroups of the group currently being edited
    */
   deleteSubgroupFromGroup(subgroup: Group) {
-    this.groupRegistryService.getActiveGroup().pipe(take(1)).subscribe((activeGroup: Group) => {
+    this.groupDataService.getActiveGroup().pipe(take(1)).subscribe((activeGroup: Group) => {
       if (activeGroup != null) {
         const response = this.groupDataService.deleteSubGroupFromGroup(activeGroup, subgroup);
         this.showNotifications('deleteSubgroup', response, this.dsoNameService.getName(subgroup), activeGroup);
@@ -201,7 +196,7 @@ export class SubgroupsListComponent implements OnInit, OnDestroy {
    * @param subgroup  Subgroup to add to group currently being edited
    */
   addSubgroupToGroup(subgroup: Group) {
-    this.groupRegistryService.getActiveGroup().pipe(take(1)).subscribe((activeGroup: Group) => {
+    this.groupDataService.getActiveGroup().pipe(take(1)).subscribe((activeGroup: Group) => {
       if (activeGroup != null) {
         if (activeGroup.uuid !== subgroup.uuid) {
           const response = this.groupDataService.addSubGroupToGroup(activeGroup, subgroup);
@@ -307,5 +302,4 @@ export class SubgroupsListComponent implements OnInit, OnDestroy {
     });
     this.search({ query: '' });
   }
-
 }

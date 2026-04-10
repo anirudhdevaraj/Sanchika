@@ -2,13 +2,15 @@ import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
+  OnInit,
 } from '@angular/core';
+import { BreadcrumbsService } from '../../../../../../../app/breadcrumbs/breadcrumbs.service';
 import { RouterLink } from '@angular/router';
-import { Context } from '@dspace/core/shared/context.model';
-import { ViewMode } from '@dspace/core/shared/view-mode.model';
 import { TranslateModule } from '@ngx-translate/core';
-import { ItemPageLicenseFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/license/item-page-license-field.component';
 
+import { Context } from '../../../../../../../app/core/shared/context.model';
+import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
 import { CollectionsComponent } from '../../../../../../../app/item-page/field-components/collections/collections.component';
 import { ThemedMediaViewerComponent } from '../../../../../../../app/item-page/media-viewer/themed-media-viewer.component';
 import { MiradorViewerComponent } from '../../../../../../../app/item-page/mirador-viewer/mirador-viewer.component';
@@ -22,7 +24,6 @@ import { ItemPageUriFieldComponent } from '../../../../../../../app/item-page/si
 import { PublicationComponent as BaseComponent } from '../../../../../../../app/item-page/simple/item-types/publication/publication.component';
 import { ThemedMetadataRepresentationListComponent } from '../../../../../../../app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
 import { RelatedItemsComponent } from '../../../../../../../app/item-page/simple/related-items/related-items-component';
-import { AttachmentSectionComponent } from '../../../../../../../app/shared/bitstream-attachment/section/attachment-section.component';
 import { DsoEditMenuComponent } from '../../../../../../../app/shared/dso-page/dso-edit-menu/dso-edit-menu.component';
 import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/metadata-field-wrapper/metadata-field-wrapper.component';
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
@@ -32,21 +33,17 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 @listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
   selector: 'ds-publication',
-  // styleUrls: ['./publication.component.scss'],
-  styleUrls: ['../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss'],
-  // templateUrl: './publication.component.html',
-  templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
+  styleUrls: ['./publication.component.scss'],
+  templateUrl: './publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
-    AttachmentSectionComponent,
     CollectionsComponent,
     DsoEditMenuComponent,
     GenericItemPageFieldComponent,
     GeospatialItemPageFieldComponent,
     ItemPageAbstractFieldComponent,
     ItemPageDateFieldComponent,
-    ItemPageLicenseFieldComponent,
     ItemPageUriFieldComponent,
     MetadataFieldWrapperComponent,
     MiradorViewerComponent,
@@ -61,5 +58,30 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
     TranslateModule,
   ],
 })
-export class PublicationComponent extends BaseComponent {
+export class PublicationComponent extends BaseComponent implements OnInit {
+  private readonly breadcrumbsService = inject(BreadcrumbsService);
+  readonly breadcrumbs$ = this.breadcrumbsService.breadcrumbs$;
+
+  shareOpen = false;
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.breadcrumbsService.showBreadcrumbs$.next(false);
+  }
+
+  scrollTo(event: Event, id: string): void {
+    event.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  openShare(platform: string): void {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.title);
+    const urls: Record<string, string> = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+      x: `https://x.com/intent/tweet?url=${url}&text=${title}`,
+    };
+    window.open(urls[platform], '_blank', 'width=600,height=450,noopener,noreferrer');
+  }
 }

@@ -8,24 +8,22 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { Context } from 'src/app/core/shared/context.model';
+import { WorkflowItem } from 'src/app/core/submission/models/workflowitem.model';
+
 import {
   APP_CONFIG,
   AppConfig,
-} from '@dspace/config/app-config.interface';
-import { DSONameService } from '@dspace/core/breadcrumbs/dso-name.service';
-import { Context } from '@dspace/core/shared/context.model';
-import { Item } from '@dspace/core/shared/item.model';
-import { MetadataValue } from '@dspace/core/shared/metadata.models';
-import { SearchResult } from '@dspace/core/shared/search/models/search-result.model';
-import { WorkflowItem } from '@dspace/core/submission/models/workflowitem.model';
-import { TranslateModule } from '@ngx-translate/core';
-
+} from '../../../../../config/app-config.interface';
+import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+import { Item } from '../../../../core/shared/item.model';
 import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
 import { fadeInOut } from '../../../animations/fade';
-import { MetadataLinkViewComponent } from '../../../metadata-link-view/metadata-link-view.component';
 import { ThemedBadgesComponent } from '../../../object-collection/shared/badges/themed-badges.component';
 import { ItemCollectionComponent } from '../../../object-collection/shared/mydspace-item-collection/item-collection.component';
 import { ItemSubmitterComponent } from '../../../object-collection/shared/mydspace-item-submitter/item-submitter.component';
+import { SearchResult } from '../../../search/models/search-result.model';
 import { TruncatableComponent } from '../../../truncatable/truncatable.component';
 import { TruncatablePartComponent } from '../../../truncatable/truncatable-part/truncatable-part.component';
 
@@ -41,7 +39,6 @@ import { TruncatablePartComponent } from '../../../truncatable/truncatable-part/
     AsyncPipe,
     ItemCollectionComponent,
     ItemSubmitterComponent,
-    MetadataLinkViewComponent,
     NgClass,
     ThemedBadgesComponent,
     ThemedThumbnailComponent,
@@ -84,8 +81,6 @@ export class ItemListPreviewComponent implements OnInit {
 
   dsoTitle: string;
 
-  authorMetadataList: MetadataValue[] = [];
-
   constructor(
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
     public dsoNameService: DSONameService,
@@ -95,7 +90,6 @@ export class ItemListPreviewComponent implements OnInit {
   ngOnInit(): void {
     this.showThumbnails = this.appConfig.browseBy.showThumbnails;
     this.dsoTitle = this.dsoNameService.getHitHighlights(this.object, this.item, true);
-    this.authorMetadataList = this.item.allMetadata(this.appConfig.searchResult.authorMetadata, undefined, true);
   }
 
 

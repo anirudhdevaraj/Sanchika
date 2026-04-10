@@ -1,6 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { APP_CONFIG } from '@dspace/config/app-config.interface';
-import { RestRequestMethod } from '@dspace/config/rest-request-method';
 import { provideMockActions } from '@ngrx/effects/testing';
 import {
   Store,
@@ -16,11 +14,13 @@ import {
 } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 
+import { storeModuleConfig } from '../../app.reducer';
+import { getMockRequestService } from '../../shared/mocks/request.service.mock';
+import { NoOpAction } from '../../shared/ngrx/no-op.action';
+import { StoreMock } from '../../shared/testing/store.mock';
 import { RequestService } from '../data/request.service';
-import { NoOpAction } from '../ngrx/no-op.action';
+import { RestRequestMethod } from '../data/rest-request-method';
 import { DSpaceObject } from '../shared/dspace-object.model';
-import { getMockRequestService } from '../testing/request.service.mock';
-import { StoreMock } from '../testing/store.mock';
 import { ApplyPatchObjectCacheAction } from './object-cache.actions';
 import { ObjectCacheService } from './object-cache.service';
 import {
@@ -45,12 +45,6 @@ describe('ServerSyncBufferEffects', () => {
       },
   };
   const selfLink = 'https://rest.api/endpoint/1698f1d3-be98-4c51-9fd8-6bfedcbd59b7';
-  const storeModuleConfig = {
-    runtimeChecks: {
-      strictStateImmutability: true,
-      strictActionImmutability: true,
-    },
-  };
   let store;
 
   beforeEach(() => {
@@ -81,11 +75,7 @@ describe('ServerSyncBufferEffects', () => {
           },
         },
         { provide: Store, useClass: StoreMock },
-        { provide: APP_CONFIG, useValue: { cache: {  autoSync: {
-          defaultTime: 0,
-          maxBufferSize: 100,
-          timePerMethod: { [RestRequestMethod.PATCH]: 3 } as any, // time in seconds
-        } } } },
+        // other providers
       ],
     });
 

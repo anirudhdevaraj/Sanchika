@@ -1,9 +1,8 @@
-import { FormFieldMetadataValueObject } from '@dspace/core/shared/form/models/form-field-metadata-value.model';
-
 import {
   DynamicLookupModel,
   DynamicLookupModelConfig,
 } from '../ds-dynamic-form-ui/models/lookup/dynamic-lookup.model';
+import { FormFieldMetadataValueObject } from '../models/form-field-metadata-value.model';
 import { FieldParser } from './field-parser';
 
 export class LookupFieldParser extends FieldParser {
@@ -12,7 +11,7 @@ export class LookupFieldParser extends FieldParser {
     if (this.configData.selectableMetadata[0].controlledVocabulary) {
       const lookupModelConfig: DynamicLookupModelConfig = this.initModel(null, label);
 
-      this.setVocabularyOptions(lookupModelConfig, this.parserOptions.collectionUUID);
+      this.setVocabularyOptions(lookupModelConfig);
 
       this.setValues(lookupModelConfig, fieldValue, true);
 

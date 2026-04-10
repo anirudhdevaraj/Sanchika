@@ -11,9 +11,9 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { hasValueOperator } from '@dspace/shared/utils/empty.util';
 import {
   NgbTooltip,
+  NgbTooltipModule,
   Placement,
 } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
@@ -31,6 +31,7 @@ import {
 
 import { ContextHelp } from '../context-help.model';
 import { ContextHelpService } from '../context-help.service';
+import { hasValueOperator } from '../empty.util';
 import { PlacementDir } from './placement-dir.model';
 
 type ParsedContent = ({href?: string, text: string})[];
@@ -45,7 +46,7 @@ type ParsedContent = ({href?: string, text: string})[];
   styleUrls: ['./context-help-wrapper.component.scss'],
   imports: [
     AsyncPipe,
-    NgbTooltip,
+    NgbTooltipModule,
     NgClass,
     NgTemplateOutlet,
   ],

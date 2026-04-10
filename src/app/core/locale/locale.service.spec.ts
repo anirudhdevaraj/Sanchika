@@ -2,8 +2,6 @@ import {
   TestBed,
   waitForAsync,
 } from '@angular/core/testing';
-import { APP_CONFIG } from '@dspace/config/app-config.interface';
-import { EPersonMock2 } from '@dspace/core/testing/eperson.mock';
 import {
   TranslateLoader,
   TranslateModule,
@@ -12,13 +10,14 @@ import {
 import { of } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 
+import { CookieServiceMock } from '../../shared/mocks/cookie.service.mock';
+import { TranslateLoaderMock } from '../../shared/mocks/translate-loader.mock';
+import { EPersonMock2 } from '../../shared/testing/eperson.mock';
+import { routeServiceStub } from '../../shared/testing/route-service.stub';
 import { AuthService } from '../auth/auth.service';
-import { CookieService } from '../cookies/cookie.service';
+import { CookieService } from '../services/cookie.service';
 import { RouteService } from '../services/route.service';
 import { NativeWindowRef } from '../services/window.service';
-import { CookieServiceMock } from '../testing/cookie.service.mock';
-import { routeServiceStub } from '../testing/route-service.stub';
-import { TranslateLoaderMock } from '../testing/translate-loader.mock';
 import {
   LANG_COOKIE,
   LANG_ORIGIN,
@@ -36,47 +35,6 @@ describe('LocaleService', () => {
   let authService;
   let routeService;
   let document;
-  const languages = [{
-    code: 'en',
-    label: 'English',
-    active: true,
-  }, {
-    code: 'de',
-    label: 'Deutsch',
-    active: true,
-  }, {
-    code: 'cs',
-    label: 'Čeština',
-    active: true,
-  }, {
-    code: 'nl',
-    label: 'Nederlands',
-    active: true,
-  }, {
-    code: 'pt',
-    label: 'Português',
-    active: true,
-  }, {
-    code: 'fr',
-    label: 'Français',
-    active: true,
-  }, {
-    code: 'lv',
-    label: 'Latviešu',
-    active: true,
-  }, {
-    code: 'bn',
-    label: 'বাংলা',
-    active: true,
-  }, {
-    code: 'el',
-    label: 'Ελληνικά',
-    active: true,
-  }, {
-    code: 'disabled',
-    label: 'Disabled',
-    active: false,
-  }];
 
   authService = jasmine.createSpyObj('AuthService', {
     isAuthenticated: jasmine.createSpy('isAuthenticated'),
@@ -98,11 +56,9 @@ describe('LocaleService', () => {
       ],
       providers: [
         { provide: CookieService, useValue: new CookieServiceMock() },
-        { provide: AuthService, useValue: authService },
+        { provide: AuthService, userValue: authService },
         { provide: RouteService, useValue: routeServiceStub },
         { provide: Document, useValue: document },
-        { provide: APP_CONFIG, useValue: { languages, fallbackLanguage: 'en' } },
-        LocaleService,
       ],
     });
   }));
@@ -113,7 +69,7 @@ describe('LocaleService', () => {
     routeService = TestBed.inject(RouteService);
     window = new NativeWindowRef();
     document = { documentElement: { lang: 'en' } };
-    service = TestBed.inject(LocaleService);
+    service = new LocaleService(window, cookieService, translateService, authService, routeService, document);
     serviceAsAny = service;
     spyOnGet = spyOn(cookieService, 'get');
     spyOnSet = spyOn(cookieService, 'set');
@@ -179,7 +135,7 @@ describe('LocaleService', () => {
       });
     });
 
-    it('should return fallback language list without user preferred language when no logged in user', () => {
+    it('should return default language list without user preferred language when no logged in user', () => {
       authService.isAuthenticated.and.returnValue(of(false));
       authService.isAuthenticationLoaded.and.returnValue(of(false));
       testScheduler.run(({ expectObservable }) => {
@@ -187,7 +143,7 @@ describe('LocaleService', () => {
       });
     });
 
-    it('should return fallback language list with user preferred language when user is logged in', () => {
+    it('should return default language list with user preferred language when user is logged in', () => {
       authService.isAuthenticated.and.returnValue(of(true));
       authService.isAuthenticationLoaded.and.returnValue(of(true));
       authService.getAuthenticatedUserFromStore.and.returnValue(of(EPersonMock2));

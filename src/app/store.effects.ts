@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { StoreActionTypes } from '@dspace/core/ngrx/type';
 import {
   Actions,
   createEffect,
@@ -14,6 +13,7 @@ import { map } from 'rxjs/operators';
 
 import { AppState } from './app.reducer';
 import { HostWindowResizeAction } from './shared/host-window.actions';
+import { StoreActionTypes } from './store.actions';
 
 @Injectable()
 export class StoreEffects {

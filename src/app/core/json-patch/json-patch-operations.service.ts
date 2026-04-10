@@ -1,10 +1,3 @@
-import {
-  hasValue,
-  isEmpty,
-  isNotEmpty,
-  isNotUndefined,
-  isUndefined,
-} from '@dspace/shared/utils/empty.util';
 import { Store } from '@ngrx/store';
 import {
   merge as observableMerge,
@@ -21,6 +14,13 @@ import {
   tap,
 } from 'rxjs/operators';
 
+import {
+  hasValue,
+  isEmpty,
+  isNotEmpty,
+  isNotUndefined,
+  isUndefined,
+} from '../../shared/empty.util';
 import { RemoteDataBuildService } from '../cache/builders/remote-data-build.service';
 import { CoreState } from '../core-state.model';
 import { RemoteData } from '../data/remote-data';
@@ -112,7 +112,7 @@ export abstract class JsonPatchOperationsService<ResponseDefinitionDomain, Patch
             map((rd: RemoteData<any>) => {
               if (rd.hasFailed) {
                 this.store.dispatch(new RollbacktPatchOperationsAction(resourceType, resourceId));
-                throw rd as unknown as Error;
+                throw new Error(rd.errorMessage);
               } else if (hasValue(rd.payload) && isNotEmpty(rd.payload.dataDefinition)) {
                 this.store.dispatch(new CommitPatchOperationsAction(resourceType, resourceId));
                 return rd.payload.dataDefinition;

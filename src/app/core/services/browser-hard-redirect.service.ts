@@ -4,7 +4,6 @@ import {
   InjectionToken,
 } from '@angular/core';
 
-import { environment } from '../../../environments/environment';
 import { HardRedirectService } from './hard-redirect.service';
 
 export const LocationToken = new InjectionToken('Location');
@@ -42,11 +41,12 @@ export class BrowserHardRedirectService extends HardRedirectService {
   }
 
   /**
-   * Get the base public URL of our application.
-   * This is used as the base URL for redirects, and should be in the format of
+   * Get the origin of the current URL
    * i.e. <scheme> "://" <hostname> [ ":" <port> ]
+   * e.g. if the URL is https://demo.dspace.org/search?query=test,
+   * the origin would be https://demo.dspace.org
    */
-  getBaseUrl(): string {
-    return environment.ui.baseUrl;
+  getCurrentOrigin(): string {
+    return this.location.origin;
   }
 }

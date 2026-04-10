@@ -4,7 +4,7 @@ import {
   Input,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { BtnDisabledDirective } from '../../../shared/btn-disabled.directive';
@@ -15,7 +15,7 @@ import { ItemOperation } from './itemOperation.model';
   templateUrl: './item-operation.component.html',
   imports: [
     BtnDisabledDirective,
-    NgbTooltip,
+    NgbTooltipModule,
     RouterLink,
     TranslateModule,
   ],

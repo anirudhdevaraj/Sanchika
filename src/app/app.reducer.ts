@@ -1,4 +1,3 @@
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import {
   routerReducer,
   RouterReducerState,
@@ -18,10 +17,6 @@ import {
   GroupRegistryState,
 } from './access-control/group-registry/group-registry.reducers';
 import {
-  bitstreamFormatReducer,
-  BitstreamFormatRegistryState,
-} from './admin/admin-registries/bitstream-formats/bitstream-format.reducers';
-import {
   metadataRegistryReducer,
   MetadataRegistryState,
 } from './admin/admin-registries/metadata-registry/metadata-registry.reducers';
@@ -29,10 +24,12 @@ import {
   CommunityListReducer,
   CommunityListState,
 } from './community-list-page/community-list.reducer';
+import { correlationIdReducer } from './correlation-id/correlation-id.reducer';
 import {
   contextHelpReducer,
   ContextHelpState,
 } from './shared/context-help.reducer';
+import { hasValue } from './shared/empty.util';
 import {
   NameVariantListsState,
   nameVariantReducer,
@@ -43,6 +40,10 @@ import {
 } from './shared/form/form.reducer';
 import { menusReducer } from './shared/menu/menu.reducer';
 import { MenusState } from './shared/menu/menus-state.model';
+import {
+  notificationsReducer,
+  NotificationsState,
+} from './shared/notifications/notifications.reducers';
 import {
   selectableListReducer,
   SelectableListsState,
@@ -81,6 +82,7 @@ export interface AppState {
   hostWindow: HostWindowState;
   forms: FormState;
   metadataRegistry: MetadataRegistryState;
+  notifications: NotificationsState;
   sidebar: SidebarState;
   searchFilter: SearchFiltersState;
   truncatable: TruncatablesState;
@@ -93,8 +95,8 @@ export interface AppState {
   communityList: CommunityListState;
   epeopleRegistry: EPeopleRegistryState;
   groupRegistry: GroupRegistryState;
+  correlationId: string;
   contextHelp: ContextHelpState;
-  bitstreamFormats: BitstreamFormatRegistryState;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
@@ -102,6 +104,7 @@ export const appReducers: ActionReducerMap<AppState> = {
   hostWindow: hostWindowReducer,
   forms: formReducer,
   metadataRegistry: metadataRegistryReducer,
+  notifications: notificationsReducer,
   sidebar: sidebarReducer,
   searchFilter: filterReducer,
   truncatable: truncatableReducer,
@@ -114,8 +117,8 @@ export const appReducers: ActionReducerMap<AppState> = {
   communityList: CommunityListReducer,
   epeopleRegistry: ePeopleRegistryReducer,
   groupRegistry: groupRegistryReducer,
+  correlationId: correlationIdReducer,
   contextHelp: contextHelpReducer,
-  bitstreamFormats: bitstreamFormatReducer,
 };
 
 export const routerStateSelector = (state: AppState) => state.router;

@@ -1,11 +1,3 @@
-import { FormFieldMetadataValueObject } from '@dspace/core/shared/form/models/form-field-metadata-value.model';
-import { MetadataValue } from '@dspace/core/shared/metadata.models';
-import { RelationshipOptions } from '@dspace/core/shared/relationship-options.model';
-import {
-  hasNoValue,
-  isNotEmpty,
-  isNotUndefined,
-} from '@dspace/shared/utils/empty.util';
 import {
   DynamicFormControlLayout,
   DynamicFormControlRelation,
@@ -15,6 +7,13 @@ import {
 } from '@ng-dynamic-forms/core';
 import { Subject } from 'rxjs';
 
+import { MetadataValue } from '../../../../../core/shared/metadata.models';
+import {
+  hasNoValue,
+  isNotEmpty,
+} from '../../../../empty.util';
+import { FormFieldMetadataValueObject } from '../../models/form-field-metadata-value.model';
+import { RelationshipOptions } from '../../models/relationship-options.model';
 import { DsDynamicInputModel } from './ds-dynamic-input.model';
 
 export const CONCAT_GROUP_SUFFIX = '_CONCAT_GROUP';
@@ -33,9 +32,6 @@ export interface DynamicConcatModelConfig extends DynamicFormGroupModelConfig {
   submissionId: string;
   hasSelectableMetadata: boolean;
   metadataValue?: MetadataValue;
-  securityLevel?: number;
-  securityConfigLevel?: number[];
-  toggleSecurityVisibility?: boolean;
 }
 
 export class DynamicConcatModel extends DynamicFormGroupModel {
@@ -53,9 +49,7 @@ export class DynamicConcatModel extends DynamicFormGroupModel {
   @serializable() hasSelectableMetadata: boolean;
   @serializable() metadataValue: MetadataValue;
   @serializable() readOnly?: boolean;
-  @serializable() securityLevel?: number;
-  @serializable() securityConfigLevel?: number[];
-  @serializable() toggleSecurityVisibility = true;
+
   isCustomGroup = true;
   valueUpdates: Subject<string>;
 
@@ -75,11 +69,6 @@ export class DynamicConcatModel extends DynamicFormGroupModel {
     this.valueUpdates.subscribe((value: string) => this.value = value);
     this.typeBindRelations = config.typeBindRelations ? config.typeBindRelations : [];
     this.readOnly = config.disabled;
-    this.securityLevel = config.securityLevel;
-    this.securityConfigLevel = config.securityConfigLevel;
-    if (isNotUndefined(config.toggleSecurityVisibility)) {
-      this.toggleSecurityVisibility = config.toggleSecurityVisibility;
-    }
   }
 
   get value() {
@@ -94,19 +83,17 @@ export class DynamicConcatModel extends DynamicFormGroupModel {
     } else if (isNotEmpty(secondValue) && isNotEmpty(secondValue.value)) {
       return Object.assign(new FormFieldMetadataValueObject(), secondValue);
     } else {
-      return new FormFieldMetadataValueObject();
+      return null;
     }
   }
 
   set value(value: string | FormFieldMetadataValueObject) {
     let tempValue: string;
 
-    if (isNotEmpty(value)) {
-      if (typeof value === 'string') {
-        tempValue = value;
-      } else {
-        tempValue = value?.value;
-      }
+    if (typeof value === 'string') {
+      tempValue = value;
+    } else {
+      tempValue = value.value;
     }
     if (hasNoValue(tempValue)) {
       tempValue = '';
@@ -130,11 +117,4 @@ export class DynamicConcatModel extends DynamicFormGroupModel {
     }
   }
 
-  get hasSecurityLevel(): boolean {
-    return isNotEmpty(this.securityLevel);
-  }
-
-  get hasSecurityToggle(): boolean {
-    return isNotEmpty(this.securityConfigLevel) && this.securityConfigLevel.length > 1 && this.toggleSecurityVisibility;
-  }
 }

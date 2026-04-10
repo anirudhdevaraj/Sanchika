@@ -7,14 +7,6 @@ import {
   TestBed,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { authReducer } from '@dspace/core/auth/auth.reducer';
-import { AuthService } from '@dspace/core/auth/auth.service';
-import { AuthMethod } from '@dspace/core/auth/models/auth.method';
-import { AuthMethodType } from '@dspace/core/auth/models/auth.method-type';
-import { AuthRegistrationType } from '@dspace/core/auth/models/auth.registration-type';
-import { MetadataValue } from '@dspace/core/shared/metadata.models';
-import { Registration } from '@dspace/core/shared/registration.model';
-import { AuthServiceMock } from '@dspace/core/testing/auth.service.mock';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
@@ -25,9 +17,17 @@ import {
 import { of } from 'rxjs';
 
 import { storeModuleConfig } from '../../app.reducer';
+import { authReducer } from '../../core/auth/auth.reducer';
+import { AuthService } from '../../core/auth/auth.service';
+import { AuthMethodsService } from '../../core/auth/auth-methods.service';
+import { AuthMethod } from '../../core/auth/models/auth.method';
+import { AuthMethodType } from '../../core/auth/models/auth.method-type';
+import { AuthRegistrationType } from '../../core/auth/models/auth.registration-type';
+import { MetadataValue } from '../../core/shared/metadata.models';
+import { Registration } from '../../core/shared/registration.model';
 import { AlertComponent } from '../../shared/alert/alert.component';
 import { AuthMethodTypeComponent } from '../../shared/log-in/methods/auth-methods.type';
-import { AuthMethodsService } from '../../shared/log-in/services/auth-methods.service';
+import { AuthServiceMock } from '../../shared/mocks/auth.service.mock';
 import { ConfirmEmailComponent } from '../email-confirmation/confirm-email/confirm-email.component';
 import { ProvideEmailComponent } from '../email-confirmation/provide-email/provide-email.component';
 import { ExternalLogInComponent } from './external-log-in.component';

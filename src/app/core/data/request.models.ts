@@ -1,6 +1,4 @@
 /* eslint-disable max-classes-per-file */
-import { RestRequestMethod } from '@dspace/config/rest-request-method';
-
 import { HttpOptions } from '../dspace-rest/dspace-rest.service';
 import { GenericConstructor } from '../shared/generic-constructor';
 import { SubmissionResponseParsingService } from '../submission/submission-response-parsing.service';
@@ -11,6 +9,7 @@ import { DspaceRestResponseParsingService } from './dspace-rest-response-parsing
 import { EndpointMapResponseParsingService } from './endpoint-map-response-parsing.service';
 import { FindListOptions } from './find-list-options.model';
 import { ResponseParsingService } from './parsing.service';
+import { RestRequestMethod } from './rest-request-method';
 import { RestRequestWithResponseParser } from './rest-request-with-response-parser.model';
 
 
@@ -32,7 +31,6 @@ export class GetRequest extends DSpaceRestRequest {
     public href: string,
     public body?: any,
     public options?: HttpOptions,
-    public responseMsToLive?: number,
   ) {
     super(uuid, href, RestRequestMethod.GET, body, options);
   }
@@ -44,7 +42,6 @@ export class PostRequest extends DSpaceRestRequest {
     public href: string,
     public body?: any,
     public options?: HttpOptions,
-    public responseMsToLive?: number,
   ) {
     super(uuid, href, RestRequestMethod.POST, body);
   }
@@ -60,7 +57,6 @@ export class MultipartPostRequest extends DSpaceRestRequest {
     public href: string,
     public body?: any,
     public options?: HttpOptions,
-    public responseMsToLive?: number,
   )  {
     super(uuid, href, RestRequestMethod.POST, body);
   }
@@ -72,7 +68,6 @@ export class PutRequest extends DSpaceRestRequest {
     public href: string,
     public body?: any,
     public options?: HttpOptions,
-    public responseMsToLive?: number,
   ) {
     super(uuid, href, RestRequestMethod.PUT, body);
   }
@@ -84,7 +79,6 @@ export class DeleteRequest extends DSpaceRestRequest {
     public href: string,
     public body?: any,
     public options?: HttpOptions,
-    public responseMsToLive?: number,
   ) {
     super(uuid, href, RestRequestMethod.DELETE, body);
   }
@@ -96,7 +90,6 @@ export class OptionsRequest extends DSpaceRestRequest {
     public href: string,
     public body?: any,
     public options?: HttpOptions,
-    public responseMsToLive?: number,
   ) {
     super(uuid, href, RestRequestMethod.OPTIONS, body);
   }
@@ -108,7 +101,6 @@ export class HeadRequest extends DSpaceRestRequest {
     public href: string,
     public body?: any,
     public options?: HttpOptions,
-    public responseMsToLive?: number,
   ) {
     super(uuid, href, RestRequestMethod.HEAD, body);
   }
@@ -120,7 +112,6 @@ export class PatchRequest extends DSpaceRestRequest {
     public href: string,
     public body?: any,
     public options?: HttpOptions,
-    public responseMsToLive?: number,
   ) {
     super(uuid, href, RestRequestMethod.PATCH, body);
   }
@@ -140,9 +131,8 @@ export class FindListRequest extends GetRequest {
     uuid: string,
     href: string,
     public body?: FindListOptions,
-    public responseMsToLive?: number,
   ) {
-    super(uuid, href, body, null, responseMsToLive);
+    super(uuid, href);
   }
 }
 
@@ -156,8 +146,8 @@ export class EndpointMapRequest extends GetRequest {
  * Class representing a submission HTTP GET request object
  */
 export class SubmissionRequest extends GetRequest {
-  constructor(uuid: string, href: string, responseMsToLive?: number) {
-    super(uuid, href, null, null, responseMsToLive);
+  constructor(uuid: string, href: string) {
+    super(uuid, href);
   }
 
   getResponseParser(): GenericConstructor<ResponseParsingService> {
@@ -169,8 +159,9 @@ export class SubmissionRequest extends GetRequest {
  * Class representing a submission HTTP DELETE request object
  */
 export class SubmissionDeleteRequest extends DeleteRequest {
-  constructor(public uuid: string, public href: string, public responseMsToLive?: number) {
-    super(uuid, href, null, null, responseMsToLive);
+  constructor(public uuid: string,
+              public href: string) {
+    super(uuid, href);
   }
 
   getResponseParser(): GenericConstructor<ResponseParsingService> {
@@ -184,9 +175,8 @@ export class SubmissionDeleteRequest extends DeleteRequest {
 export class SubmissionPatchRequest extends PatchRequest {
   constructor(public uuid: string,
               public href: string,
-              public body?: any,
-              public responseMsToLive?: number) {
-    super(uuid, href, body, null, responseMsToLive);
+              public body?: any) {
+    super(uuid, href, body);
   }
 
   getResponseParser(): GenericConstructor<ResponseParsingService> {
@@ -201,9 +191,8 @@ export class SubmissionPostRequest extends PostRequest {
   constructor(public uuid: string,
               public href: string,
               public body?: any,
-              public options?: HttpOptions,
-              public responseMsToLive?: number) {
-    super(uuid, href, body, options, responseMsToLive);
+              public options?: HttpOptions) {
+    super(uuid, href, body, options);
   }
 
   getResponseParser(): GenericConstructor<ResponseParsingService> {
@@ -212,14 +201,14 @@ export class SubmissionPostRequest extends PostRequest {
 }
 
 export class CreateRequest extends PostRequest {
-  constructor(uuid: string, href: string, public body?: any, public options?: HttpOptions, public responseMsToLive?: number) {
-    super(uuid, href, body, options, responseMsToLive);
+  constructor(uuid: string, href: string, public body?: any, public options?: HttpOptions) {
+    super(uuid, href, body, options);
   }
 }
 
 export class ContentSourceRequest extends GetRequest {
-  constructor(uuid: string, href: string, public responseMsToLive?: number) {
-    super(uuid, href, responseMsToLive);
+  constructor(uuid: string, href: string) {
+    super(uuid, href);
   }
 
   getResponseParser(): GenericConstructor<ResponseParsingService> {
@@ -228,8 +217,8 @@ export class ContentSourceRequest extends GetRequest {
 }
 
 export class UpdateContentSourceRequest extends PutRequest {
-  constructor(uuid: string, href: string, public body?: any, public options?: HttpOptions, public responseMsToLive?: number) {
-    super(uuid, href, body, options, responseMsToLive);
+  constructor(uuid: string, href: string, public body?: any, public options?: HttpOptions) {
+    super(uuid, href, body, options);
   }
 
   getResponseParser(): GenericConstructor<ResponseParsingService> {
@@ -245,15 +234,14 @@ export class DeleteByIDRequest extends DeleteRequest {
     uuid: string,
     href: string,
     public resourceID: string,
-    public responseMsToLive?: number,
   ) {
-    super(uuid, href, null, null, responseMsToLive);
+    super(uuid, href);
   }
 }
 
 export class TaskPostRequest extends PostRequest {
-  constructor(uuid: string, href: string, public body?: any, public options?: HttpOptions, public responseMsToLive?: number) {
-    super(uuid, href, body, options, responseMsToLive);
+  constructor(uuid: string, href: string, public body?: any, public options?: HttpOptions) {
+    super(uuid, href, body, options);
   }
 
   getResponseParser(): GenericConstructor<ResponseParsingService> {
@@ -262,8 +250,8 @@ export class TaskPostRequest extends PostRequest {
 }
 
 export class TaskDeleteRequest extends DeleteRequest {
-  constructor(uuid: string, href: string, public body?: any, public options?: HttpOptions,public responseMsToLive?: number) {
-    super(uuid, href, body, options, responseMsToLive);
+  constructor(uuid: string, href: string, public body?: any, public options?: HttpOptions) {
+    super(uuid, href, body, options);
   }
 
   getResponseParser(): GenericConstructor<ResponseParsingService> {
@@ -272,13 +260,5 @@ export class TaskDeleteRequest extends DeleteRequest {
 }
 
 export class MyDSpaceRequest extends GetRequest {
-  constructor(
-    public uuid: string,
-    public href: string,
-    public body?: any,
-    public options?: HttpOptions,
-    public responseMsToLive?: number,
-  ) {
-    super(uuid, href, body, options, 10 * 1000);
-  }
+  public responseMsToLive = 10 * 1000;
 }

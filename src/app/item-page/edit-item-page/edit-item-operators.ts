@@ -1,7 +1,8 @@
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { getAllSucceededRemoteData } from '@dspace/core/shared/operators';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
+
+import { RemoteData } from '../../core/data/remote-data';
+import { getAllSucceededRemoteData } from '../../core/shared/operators';
 
 /**
  * Return first Observable of a RemoteData object that complies to the provided predicate

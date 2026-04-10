@@ -1,4 +1,4 @@
-import { BuildConfig } from '@dspace/config/build-config.interface';
+import { BuildConfig } from '../config/build-config.interface';
 
 export const environment: Partial<BuildConfig> = {
   production: true,
@@ -19,7 +19,6 @@ export const environment: Partial<BuildConfig> = {
         pattern: '^/collections/[a-f0-9-]{36}/browse(/.*)?$',
         flag: 'i',
       },
-      { pattern: '^/browse/' },
       { pattern: '^/search' },
       { pattern: '^/community-list$' },
       { pattern: '^/statistics/?' },

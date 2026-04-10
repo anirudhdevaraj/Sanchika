@@ -16,28 +16,11 @@ import {
   UntypedFormGroup,
 } from '@angular/forms';
 import {
-  buildPaginatedList,
-  PaginatedList,
-} from '@dspace/core/data/paginated-list.model';
-import { ConfidenceType } from '@dspace/core/shared/confidence-type';
-import { FormFieldMetadataValueObject } from '@dspace/core/shared/form/models/form-field-metadata-value.model';
-import { getFirstSucceededRemoteDataPayload } from '@dspace/core/shared/operators';
-import { PageInfo } from '@dspace/core/shared/page-info.model';
-import { VocabularyEntry } from '@dspace/core/submission/vocabularies/models/vocabulary-entry.model';
-import { VocabularyService } from '@dspace/core/submission/vocabularies/vocabulary.service';
-import {
-  hasValue,
-  isEmpty,
-  isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
-import {
   NgbDropdown,
   NgbDropdownModule,
-  NgbModal,
-  NgbTooltip,
+  NgbTooltipModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import {
-  DynamicFormControlCustomEvent,
   DynamicFormLayoutService,
   DynamicFormValidationService,
 } from '@ng-dynamic-forms/core';
@@ -52,11 +35,24 @@ import {
   distinctUntilChanged,
 } from 'rxjs/operators';
 
-import { SubmissionService } from '../../../../../../submission/submission.service';
+import {
+  buildPaginatedList,
+  PaginatedList,
+} from '../../../../../../core/data/paginated-list.model';
+import { ConfidenceType } from '../../../../../../core/shared/confidence-type';
+import { getFirstSucceededRemoteDataPayload } from '../../../../../../core/shared/operators';
+import { PageInfo } from '../../../../../../core/shared/page-info.model';
+import { VocabularyEntry } from '../../../../../../core/submission/vocabularies/models/vocabulary-entry.model';
+import { VocabularyService } from '../../../../../../core/submission/vocabularies/vocabulary.service';
 import { BtnDisabledDirective } from '../../../../../btn-disabled.directive';
+import {
+  hasValue,
+  isEmpty,
+  isNotEmpty,
+} from '../../../../../empty.util';
 import { ObjNgFor } from '../../../../../utils/object-ngfor.pipe';
 import { AuthorityConfidenceStateDirective } from '../../../../directives/authority-confidence-state.directive';
-import { FormBuilderService } from '../../../form-builder.service';
+import { FormFieldMetadataValueObject } from '../../../models/form-field-metadata-value.model';
 import { DsDynamicVocabularyComponent } from '../dynamic-vocabulary.component';
 import { DynamicLookupNameModel } from './dynamic-lookup-name.model';
 
@@ -73,7 +69,7 @@ import { DynamicLookupNameModel } from './dynamic-lookup-name.model';
     FormsModule,
     InfiniteScrollModule,
     NgbDropdownModule,
-    NgbTooltip,
+    NgbTooltipModule,
     NgClass,
     NgTemplateOutlet,
     ObjNgFor,
@@ -88,7 +84,6 @@ export class DsDynamicLookupComponent extends DsDynamicVocabularyComponent imple
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
   @Output() focus: EventEmitter<any> = new EventEmitter<any>();
-  @Output() customEvent: EventEmitter<DynamicFormControlCustomEvent> = new EventEmitter();
 
   public editMode = false;
   public firstInputValue = '';
@@ -100,14 +95,11 @@ export class DsDynamicLookupComponent extends DsDynamicVocabularyComponent imple
   protected subs: Subscription[] = [];
 
   constructor(protected vocabularyService: VocabularyService,
-              protected cdr: ChangeDetectorRef,
+              private cdr: ChangeDetectorRef,
               protected layoutService: DynamicFormLayoutService,
               protected validationService: DynamicFormValidationService,
-              protected formBuilderService: FormBuilderService,
-              protected modalService: NgbModal,
-              protected submissionService: SubmissionService,
   ) {
-    super(vocabularyService, layoutService, validationService, formBuilderService, modalService, submissionService);
+    super(vocabularyService, layoutService, validationService);
   }
 
   /**

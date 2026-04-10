@@ -1,5 +1,4 @@
-import { SubmissionObjectError } from '@dspace/core/submission/models/submission-object.model';
-
+import { SubmissionObjectError } from '../../core/submission/models/submission-object.model';
 import {
   default as parseSectionErrorPaths,
   SectionErrorPath,
@@ -13,19 +12,17 @@ import {
 const parseSectionErrors = (errors: SubmissionObjectError[] = []): any => {
   const errorsList = Object.create({});
 
-  if (Array.isArray(errors)) {
-    errors.forEach((error: SubmissionObjectError) => {
-      const paths: SectionErrorPath[] = parseSectionErrorPaths(error.paths);
+  errors.forEach((error: SubmissionObjectError) => {
+    const paths: SectionErrorPath[] = parseSectionErrorPaths(error.paths);
 
-      paths.forEach((path: SectionErrorPath) => {
-        const sectionError = { path: path.originalPath, message: error.message };
-        if (!errorsList[path.sectionId]) {
-          errorsList[path.sectionId] = [];
-        }
-        errorsList[path.sectionId].push(sectionError);
-      });
+    paths.forEach((path: SectionErrorPath) => {
+      const sectionError = { path: path.originalPath, message: error.message };
+      if (!errorsList[path.sectionId]) {
+        errorsList[path.sectionId] = [];
+      }
+      errorsList[path.sectionId].push(sectionError);
     });
-  }
+  });
 
   return errorsList;
 };

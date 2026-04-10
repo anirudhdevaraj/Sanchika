@@ -5,8 +5,8 @@ import {
 import { getTestScheduler } from 'jasmine-marbles';
 import { of } from 'rxjs';
 
-import { createSuccessfulRemoteDataObject$ } from '../utilities/remote-data.utils';
-import { Breadcrumb } from './models/breadcrumb.model';
+import { Breadcrumb } from '../../breadcrumbs/breadcrumb/breadcrumb.model';
+import { createSuccessfulRemoteDataObject$ } from '../../shared/remote-data.utils';
 import { PublicationClaimBreadcrumbService } from './publication-claim-breadcrumb.service';
 
 describe('PublicationClaimBreadcrumbService', () => {

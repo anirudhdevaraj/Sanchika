@@ -16,24 +16,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import {
-  SortDirection,
-  SortOptions,
-} from '@dspace/core/cache/models/sort-options.model';
-import { PaginatedList } from '@dspace/core/data/paginated-list.model';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { PaginationService } from '@dspace/core/pagination/pagination.service';
-import { PaginationComponentOptions } from '@dspace/core/pagination/pagination-component-options.model';
-import { PaginationRouteParams } from '@dspace/core/pagination/pagination-route-params.interface';
-import { ListableObject } from '@dspace/core/shared/object-collection/listable-object.model';
-import { ViewMode } from '@dspace/core/shared/view-mode.model';
-import {
-  hasValue,
-  hasValueOperator,
-} from '@dspace/shared/utils/empty.util';
-import {
   NgbDropdownModule,
   NgbPaginationModule,
-  NgbTooltip,
+  NgbTooltipModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import {
@@ -48,10 +33,25 @@ import {
   take,
 } from 'rxjs/operators';
 
+import {
+  SortDirection,
+  SortOptions,
+} from '../../core/cache/models/sort-options.model';
+import { PaginatedList } from '../../core/data/paginated-list.model';
+import { RemoteData } from '../../core/data/remote-data';
+import { PaginationService } from '../../core/pagination/pagination.service';
+import { PaginationRouteParams } from '../../core/pagination/pagination-route-params.interface';
+import { ViewMode } from '../../core/shared/view-mode.model';
 import { BtnDisabledDirective } from '../btn-disabled.directive';
+import {
+  hasValue,
+  hasValueOperator,
+} from '../empty.util';
 import { HostWindowService } from '../host-window.service';
+import { ListableObject } from '../object-collection/shared/listable-object.model';
 import { RSSComponent } from '../rss-feed/rss.component';
 import { EnumKeysPipe } from '../utils/enum-keys-pipe';
+import { PaginationComponentOptions } from './pagination-component-options.model';
 
 interface PaginationDetails {
   range: string;
@@ -74,7 +74,7 @@ interface PaginationDetails {
     EnumKeysPipe,
     NgbDropdownModule,
     NgbPaginationModule,
-    NgbTooltip,
+    NgbTooltipModule,
     NgClass,
     RSSComponent,
     TranslateModule,

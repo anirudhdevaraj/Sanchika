@@ -4,9 +4,7 @@ import {
   ElementRef,
   OnInit,
 } from '@angular/core';
-import { AuthService } from '@dspace/core/auth/auth.service';
-import { isAuthenticated } from '@dspace/core/auth/selectors';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   select,
   Store,
@@ -19,13 +17,15 @@ import {
 import { map } from 'rxjs/operators';
 
 import { AppState } from '../../app.reducer';
+import { AuthService } from '../../core/auth/auth.service';
+import { isAuthenticated } from '../../core/auth/selectors';
 
 @Component({
   selector: 'ds-impersonate-navbar',
   templateUrl: 'impersonate-navbar.component.html',
   imports: [
     AsyncPipe,
-    NgbTooltip,
+    NgbTooltipModule,
     TranslateModule,
   ],
 })

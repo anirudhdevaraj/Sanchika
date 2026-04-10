@@ -14,14 +14,12 @@ export const DYNAMIC_FORM_CONTROL_TYPE_ONEBOX = 'ONEBOX';
 export interface DsDynamicOneboxModelConfig extends DsDynamicInputModelConfig {
   minChars?: number;
   value?: any;
-  submissionScope?: string;
 }
 
 export class DynamicOneboxModel extends DsDynamicInputModel {
 
   @serializable() minChars: number;
   @serializable() readonly type: string = DYNAMIC_FORM_CONTROL_TYPE_ONEBOX;
-  @serializable() submissionScope: string;
 
   constructor(config: DsDynamicOneboxModelConfig, layout?: DynamicFormControlLayout) {
 
@@ -29,7 +27,6 @@ export class DynamicOneboxModel extends DsDynamicInputModel {
 
     this.autoComplete = AUTOCOMPLETE_OFF;
     this.minChars = config.minChars || 3;
-    this.submissionScope = config.submissionScope;
   }
 
 }

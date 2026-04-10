@@ -12,8 +12,8 @@ import {
   inject,
   TestBed,
 } from '@angular/core/testing';
-import { RestRequestMethod } from '@dspace/config/rest-request-method';
 
+import { RestRequestMethod } from '../data/rest-request-method';
 import { DSpaceObject } from '../shared/dspace-object.model';
 import {
   DEFAULT_CONTENT_TYPE,
@@ -86,10 +86,10 @@ describe('DspaceRestService', () => {
     });
 
     it('should log an error', () => {
-      spyOn(console, 'error');
+      spyOn(console, 'log');
 
       dspaceRestService.get(url).subscribe(() => undefined, (err: unknown) => {
-        expect(console.error).toHaveBeenCalled();
+        expect(console.log).toHaveBeenCalled();
       });
 
       const req = httpMock.expectOne(url);

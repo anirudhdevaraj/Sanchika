@@ -17,7 +17,10 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbTooltip,
+  NgbTooltipModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import {
   TranslateModule,
   TranslateService,
@@ -38,7 +41,7 @@ import { ChipsItem } from './models/chips-item.model';
     AuthorityConfidenceStateDirective,
     CdkDrag,
     CdkDropList,
-    NgbTooltip,
+    NgbTooltipModule,
     NgClass,
     TranslateModule,
   ],

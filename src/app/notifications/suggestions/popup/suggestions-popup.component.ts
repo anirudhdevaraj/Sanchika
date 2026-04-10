@@ -6,8 +6,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SuggestionTarget } from '@dspace/core/notifications/suggestions/models/suggestion-target.model';
-import { isNotEmpty } from '@dspace/shared/utils/empty.util';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   combineLatest,
@@ -21,7 +19,9 @@ import {
   takeUntil,
 } from 'rxjs/operators';
 
+import { SuggestionTarget } from '../../../core/notifications/suggestions/models/suggestion-target.model';
 import { fromTopEnter } from '../../../shared/animations/fromTop';
+import { isNotEmpty } from '../../../shared/empty.util';
 import { SuggestionsService } from '../suggestions.service';
 import { SuggestionTargetsStateService } from '../targets/suggestion-targets.state.service';
 

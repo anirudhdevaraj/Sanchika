@@ -5,11 +5,11 @@ import {
   InputSignal,
   output,
 } from '@angular/core';
-import { PaginationComponentOptions } from '@dspace/core/pagination/pagination-component-options.model';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
 import { PaginationComponent } from '../../shared/pagination/pagination.component';
+import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
 
 export interface SourceObject {
   id: string;

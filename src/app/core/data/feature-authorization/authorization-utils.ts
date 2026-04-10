@@ -1,9 +1,4 @@
 import {
-  hasNoValue,
-  hasValue,
-  isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
-import {
   combineLatest as observableCombineLatest,
   Observable,
   of,
@@ -13,6 +8,11 @@ import {
   switchMap,
 } from 'rxjs/operators';
 
+import {
+  hasNoValue,
+  hasValue,
+  isNotEmpty,
+} from '../../../shared/empty.util';
 import { AuthService } from '../../auth/auth.service';
 import { Authorization } from '../../shared/authorization.model';
 import { Feature } from '../../shared/feature.model';

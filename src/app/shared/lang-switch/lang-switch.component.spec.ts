@@ -16,8 +16,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { LangConfig } from '@dspace/config/lang-config.interface';
-import { LocaleService } from '@dspace/core/locale/locale.service';
 import {
   TranslateLoader,
   TranslateModule,
@@ -28,6 +26,8 @@ import {
   of,
 } from 'rxjs';
 
+import { LangConfig } from '../../../config/lang-config.interface';
+import { LocaleService } from '../../core/locale/locale.service';
 import { LangSwitchComponent } from './lang-switch.component';
 
 // This test is completely independent from any message catalogs or keys in the codebase

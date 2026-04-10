@@ -9,39 +9,9 @@ import {
   UntypedFormBuilder,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { DSONameService } from '@dspace/core/breadcrumbs/dso-name.service';
-import { DSpaceObjectDataService } from '@dspace/core/data/dspace-object-data.service';
-import { AuthorizationDataService } from '@dspace/core/data/feature-authorization/authorization-data.service';
-import { FeatureID } from '@dspace/core/data/feature-authorization/feature-id';
-import {
-  buildPaginatedList,
-  PaginatedList,
-} from '@dspace/core/data/paginated-list.model';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { RequestService } from '@dspace/core/data/request.service';
-import { EPersonDataService } from '@dspace/core/eperson/eperson-data.service';
-import { GroupDataService } from '@dspace/core/eperson/group-data.service';
-import { EPerson } from '@dspace/core/eperson/models/eperson.model';
-import { Group } from '@dspace/core/eperson/models/group.model';
-import { GroupDtoModel } from '@dspace/core/eperson/models/group-dto.model';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { PaginationService } from '@dspace/core/pagination/pagination.service';
-import { PaginationComponentOptions } from '@dspace/core/pagination/pagination-component-options.model';
-import { RouteService } from '@dspace/core/services/route.service';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { followLink } from '@dspace/core/shared/follow-link-config.model';
-import { NoContent } from '@dspace/core/shared/NoContent.model';
-import {
-  getAllSucceededRemoteData,
-  getFirstCompletedRemoteData,
-  getFirstSucceededRemoteData,
-  getRemoteDataPayload,
-} from '@dspace/core/shared/operators';
-import { PageInfo } from '@dspace/core/shared/page-info.model';
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import {
   NgbModal,
-  NgbTooltip,
+  NgbTooltipModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import {
   TranslateModule,
@@ -64,11 +34,40 @@ import {
   tap,
 } from 'rxjs/operators';
 
+import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
+import { DSpaceObjectDataService } from '../../core/data/dspace-object-data.service';
+import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
+import { FeatureID } from '../../core/data/feature-authorization/feature-id';
+import {
+  buildPaginatedList,
+  PaginatedList,
+} from '../../core/data/paginated-list.model';
+import { RemoteData } from '../../core/data/remote-data';
+import { RequestService } from '../../core/data/request.service';
+import { EPersonDataService } from '../../core/eperson/eperson-data.service';
+import { GroupDataService } from '../../core/eperson/group-data.service';
+import { EPerson } from '../../core/eperson/models/eperson.model';
+import { Group } from '../../core/eperson/models/group.model';
+import { GroupDtoModel } from '../../core/eperson/models/group-dto.model';
+import { PaginationService } from '../../core/pagination/pagination.service';
+import { RouteService } from '../../core/services/route.service';
+import { DSpaceObject } from '../../core/shared/dspace-object.model';
+import { NoContent } from '../../core/shared/NoContent.model';
+import {
+  getAllSucceededRemoteData,
+  getFirstCompletedRemoteData,
+  getFirstSucceededRemoteData,
+  getRemoteDataPayload,
+} from '../../core/shared/operators';
+import { PageInfo } from '../../core/shared/page-info.model';
 import { BtnDisabledDirective } from '../../shared/btn-disabled.directive';
 import { ConfirmationModalComponent } from '../../shared/confirmation-modal/confirmation-modal.component';
+import { hasValue } from '../../shared/empty.util';
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
+import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { PaginationComponent } from '../../shared/pagination/pagination.component';
-import { getGroupEditPageRouterLink } from '../access-control-routing-paths';
+import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
+import { followLink } from '../../shared/utils/follow-link-config.model';
 
 @Component({
   selector: 'ds-groups-registry',
@@ -76,7 +75,7 @@ import { getGroupEditPageRouterLink } from '../access-control-routing-paths';
   imports: [
     AsyncPipe,
     BtnDisabledDirective,
-    NgbTooltip,
+    NgbTooltipModule,
     PaginationComponent,
     ReactiveFormsModule,
     RouterLink,
@@ -135,8 +134,6 @@ export class GroupsRegistryComponent implements OnInit, OnDestroy {
    * List of subscriptions
    */
   subs: Subscription[] = [];
-
-  protected readonly getGroupEditPageRouterLink = getGroupEditPageRouterLink;
 
   constructor(public groupService: GroupDataService,
               private ePersonDataService: EPersonDataService,
@@ -347,6 +344,5 @@ export class GroupsRegistryComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 
 }

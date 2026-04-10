@@ -5,9 +5,10 @@
         class="item-list-job-title">
         @for (value of mdRepresentation.allMetadataValues(['person.jobTitle'], undefined, true); track value; let last = $last) {
           <span>
-            <span [innerHTML]="value"></span>@if (!last) {
-            <span>; </span>
-          }
+            <span [innerHTML]="value"></span>
+            @if (!last) {
+              <span>; </span>
+            }
         </span>
       }
     </span>

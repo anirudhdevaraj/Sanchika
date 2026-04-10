@@ -3,15 +3,16 @@ import {
   makeStateKey,
 } from '@angular/core';
 
-import { AccessibilitySettingsConfig } from './accessibility-settings.config';
+import { AccessibilitySettingsConfig } from '../app/accessibility/accessibility-settings.config';
+import { AdminNotifyMetricsRow } from '../app/admin/admin-notify-dashboard/admin-notify-metrics/admin-notify-metrics.model';
+import { HALDataService } from '../app/core/data/base/hal-data-service.interface';
+import { GenericConstructor } from '../app/core/shared/generic-constructor';
+import { LiveRegionConfig } from '../app/shared/live-region/live-region.config';
 import { ActuatorsConfig } from './actuators.config';
-import { AddToAnyPluginConfig } from './add-to-any-plugin-config';
-import { AdminNotifyMetricsRow } from './admin-notify-metrics.config';
 import { AuthConfig } from './auth-config.interfaces';
 import { BrowseByConfig } from './browse-by-config.interface';
 import { BundleConfig } from './bundle-config.interface';
 import { CacheConfig } from './cache-config.interface';
-import { CmsMetadata } from './cms-metadata';
 import { CollectionPageConfig } from './collection-page-config.interface';
 import { CommunityListConfig } from './community-list-config.interface';
 import { CommunityPageConfig } from './community-page-config.interface';
@@ -24,15 +25,12 @@ import { HomeConfig } from './homepage-config.interface';
 import { InfoConfig } from './info-config.interface';
 import { ItemConfig } from './item-config.interface';
 import { LangConfig } from './lang-config.interface';
-import { LayoutConfig } from './layout-config.interfaces';
-import { LiveRegionConfig } from './live-region.config';
 import { MarkdownConfig } from './markdown-config.interface';
 import { MatomoConfig } from './matomo-config.interface';
 import { MediaViewerConfig } from './media-viewer-config.interface';
 import { INotificationBoardOptions } from './notifications-config.interfaces';
 import { QualityAssuranceConfig } from './quality-assurance.config';
 import { SearchConfig } from './search-page-config.interface';
-import { SearchResultConfig } from './search-result-config.interface';
 import { ServerConfig } from './server-config.interface';
 import { SubmissionConfig } from './submission-config.interface';
 import { SuggestionConfig } from './suggestion-config.interfaces';
@@ -73,10 +71,6 @@ interface AppConfig extends Config {
   matomo?: MatomoConfig;
   geospatialMapViewer: GeospatialMapConfig;
   accessibility: AccessibilitySettingsConfig;
-  layout: LayoutConfig;
-  searchResult: SearchResultConfig;
-  addToAnyPlugin: AddToAnyPluginConfig;
-  cms: CmsMetadata;
 }
 
 /**
@@ -87,38 +81,12 @@ const APP_CONFIG = new InjectionToken<AppConfig>('APP_CONFIG');
 
 const APP_CONFIG_STATE = makeStateKey<AppConfig>('APP_CONFIG_STATE');
 
-type DeepPartial<T> = T extends object ? { [k in keyof T]?: DeepPartial<T[k]>} : T;
+export type LazyDataServicesMap = Map<string, () => Promise<GenericConstructor<HALDataService<any>> | { default: GenericConstructor<HALDataService<any>> }>>;
 
-/**
- * Removes all server-side specific settings from the application configuration.
- * This method is used to ensure the "assets/config.json" that provides runtime
- * configuration to CSR (client side rendering) excludes these server-side keys.
- *
- * @param config  the application configuration
- */
-const toClientConfig = ({
-  rest: {
-    ssrBaseUrl: _ssrBaseUrl,
-    hasSsrBaseUrl: _hasSsrBaseUrl,
-    ...rest
-  },
-  cache: {
-    serverSide: _serverSide,
-    ...cache
-  },
-  ui: {
-    rateLimiter: _rateLimiter,
-    useProxies: _useProxies,
-    ...ui
-  },
-  ...config
-}: AppConfig): DeepPartial<AppConfig> => ({
-  ...config, rest, cache, ui,
-});
+export const APP_DATA_SERVICES_MAP: InjectionToken<LazyDataServicesMap> = new InjectionToken<LazyDataServicesMap>('APP_DATA_SERVICES_MAP');
 
 export {
   APP_CONFIG,
   APP_CONFIG_STATE,
   AppConfig,
-  toClientConfig,
 };

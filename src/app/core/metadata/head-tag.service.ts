@@ -13,15 +13,6 @@ import {
   Router,
 } from '@angular/router';
 import {
-  APP_CONFIG,
-  AppConfig,
-} from '@dspace/config/app-config.interface';
-import {
-  hasNoValue,
-  hasValue,
-  isNotEmpty,
-} from '@dspace/shared/utils/empty.util';
-import {
   createSelector,
   select,
   Store,
@@ -43,6 +34,17 @@ import {
   take,
 } from 'rxjs/operators';
 
+import {
+  APP_CONFIG,
+  AppConfig,
+} from '../../../config/app-config.interface';
+import { getBitstreamDownloadRoute } from '../../app-routing-paths';
+import {
+  hasNoValue,
+  hasValue,
+  isNotEmpty,
+} from '../../shared/empty.util';
+import { followLink } from '../../shared/utils/follow-link-config.model';
 import { DSONameService } from '../breadcrumbs/dso-name.service';
 import { coreSelector } from '../core.selectors';
 import { CoreState } from '../core-state.model';
@@ -52,14 +54,12 @@ import { FindListOptions } from '../data/find-list-options.model';
 import { PaginatedList } from '../data/paginated-list.model';
 import { RemoteData } from '../data/remote-data';
 import { RootDataService } from '../data/root-data.service';
-import { getBitstreamDownloadRoute } from '../router/utils/dso-route.utils';
 import { HardRedirectService } from '../services/hard-redirect.service';
 import { Bitstream } from '../shared/bitstream.model';
 import { getDownloadableBitstream } from '../shared/bitstream.operators';
 import { BitstreamFormat } from '../shared/bitstream-format.model';
 import { Bundle } from '../shared/bundle.model';
 import { DSpaceObject } from '../shared/dspace-object.model';
-import { followLink } from '../shared/follow-link-config.model';
 import { Item } from '../shared/item.model';
 import {
   getFirstCompletedRemoteData,
@@ -324,7 +324,7 @@ export class HeadTagService {
     if (this.currentObject.value instanceof Item) {
       let url = this.getMetaTagValue('dc.identifier.uri');
       if (hasNoValue(url)) {
-        url = new URLCombiner(this.hardRedirectService.getBaseUrl(), this.router.url).toString();
+        url = new URLCombiner(this.hardRedirectService.getCurrentOrigin(), this.router.url).toString();
       }
       this.addMetaTag('citation_abstract_html_url', url);
     }
@@ -407,7 +407,7 @@ export class HeadTagService {
         // Use the found link to set the <meta> tag
         this.addMetaTag(
           'citation_pdf_url',
-          new URLCombiner(this.hardRedirectService.getBaseUrl(), link).toString(),
+          new URLCombiner(this.hardRedirectService.getCurrentOrigin(), link).toString(),
         );
       });
     }

@@ -24,10 +24,8 @@ import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 
 @Component({
   selector: 'ds-themed-full-item-page',
-  // styleUrls: ['./full-item-page.component.scss'],
-  styleUrls: ['../../../../../app/item-page/full/full-item-page.component.scss'],
-  // templateUrl: './full-item-page.component.html',
-  templateUrl: '../../../../../app/item-page/full/full-item-page.component.html',
+  styleUrls: ['./full-item-page.component.scss'],
+  templateUrl: './full-item-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
   imports: [

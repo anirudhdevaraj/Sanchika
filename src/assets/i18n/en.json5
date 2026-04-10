@@ -1,4 +1,5 @@
 {
+
   "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
 
   "401.link.home-page": "Take me to the home page",
@@ -17,7 +18,7 @@
 
   "500.link.home-page": "Take me to the home page",
 
-  "404.help": "We can't find the page you're looking for. The page may have been moved or deleted. You can use the button below to get back to the home page.",
+  "404.help": "We can't find the page you're looking for. The page may have been moved or deleted. You can use the button below to get back to the home page. ",
 
   "404.link.home-page": "Take me to the home page",
 
@@ -899,56 +900,6 @@
 
   "admin.batch-import.page.remove": "remove",
 
-  "audit.data.not-found": "No audits found.",
-
-  "audit.data.self": "self",
-
-  "audit.detail.metadata.field": "Metadata field:",
-
-  "audit.detail.metadata.value": "Value:",
-
-  "audit.detail.metadata.authority": "Authority:",
-
-  "audit.detail.metadata.confidence": "Confidence:",
-
-  "audit.detail.metadata.place": "Place:",
-
-  "audit.detail.metadata.action": "Action:",
-
-  "audit.detail.metadata.checksum": "Checksum:",
-
-  "audit.overview.title": "All Audit Logs",
-
-  "audit.overview.table.id": "Audit ID",
-
-  "audit.overview.table.objectUUID": "Object ID",
-
-  "audit.overview.table.objectType": "Object Type",
-
-  "audit.overview.table.subjectUUID": "Subject ID",
-
-  "audit.overview.table.subjectType": "Subject Type",
-
-  "audit.overview.table.entityType": "Audit Type",
-
-  "audit.overview.table.eperson": "EPerson",
-
-  "audit.overview.table.other": "Object",
-
-  "audit.overview.table.timestamp": "Time (UTC)",
-
-  "audit.overview.breadcrumbs": "Audit Logs",
-
-  "audit.object.back": "Back",
-
-  "audit.object.breadcrumbs": "Object Audit Logs",
-
-  "audit.object.overview.title": "Object Audit Logs",
-
-  "audit.object.logs.label": "Logs for object: ",
-
-  "audit.object.overview.disabled.message": "Audit feature is currently disabled",
-
   "auth.errors.invalid-user": "Invalid email address or password.",
 
   "auth.messages.expired": "Your session has expired. Please log in again.",
@@ -1093,6 +1044,18 @@
 
   "browse.metadata.title": "Title",
 
+  "browse.metadata.language": "Language",
+
+  "browse.metadata.media": "Media",
+
+  "browse.metadata.linguistictype": "Linguistic Data Type",
+
+  "browse.metadata.language.breadcrumbs": "Browse by Language",
+
+  "browse.metadata.media.breadcrumbs": "Browse by Media",
+
+  "browse.metadata.linguistictype.breadcrumbs": "Browse by Linguistic Data Type",
+
   "browse.metadata.srsc": "Subject Category",
 
   "browse.metadata.author.breadcrumbs": "Browse by Author",
@@ -1177,10 +1140,6 @@
 
   "browse.title": "Browsing by {{ field }}{{ startsWith }} {{ value }}",
 
-  "browse.taxonomy.show_next_results": "Show next results",
-
-  "browse.taxonomy.show_previous_results": "Show previous results",
-
   "browse.title.page": "Browsing by {{ field }} {{ value }}",
 
   "search.browse.item-back": "Back to Results",
@@ -1215,7 +1174,7 @@
 
   "collection.delete.notification.fail": "Collection could not be deleted",
 
-  "collection.delete.notification.success": "Successfully started a process to delete this collection",
+  "collection.delete.notification.success": "Successfully deleted collection",
 
   "collection.delete.text": "Are you sure you want to delete collection \"{{ dso }}\"",
 
@@ -1379,33 +1338,17 @@
 
   "collection.form.errors.title.required": "Please enter a collection name",
 
-  "collection.form.errors.submissionDefinition.required": "Please choose a submission definition for this collection",
-
-  "collection.form.errors.entityType.required": "Please choose an entity type for this collection",
-
   "collection.form.license": "License",
 
   "collection.form.provenance": "Provenance",
 
   "collection.form.rights": "Copyright text (HTML)",
 
-  "collection.form.sharedWorkspace": "Shared workspace",
-
   "collection.form.tableofcontents": "News (HTML)",
 
   "collection.form.title": "Name",
 
   "collection.form.entityType": "Entity Type",
-
-  "collection.form.errors.entityType.required": "Please choose an entity type for this collection",
-
-  "collection.form.errors.submissionDefinition.required": "Please choose a submission definition for this collection",
-
-  "collection.form.submissionDefinition": "Submission definition",
-
-  "collection.form.correctionSubmissionDefinition": "Submission definition for correction request",
-
-
 
   "collection.listelement.badge": "Collection",
 
@@ -1525,7 +1468,7 @@
 
   "community.delete.notification.fail": "Community could not be deleted",
 
-  "community.delete.notification.success": "Successfully started a process to delete this community",
+  "community.delete.notification.success": "Successfully deleted community",
 
   "community.delete.text": "Are you sure you want to delete community \"{{ dso }}\"",
 
@@ -1680,16 +1623,6 @@
   "community.sub-collection-list.head": "Collections in this community",
 
   "community.sub-community-list.head": "Communities in this Community",
-
-  "confirmation-modal.pending-changes.header": "Unsaved changes",
-
-  "confirmation-modal.pending-changes.info": "There are unsaved changes. Do you want to leave the page?",
-
-  "confirmation-modal.pending-changes.cancel": "Cancel",
-
-  "confirmation-modal.pending-changes.confirm": "Leave",
-
-  "context-menu.actions.audit-item.btn": "Audit",
 
   "cookies.consent.accept-all": "Accept all",
 
@@ -2003,15 +1936,9 @@
 
   "error.top-level-communities": "Error fetching top-level communities",
 
-  "error.validation.license.required": "You must grant this license to complete your submission. If you are unable to grant this license at this time you may save your work and return later or remove the submission.",
+  "error.validation.license.notgranted": "You must grant this license to complete your submission. If you are unable to grant this license at this time you may save your work and return later or remove the submission.",
 
   "error.validation.cclicense.required": "You must grant this cclicense to complete your submission. If you are unable to grant the cclicense at this time, you may save your work and return later or remove the submission.",
-
-  "error.validation.custom-url.conflict": "The custom url has been already used, please try with a new one.",
-
-  "error.validation.custom-url.empty": "The custom url is required and cannot be empty.",
-
-  "error.validation.custom-url.invalid-characters": "The custom url contains invalid characters. Only alphanumeric characters, dashes and underscores are supported.",
 
   "error.validation.pattern": "This input is restricted by the current pattern: {{ pattern }}.",
 
@@ -2125,8 +2052,6 @@
 
   "form.clear-help": "Click here to remove the selected value",
 
-  "form.copy": "Duplicate",
-
   "form.discard": "Discard",
 
   "form.drag": "Drag",
@@ -2136,12 +2061,6 @@
   "form.edit-help": "Click here to edit the selected value",
 
   "form.first-name": "First name",
-
-  "form.group.add": "Add",
-
-  "form.group.close": "Close",
-
-  "form.group.set": "Set",
 
   "form.group-collapse": "Collapse",
 
@@ -2175,40 +2094,6 @@
 
   "form.other-information.orcid": "ORCID",
 
-  "form.other-information.person_identifier_orcid": "ORCID",
-
-  "form.other-information.oairecerif_author_affiliation": "Affiliation",
-
-  "form.other-information.oairecerif_editor_affiliation": "Affiliation",
-
-  "form.other-information.person_identifier_orcid": "ORCID iD",
-
-  "form.other-information.institution-affiliation-name": "Affiliation(s)",
-
-  "form.other-information.dc_relation_grantno": "Grant Number",
-
-  "form.other-information.not-available": "Not available",
-
-  "form.other-information.ror_orgunit_id": "ROR ID",
-
-  "form.other-information.ror_orgunit_type": "ROR type",
-
-  "form.other-information.ror_orgunit_acronym": "ROR acronym",
-
-  "form.other-information.ror_orgunit_countryName": "ROR country",
-
-  "form.entry.source.local": "",
-
-  "form.entry.source.orcid": "",
-
-  "form.entry.source.ror": "",
-
-  "form.entry.source.openaire": "",
-
-  "form.entry.source.zdb": "",
-
-  "form.entry.source.sherpa": "- Sherpa Romeo",
-
   "form.remove": "Remove",
 
   "form.save": "Save",
@@ -2226,12 +2111,6 @@
   "form.number-picker.decrement": "Decrement {{field}}",
 
   "form.number-picker.increment": "Increment {{field}}",
-
-  "form.number-picker.label.Year": "Year",
-
-  "form.number-picker.label.Month": "Month",
-
-  "form.number-picker.label.Day": "Day",
 
   "form.repeatable.sort.tip": "Drop the item in the new position",
 
@@ -2343,9 +2222,196 @@
 
   "home.title": "Home",
 
+  "home.hero.title": "Bhasha <span>Sanchika</span>",
+
+  "home.hero.subtitle": "Ministry of Education, Government of India",
+
+  "home.diamond.subject": "SUBJECT",
+
+  "home.diamond.linguistic-data-type": "LINGUISTIC<br>DATA TYPE",
+
+  "home.diamond.media": "MEDIA",
+
+  "home.diamond.author": "AUTHOR",
+
+  "home.diamond.language": "LANGUAGE",
+
+  "home.diamond.titles": "TITLES",
+
+  "home.about.title": "About the Archive",
+  "home.about.text": "<strong>Bhasha Sanchika</strong> is guided by a set of core objectives: to ensure the long-term storage and promotion of linguistic and cultural resources, to strengthen the digital visibility and representation of Indian languages and mother tongues on the web and to provide comprehensive linguistic resources in multiple formats, including text, images, audio, and video.",
+  "home.our-mission.label": "OUR MISSION",
+
+  "home.contributor.title": "Become a Contributor",
+
+  "home.contributor.description": "Do you have rare manuscripts, audio, or expertise? Join our mission to enrich the archive.",
+
+  "home.contributor.button": "Partner with us",
+
+  "home.stats.title": "Platform Statistics",
+
+  "home.stats.page-count": "Page Count",
+
+  "home.stats.records": "Records",
+
+  "home.collections.title": "Our Collections",
+  "home.collections.subtitle": "Explore our digital archive",
+  "home.collections.view-all": "View All Collections",
+  "home.collections.card-badge": "Collection",
+
+  "footer.col1.title": "Bhasha Sanchika",
+
+  "footer.col1.contributors": "Contributors",
+
+  "footer.col1.help": "Help",
+
+  "footer.col1.citation": "Citation",
+
+  "footer.col2.title": "Policy",
+
+  "footer.col2.cookie-settings": "Cookie settings",
+
+  "footer.col2.privacy-policy": "Privacy policy",
+
+  "footer.col2.end-user-agreement": "End User Agreement",
+
+  "footer.col2.send-feedback": "Send Feedback",
+
+  "footer.col3.title": "Quick links",
+
+  "footer.col3.ciil": "CIIL",
+
+  "footer.col3.moe": "MoE",
+
+  "footer.col3.swayam": "Swayam",
+
+  "footer.col4.title": "Address",
+
+  "footer.col4.address": "Central Institute of Indian Languages<br>Department of Higher Education<br>Ministry of Education, Government of India<br>Mysuru 570006",
+
+  "footer.col5.title": "Connect With Us",
+
+  "footer.bottom.copyright": "© {{ year }} Bhasha Sanchika. All Rights Reserved",
+
+  "browse.common.badge": "Collection",
+
+  "browse.common.subtitle": "Bhasha Sanchika",
+
+  "browse.heading.prefix": "Browsing by ",
+
+  "browse.heading.suffix": "",
+
+  "browse.author.heading": "Browsing by Author",
+
+  "browse.title.heading": "Browsing by Title",
+
+  "browse.subject.heading": "Browsing by Subject",
+
+  "browse.language.heading": "Browsing by Language",
+
+  "browse.media.heading": "Browsing by Media",
+
+  "browse.linguistictype.heading": "Browsing by Linguistic Data Type",
+
+  "browse.author.title": "Author",
+
+  "browse.title.title": "Title",
+
+  "browse.subject.title": "Subject",
+
+  "browse.language.title": "Language",
+
+  "browse.media.title": "Media",
+
+  "browse.media.cat.Image": "Image",
+
+  "browse.media.cat.Document": "Document",
+
+  "browse.media.cat.Audio": "Audio",
+
+  "browse.media.cat.Video": "Video",
+
+  "browse.media.cat.Zip": "Zip",
+
+  "browse.media.items": "Items",
+
+  "browse.media.back-btn": "Back to Media Types",
+
+  "browse.media.files": "Files",
+
+  "browse.linguistictype.title": "Linguistic Data Type",
+
+  "nav.browse": "Browse",
+
+  "nav.browse.by-author": "By Author",
+
+  "nav.browse.by-title": "By Title",
+
+  "nav.browse.by-subject": "By Subject",
+
+  "nav.browse.by-language": "By Language",
+
+  "nav.browse.by-media": "By Media",
+
+  "nav.browse.by-linguistic-data-type": "By Linguistic Data Type",
+
+  "nav.sections": "Section",
+
+  "nav.stats": "Statistics",
+
+  "nav.about": "About",
+
+  "stats.badge": "Analytics",
+
+  "stats.hero.title.prefix": "Repository ",
+
+  "stats.hero.title.word": "Statistics",
+
+  "stats.hero.subtitle": "Bhasha Sanchika",
+
+  "stats.summary.page-count": "Total Page Count",
+
+  "stats.summary.visit-count": "Item views",
+
+  "stats.summary.records": "No. of Records",
+
+  "stats.visits.title": "Most Viewed Items",
+
+  "stats.table.rank": "Rank",
+
+  "stats.table.title": "Title",
+
+  "stats.table.views": "Total Views",
+
+  "stats.print": "Print Report",
+
+  "stats.countries.title": "Top Countries",
+
+  "stats.cities.title": "Top Cities",
+
+  "stats.countries.no-data": "No country data available yet. Data will appear once the site receives external visitors.",
+
+  "stats.cities.no-data": "No city data available yet. Data will appear once the site receives external visitors.",
+
   "home.top-level-communities.head": "Communities in DSpace",
 
   "home.top-level-communities.help": "Select a community to browse its collections.",
+
+  "info.about.breadcrumbs": "About",
+
+  "info.about.title": "About",
+
+  "info.help.breadcrumbs": "Help",
+
+  "info.help.title": "Help",
+
+  "info.contributors.breadcrumbs": "Contributors",
+
+  "info.contributors.title": "Contributors",
+
+  "info.citation.breadcrumbs": "Citation Guidelines",
+
+  "info.citation.title": "Citation Guidelines",
 
   "info.accessibility-settings.breadcrumbs": "Accessibility settings",
 
@@ -2353,7 +2419,7 @@
 
   "info.accessibility-settings.disableNotificationTimeOut.label": "Automatically close notifications after time out",
 
-  "info.accessibility-settings.disableNotificationTimeOut.hint": "When this toggle is activated, notifications will close automatically after the time out passes. When deactivated, notifications will remain open until manually closed.",
+  "info.accessibility-settings.disableNotificationTimeOut.hint": "When this toggle is activated, notifications will close automatically after the time out passes. When deactivated, notifications will remain open untill manually closed.",
 
   "info.accessibility-settings.failed-notification": "Failed to save accessibility settings",
 
@@ -2415,7 +2481,17 @@
 
   "info.feedback.title": "Feedback",
 
-  "info.feedback.info": "Thanks for sharing your feedback about the DSpace system. Your comments are appreciated!",
+  "info.feedback.info": "Thanks for sharing your feedback about the Bhasha Sanchika system. Your comments are appreciated!",
+
+  "feedback.badge": "Support",
+
+  "feedback.hero.title.prefix": "User ",
+
+  "feedback.hero.title.word": "Feedback",
+
+  "feedback.hero.subtitle": "Bhasha Sanchika",
+
+  "feedback.section.title": "Feedback",
 
   "info.feedback.email_help": "This address will be used to follow up on your feedback.",
 
@@ -2489,7 +2565,7 @@
 
   "item.edit.bitstreams.bundle.name": "BUNDLE: {{ name }}",
 
-  "item.edit.bitstreams.bundle.table.aria-label": "Bitstreams in the {{ bundle }} Bundle",
+  "item.edit.bitstreams.bundle.table.aria-label": "Bitstreams in the  {{ bundle }} Bundle",
 
   "item.edit.bitstreams.bundle.tooltip": "You can move a bitstream to a different page by dropping it on the page number.",
 
@@ -2567,13 +2643,7 @@
 
   "item.edit.delete.header": "Delete item: {{ id }}",
 
-  "item.edit.delete.success": "Successfully started a process to delete this item",
-
-  "item.edit.delete.confirmation-title": "Confirm deletion",
-
-  "item.edit.delete.confirmation-message": "Are you sure you want to permanently delete this item?",
-
-  "item.edit.delete.confirmation-detail": "This item may have been cited, has (or had) a persistent identifier (Handle/DOI), and deleting it may break scholarly references and external links.",
+  "item.edit.delete.success": "The item has been deleted",
 
   "item.edit.head": "Edit Item",
 
@@ -2669,8 +2739,6 @@
 
   "item.edit.metadata.edit.language": "Edit language",
 
-  "item.edit.metadata.edit.authority": "Edit authority",
-
   "item.edit.metadata.edit.value": "Edit value",
 
   "item.edit.metadata.edit.authority.key": "Edit authority key",
@@ -2700,10 +2768,6 @@
   "item.edit.metadata.headers.field": "Field",
 
   "item.edit.metadata.headers.language": "Lang",
-
-  "item.edit.metadata.headers.security": "Security level",
-
-  "item.edit.metadata.headers.authority": "Authority",
 
   "item.edit.metadata.headers.value": "Value",
 
@@ -2861,7 +2925,7 @@
 
   "item.edit.tabs.metadata.head": "Metadata",
 
-  "item.edit.tabs.metadata.title": "Item Edit - Metadata",
+  "item.edit.tabs.metadata.title": "Item Edit -  Metadata",
 
   "item.edit.tabs.relationships.head": "Relationships",
 
@@ -2913,7 +2977,7 @@
 
   "item.edit.tabs.status.labels.lastModified": "Last Modified",
 
-  "item.edit.tabs.status.title": "Item Edit - Status",
+  "item.edit.tabs.status.title": "Item Edit -  Status",
 
   "item.edit.tabs.versionhistory.head": "Version History",
 
@@ -2923,7 +2987,7 @@
 
   "item.edit.tabs.view.head": "View Item",
 
-  "item.edit.tabs.view.title": "Item Edit - View",
+  "item.edit.tabs.view.title": "Item Edit -  View",
 
   "item.edit.withdraw.cancel": "Cancel",
 
@@ -2982,8 +3046,6 @@
   "item.page.volume-title": "Volume Title",
 
   "item.page.dcterms.spatial": "Geospatial point",
-
-  "item.page.doi": "DOI",
 
   "item.search.results.head": "Item Search Results",
 
@@ -3051,7 +3113,7 @@
 
   "item.page.date": "Date",
 
-  "item.page.edit": "Administer",
+  "item.page.edit": "Edit this item",
 
   "item.page.files": "Files",
 
@@ -3091,29 +3153,6 @@
 
   "item.page.relationships.isOrgUnitOfProject": "Research Projects",
 
-  "item.page.relationships.RELATION.Person.researchoutputs": "Publications",
-
-  "item.page.relationships.RELATION.Person.projects": "Projects",
-
-  "item.page.relationships.RELATION.OrgUnit.rpprojects": "Researchers Projects",
-
-  "item.page.relationships.RELATION.OrgUnit.publications": "Publications",
-
-  "item.page.relationships.RELATION.OrgUnit.rppublications": "Researchers Publications",
-
-  "item.page.relationships.RELATION.OrgUnit.people": "People",
-
-  "item.page.relationships.RELATION.OrgUnit.projects": "Projects",
-
-  "item.page.relationships.RELATION.OrgUnit.organizations": "Organizations",
-
-  "item.page.relationships.RELATION.Project.projects": "Projects",
-
-  "item.page.relationships.RELATION.Project.fundings": "Fundings",
-
-  "item.page.relationships.RELATION.Project.researchoutputs": "Publications",
-
-
   "item.page.subject": "Keywords",
 
   "item.page.uri": "URI",
@@ -3150,11 +3189,11 @@
 
   "item.preview.dc.date.issued": "Published date:",
 
-  "item.preview.dc.description": "Description:",
+  "item.preview.dc.description": "Description",
 
   "item.preview.dc.description.abstract": "Abstract:",
 
-  "item.preview.dc.identifier.other": "Other identifier:",
+  "item.preview.dc.identifier.other": "Other Identifier",
 
   "item.preview.dc.language.iso": "Language:",
 
@@ -3181,8 +3220,6 @@
   "item.preview.dc.relation.ispartofseries": "Is part of series",
 
   "item.preview.dc.rights": "Rights",
-
-  "item.preview.dc.identifier.other": "Other Identifier",
 
   "item.preview.dc.relation.issn": "ISSN",
 
@@ -3241,8 +3278,6 @@
   "item.preview.dc.identifier.issn": "ISSN",
 
   "item.preview.dc.identifier.openalex": "OpenAlex Identifier",
-
-  "item.preview.dc.description": "Description",
 
   "item.select.confirm": "Confirm selected",
 
@@ -3390,8 +3425,6 @@
 
   "itemtemplate.edit.metadata.edit.language": "Edit language",
 
-  "itemtemplate.edit.metadata.edit.authority": "Edit authority",
-
   "itemtemplate.edit.metadata.edit.value": "Edit value",
 
   "itemtemplate.edit.metadata.edit.buttons.confirm": "Confirm",
@@ -3415,8 +3448,6 @@
   "itemtemplate.edit.metadata.headers.language": "Lang",
 
   "itemtemplate.edit.metadata.headers.value": "Value",
-
-  "itemtemplate.edit.metadata.headers.authority": "Authority",
 
   "itemtemplate.edit.metadata.metadatafield": "Edit field",
 
@@ -3452,7 +3483,7 @@
 
   "journal.page.description": "Description",
 
-  "journal.page.edit": "Administer",
+  "journal.page.edit": "Edit this item",
 
   "journal.page.editor": "Editor-in-Chief",
 
@@ -3474,7 +3505,7 @@
 
   "journalissue.page.description": "Description",
 
-  "journalissue.page.edit": "Administer",
+  "journalissue.page.edit": "Edit this item",
 
   "journalissue.page.issuedate": "Issue Date",
 
@@ -3496,7 +3527,7 @@
 
   "journalvolume.page.description": "Description",
 
-  "journalvolume.page.edit": "Administer",
+  "journalvolume.page.edit": "Edit this item",
 
   "journalvolume.page.issuedate": "Issue Date",
 
@@ -3529,30 +3560,6 @@
   "iiif.page.issue": "Issue: ",
 
   "iiif.page.description": "Description: ",
-
-  "layout.advanced-attachment.dc.title": "Name",
-
-  "layout.advanced-attachment.size": "Size",
-
-  "layout.advanced-attachment.checksum": "Checksum",
-
-  "layout.advanced-attachment.checksum.info.MD5": "The <b>MD5 message-digest algorithm</b> can be used to verify the integrity of the file that you have uploaded. You can calculate its value locally via tools that are generally available in each operative system like <b>md5sum</b>",
-
-  "layout.advanced-attachment.format": "Format",
-
-  "layout.advanced-attachment.dc.type": "Type",
-
-  "layout.advanced-attachment.dc.description": "Description",
-
-  "layout.advanced-attachment.no_thumbnail": "No Thumbnail Available",
-
-  "layout.advanced-attachment.download": "Download",
-
-  "layout.advanced-attachment.requestACopy": "Request a copy",
-
-  "layout.advanced-attachment.viewMore": "View More",
-
-  "layout.advanced-attachment.label.not-present": "(not present)",
 
   "loading.bitstream": "Loading bitstream...",
 
@@ -3594,7 +3601,7 @@
 
   "login.form.forgot-password": "Have you forgotten your password?",
 
-  "login.form.header": "Please log in to DSpace",
+  "login.form.header": "Please log in to Bhasha Sanchika",
 
   "login.form.new-user": "New user? Click here to register.",
 
@@ -3614,7 +3621,7 @@
 
   "login.breadcrumbs": "Login",
 
-  "logout.form.header": "Log out from DSpace",
+  "logout.form.header": "Log out from Bhasha Sanchika",
 
   "logout.form.submit": "Log out",
 
@@ -3638,8 +3645,6 @@
 
   "menu.section.access_control_people": "People",
 
-  "menu.section.audit": "Audit Logs",
-
   "menu.section.reports": "Reports",
 
   "menu.section.reports.collections": "Filtered Collections",
@@ -3656,7 +3661,7 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "All of DSpace",
+  "menu.section.browse_global": "Browse DSpace",
 
   "menu.section.browse_global_by_author": "By Author",
 
@@ -3792,21 +3797,11 @@
 
   "menu.section.workflow": "Administer Workflow",
 
-  "menu.section.FULL": "Edit",
-
-  "menu.section.OWNER": "Edit",
-
-  "menu.section.DIRECTOR": "Edit",
-
-  "menu.section.INVESTIGATOR": "Edit",
-
   "metadata-export-search.tooltip": "Export search results as CSV",
 
   "metadata-export-search.submit.success": "The export was started successfully",
 
   "metadata-export-search.submit.error": "Starting the export has failed",
-
-  "metadata.security.level.title": "Metatada security level {{level}}",
 
   "mydspace.breadcrumbs": "MyDSpace",
 
@@ -3868,8 +3863,6 @@
 
   "mydspace.show.workspace": "Your submissions",
 
-  "mydspace.show.otherWorkspace": "Shared Submissions",
-
   "mydspace.show.supervisedWorkspace": "Supervised items",
 
   "mydspace.status": "My DSpace status:",
@@ -3904,7 +3897,7 @@
 
   "notification.suggestion.please": "Please",
 
-  "nav.browse.header": "All of DSpace",
+  "nav.browse.header": "Sanchika",
 
   "nav.community-browse.header": "By Community",
 
@@ -4086,8 +4079,6 @@
 
   "quality-assurance.event.reason": "Reason",
 
-  "orcid.badge.tooltip": "Connected to ORCID",
-
   "orgunit.listelement.badge": "Organizational Unit",
 
   "orgunit.listelement.no-title": "Untitled",
@@ -4100,7 +4091,7 @@
 
   "orgunit.page.description": "Description",
 
-  "orgunit.page.edit": "Administer",
+  "orgunit.page.edit": "Edit this item",
 
   "orgunit.page.id": "ID",
 
@@ -4128,7 +4119,7 @@
 
   "person.page.birthdate": "Birth Date",
 
-  "person.page.edit": "Administer",
+  "person.page.edit": "Edit this item",
 
   "person.page.email": "Email Address",
 
@@ -4306,11 +4297,11 @@
 
   "process.overview.unknown.user": "Unknown",
 
-  "process.bulk.delete.error.head": "Error on deleting process",
+  "process.bulk.delete.error.head": "Error on deleteing process",
 
-  "process.bulk.delete.error.body": "The process with ID {{processId}} could not be deleted. The remaining processes will continue being deleted.",
+  "process.bulk.delete.error.body": "The process with ID {{processId}} could not be deleted. The remaining processes will continue being deleted. ",
 
-  "process.bulk.delete.success": "{{count}} process(es) have been successfully deleted",
+  "process.bulk.delete.success": "{{count}} process(es) have been succesfully deleted",
 
   "profile.breadcrumbs": "Update Profile",
 
@@ -4384,7 +4375,7 @@
 
   "project.page.description": "Description",
 
-  "project.page.edit": "Administer",
+  "project.page.edit": "Edit this item",
 
   "project.page.expectedcompletion": "Expected Completion",
 
@@ -4408,7 +4399,7 @@
 
   "publication.page.description": "Description",
 
-  "publication.page.edit": "Administer",
+  "publication.page.edit": "Edit this item",
 
   "publication.page.journal-issn": "Journal ISSN",
 
@@ -4421,8 +4412,6 @@
   "publication.page.titleprefix": "Publication: ",
 
   "publication.page.volume-title": "Volume Title",
-
-  "publication.page.doi": "DOI",
 
   "publication.search.results.head": "Publication Search Results",
 
@@ -4548,7 +4537,7 @@
 
   "register-page.registration.header": "New user registration",
 
-  "register-page.registration.info": "Register an account to subscribe to collections for email updates, and submit new items to DSpace.",
+  "register-page.registration.info": "Register an account to subscribe to collections for email updates, and submit new items to Bhasha Sanchika.",
 
   "register-page.registration.email": "Email Address *",
 
@@ -4646,9 +4635,9 @@
 
   "repository.image.logo": "Repository logo",
 
-  "repository.title": "DSpace Repository",
+  "repository.title": "Bhasha Sanchika",
 
-  "repository.title.prefix": "DSpace Repository :: ",
+  "repository.title.prefix": "",
 
   "resource-policies.add.button": "Add",
 
@@ -4774,30 +4763,6 @@
 
   "resource-policies.table.headers.title.for.collection": "Policies for Collection",
 
-  "RELATION.Person.researchoutputs.search.results.head": "Research Output",
-
-  "RELATION.Person.projects.search.results.head": "Projects",
-
-  "RELATION.Project.researchoutputs.search.results.head": "Publications",
-
-  "RELATION.Project.fundings.search.results.head": "Fundings",
-
-  "RELATION.Project.projects.search.results.head": "Projects",
-
-  "RELATION.OrgUnit.organizations.search.results.head": "Organizations",
-
-  "RELATION.OrgUnit.rppublications.search.results.head": "Researchers Publications",
-
-  "RELATION.OrgUnit.publications.search.results.head": "Publications",
-
-  "RELATION.OrgUnit.rpprojects.search.results.head": "Researchers Projects",
-
-  "RELATION.OrgUnit.projects.search.results.head": "Projects",
-
-  "RELATION.Project.researchoutputs.search.results.head": "Publications",
-
-  "RELATION.OrgUnit.people.search.results.head": "People",
-
   "root.skip-to-content": "Skip to main content",
 
   "search.description": "",
@@ -4831,6 +4796,7 @@
   "search.filters.applied.f.original_bundle_filenames": "File name",
 
   "search.filters.applied.f.original_bundle_descriptions": "File description",
+
   "search.filters.applied.f.has_geospatial_metadata": "Has geographical location",
 
   "search.filters.applied.f.itemtype": "Type",
@@ -5113,7 +5079,11 @@
 
   "search.form.search_dspace": "All repository",
 
-  "search.form.scope.all": "All of DSpace",
+  "search.form.scope.all": "Sanchika",
+  "search.hero.badge": "Discover",
+  "search.hero.title": "Search",
+  "search.hero.title.span": "Results",
+  "search.hero.subtitle": "Bhasha Sanchika",
 
   "search.results.head": "Search Results",
 
@@ -5205,21 +5175,23 @@
 
   "sorting.person.birthDate.DESC": "Birth Date Descending",
 
-  "sorting.ownerselection.ASC": "Owner Relevance Ascending",
-
-  "sorting.ownerselection.DESC": "Owner Relevance Descending",
-
   "statistics.title": "Statistics",
+  "statistics.item.title": "Item Statistics",
+  "statistics.community.title": "Community Statistics",
+  "statistics.collection.title": "Collection Statistics",
+  "statistics.collection.breadcrumbs": "Collection Statistics",
 
   "statistics.header": "Statistics for {{ scope }}",
 
   "statistics.breadcrumbs": "Statistics",
+  "statistics.item.breadcrumbs": "Item Statistics",
+  "statistics.community.breadcrumbs": "Community Statistics",
 
   "statistics.page.no-data": "No data available",
 
   "statistics.table.no-data": "No data available",
 
-  "statistics.table.title.TotalVisits": "Total visits",
+  "statistics.table.title.TotalVisits": "Most Viewed Items",
 
   "statistics.table.title.TotalVisitsPerMonth": "Total visits per month",
 
@@ -5229,15 +5201,14 @@
 
   "statistics.table.title.TopCities": "Top city views",
 
-  "statistics.table.header.views": "Views",
+  "statistics.table.header.label": "Month",
+  "statistics.table.header.views": "Total Views",
 
   "statistics.table.no-name": "(object name could not be loaded)",
 
   "submission.edit.breadcrumbs": "Edit Submission",
 
   "submission.edit.title": "Edit Submission",
-
-  "submission.edit.item.breadcrumbs": "Edit item",
 
   "submission.general.cancel": "Cancel",
 
@@ -5257,8 +5228,6 @@
 
   "submission.general.back.submit": "Back",
 
-  "submission.general.info.invalid": "The submission is invalid, check missing fields",
-
   "submission.general.info.saved": "Saved",
 
   "submission.general.info.pending-changes": "Unsaved changes",
@@ -5266,8 +5235,6 @@
   "submission.general.save": "Save",
 
   "submission.general.save-later": "Save for later",
-
-  "submission.general.save-later.edit-item": "Save and return",
 
   "submission.import-external.page.title": "Import metadata from an external source",
 
@@ -5795,8 +5762,6 @@
 
   "submission.sections.submit.progressbar.CClicense": "Creative commons license",
 
-  "submission.sections.submit.progressbar.CustomUrlStep": "Custom Url",
-
   "submission.sections.submit.progressbar.describe.recycle": "Recycle",
 
   "submission.sections.submit.progressbar.describe.stepcustom": "Describe",
@@ -5810,8 +5775,6 @@
   "submission.sections.submit.progressbar.identifiers": "Identifiers",
 
   "submission.sections.submit.progressbar.license": "Deposit license",
-
-  "submission.sections.submit.progressbar.describe.owner": "Owner",
 
   "submission.sections.submit.progressbar.sherpapolicy": "Sherpa policies",
 
@@ -5909,12 +5872,6 @@
 
   "submission.sections.upload.upload-successful": "Upload successful",
 
-  "submission.sections.custom-url.label.previous-urls": "Previous Urls",
-
-  "submission.sections.custom-url.alert.info": "Define here a custom URL which will be used to reach the item instead of using an internal randomly generated UUID identifier. ",
-
-  "submission.sections.custom-url.url.placeholder": "Custom URL",
-
   "submission.sections.accesses.form.discoverable-description": "When checked, this item will be discoverable in search/browse. When unchecked, the item will only be available via a direct link and will never appear in search/browse.",
 
   "submission.sections.accesses.form.discoverable-label": "Discoverable",
@@ -6009,7 +5966,7 @@
 
   "submission.sections.sherpa.record.information.uri": "URI",
 
-  "submission.sections.sherpa.error.message": "There was an error retrieving sherpa information",
+  "submission.sections.sherpa.error.message": "There was an error retrieving sherpa informations",
 
   "submission.submit.breadcrumbs": "New submission",
 
@@ -6057,7 +6014,7 @@
 
   "submission.workflow.tasks.claimed.reject.submit": "Reject",
 
-  "submission.workflow.tasks.claimed.reject_help": "If you have reviewed the item and found it is <strong>not</strong> suitable for inclusion in the collection, select \"Reject\". You will then be asked to enter a message indicating why the item is unsuitable, and whether the submitter should change something and resubmit.",
+  "submission.workflow.tasks.claimed.reject_help": "If you have reviewed the item and found it is <strong>not</strong> suitable for inclusion in the collection, select \"Reject\".  You will then be asked to enter a message indicating why the item is unsuitable, and whether the submitter should change something and resubmit.",
 
   "submission.workflow.tasks.claimed.return": "Return to pool",
 
@@ -6175,7 +6132,7 @@
 
   "thumbnail.person.placeholder": "No Profile Picture Available",
 
-  "title": "DSpace",
+  title: "DSpace",
 
   "vocabulary-treeview.header": "Hierarchical tree view",
 
@@ -6220,8 +6177,6 @@
   "workflowAdmin.search.results.head": "Administer Workflow",
 
   "workflow.search.results.head": "Workflow tasks",
-
-  "otherWorkspace.search.results.head": "Shared workspace",
 
   "supervision.search.results.head": "Workflow and Workspace tasks",
 
@@ -6575,8 +6530,6 @@
 
   "home.recent-submissions.head": "Recent Submissions",
 
-  "authority-confidence.search-label": "Search",
-
   "listable-notification-object.default-message": "This object couldn't be retrieved",
 
   "system-wide-alert-banner.retrieval.error": "Something went wrong retrieving the system-wide alert banner",
@@ -6703,7 +6656,7 @@
 
   "coar-notify-support.ldn-inbox.title": "LDN InBox",
 
-  "coar-notify-support.ldn-inbox.content": "For your convenience, our LDN (Linked Data Notifications) InBox is easily accessible at {{ ldnInboxUrl }}. The LDN InBox enables seamless communication and data exchange, ensuring efficient and effective collaboration.",
+  "coar-notify-support.ldn-inbox.content": "For your convenience, our LDN (Linked Data Notifications) InBox is easily accessible at https://sanchika.ciil.org/server/ldn/inbox. The LDN InBox enables seamless communication and data exchange, ensuring efficient and effective collaboration.",
 
   "coar-notify-support.message-moderation.title": "Message Moderation",
 
@@ -6714,152 +6667,263 @@
   "service.overview.delete.header": "Delete Service",
 
   "ldn-registered-services.title": "Registered Services",
+
   "ldn-registered-services.table.name": "Name",
+
   "ldn-registered-services.table.description": "Description",
+
   "ldn-registered-services.table.status": "Status",
+
   "ldn-registered-services.table.action": "Action",
+
   "ldn-registered-services.new": "NEW",
+
   "ldn-registered-services.new.breadcrumbs": "Registered Services",
 
   "ldn-service.overview.table.enabled": "Enabled",
+
   "ldn-service.overview.table.disabled": "Disabled",
+
   "ldn-service.overview.table.clickToEnable": "Click to enable",
+
   "ldn-service.overview.table.clickToDisable": "Click to disable",
 
   "ldn-edit-registered-service.title": "Edit Service",
+
   "ldn-create-service.title": "Create service",
+
   "service.overview.create.modal": "Create Service",
+
   "service.overview.create.body": "Please confirm the creation of this service.",
+
   "ldn-service-status": "Status",
+
   "service.confirm.create": "Create",
+
   "service.refuse.create": "Cancel",
+
   "ldn-register-new-service.title": "Register a new service",
+
   "ldn-new-service.form.label.submit": "Save",
+
   "ldn-new-service.form.label.name": "Name",
+
   "ldn-new-service.form.label.description": "Description",
+
   "ldn-new-service.form.label.url": "Service URL",
+
   "ldn-new-service.form.label.ip-range": "Service IP range",
+
   "ldn-new-service.form.label.score": "Level of trust",
+
   "ldn-new-service.form.label.ldnUrl": "LDN Inbox URL",
+
   "ldn-new-service.form.placeholder.name": "Please provide service name",
+
   "ldn-new-service.form.placeholder.description": "Please provide a description regarding your service",
+
   "ldn-new-service.form.placeholder.url": "Please input the URL for users to check out more information about the service",
+
   "ldn-new-service.form.placeholder.lowerIp": "IPv4 range lower bound",
+
   "ldn-new-service.form.placeholder.upperIp": "IPv4 range upper bound",
+
   "ldn-new-service.form.placeholder.ldnUrl": "Please specify the URL of the LDN Inbox",
+
   "ldn-new-service.form.placeholder.score": "Please enter a value between 0 and 1. Use the “.” as decimal separator",
+
   "ldn-service.form.label.placeholder.default-select": "Select a pattern",
 
   "ldn-service.form.pattern.ack-accept.label": "Acknowledge and Accept",
+
   "ldn-service.form.pattern.ack-accept.description": "This pattern is used to acknowledge and accept a request (offer). It implies an intention to act on the request.",
+
   "ldn-service.form.pattern.ack-accept.category": "Acknowledgements",
 
   "ldn-service.form.pattern.ack-reject.label": "Acknowledge and Reject",
+
   "ldn-service.form.pattern.ack-reject.description": "This pattern is used to acknowledge and reject a request (offer). It signifies no further action regarding the request.",
+
   "ldn-service.form.pattern.ack-reject.category": "Acknowledgements",
 
   "ldn-service.form.pattern.ack-tentative-accept.label": "Acknowledge and Tentatively Accept",
+
   "ldn-service.form.pattern.ack-tentative-accept.description": "This pattern is used to acknowledge and tentatively accept a request (offer). It implies an intention to act, which may change.",
+
   "ldn-service.form.pattern.ack-tentative-accept.category": "Acknowledgements",
 
   "ldn-service.form.pattern.ack-tentative-reject.label": "Acknowledge and Tentatively Reject",
+
   "ldn-service.form.pattern.ack-tentative-reject.description": "This pattern is used to acknowledge and tentatively reject a request (offer). It signifies no further action, subject to change.",
+
   "ldn-service.form.pattern.ack-tentative-reject.category": "Acknowledgements",
 
   "ldn-service.form.pattern.announce-endorsement.label": "Announce Endorsement",
+
   "ldn-service.form.pattern.announce-endorsement.description": "This pattern is used to announce the existence of an endorsement, referencing the endorsed resource.",
+
   "ldn-service.form.pattern.announce-endorsement.category": "Announcements",
 
   "ldn-service.form.pattern.announce-ingest.label": "Announce Ingest",
+
   "ldn-service.form.pattern.announce-ingest.description": "This pattern is used to announce that a resource has been ingested.",
+
   "ldn-service.form.pattern.announce-ingest.category": "Announcements",
 
   "ldn-service.form.pattern.announce-relationship.label": "Announce Relationship",
+
   "ldn-service.form.pattern.announce-relationship.description": "This pattern is used to announce a relationship between two resources.",
+
   "ldn-service.form.pattern.announce-relationship.category": "Announcements",
 
   "ldn-service.form.pattern.announce-review.label": "Announce Review",
+
   "ldn-service.form.pattern.announce-review.description": "This pattern is used to announce the existence of a review, referencing the reviewed resource.",
+
   "ldn-service.form.pattern.announce-review.category": "Announcements",
 
   "ldn-service.form.pattern.announce-service-result.label": "Announce Service Result",
+
   "ldn-service.form.pattern.announce-service-result.description": "This pattern is used to announce the existence of a 'service result', referencing the relevant resource.",
+
   "ldn-service.form.pattern.announce-service-result.category": "Announcements",
 
   "ldn-service.form.pattern.request-endorsement.label": "Request Endorsement",
+
   "ldn-service.form.pattern.request-endorsement.description": "This pattern is used to request endorsement of a resource owned by the origin system.",
+
   "ldn-service.form.pattern.request-endorsement.category": "Requests",
 
   "ldn-service.form.pattern.request-ingest.label": "Request Ingest",
+
   "ldn-service.form.pattern.request-ingest.description": "This pattern is used to request that the target system ingest a resource.",
+
   "ldn-service.form.pattern.request-ingest.category": "Requests",
 
   "ldn-service.form.pattern.request-review.label": "Request Review",
+
   "ldn-service.form.pattern.request-review.description": "This pattern is used to request a review of a resource owned by the origin system.",
+
   "ldn-service.form.pattern.request-review.category": "Requests",
 
   "ldn-service.form.pattern.undo-offer.label": "Undo Offer",
+
   "ldn-service.form.pattern.undo-offer.description": "This pattern is used to undo (retract) an offer previously made.",
+
   "ldn-service.form.pattern.undo-offer.category": "Undo",
 
   "ldn-new-service.form.label.placeholder.selectedItemFilter": "No Item Filter Selected",
+
   "ldn-new-service.form.label.ItemFilter": "Item Filter",
+
   "ldn-new-service.form.label.automatic": "Automatic",
+
   "ldn-new-service.form.error.name": "Name is required",
+
   "ldn-new-service.form.error.url": "URL is required",
+
   "ldn-new-service.form.error.ipRange": "Please enter a valid IP range",
+
   "ldn-new-service.form.hint.ipRange": "Please enter a valid IpV4 in both range bounds (note: for single IP, please enter the same value in both fields)",
+
   "ldn-new-service.form.error.ldnurl": "LDN URL is required",
+
   "ldn-new-service.form.error.patterns": "At least a pattern is required",
+
   "ldn-new-service.form.error.score": "Please enter a valid score (between 0 and 1). Use the “.” as decimal separator",
 
   "ldn-new-service.form.label.inboundPattern": "Supported Pattern",
+
   "ldn-new-service.form.label.addPattern": "+ Add more",
+
   "ldn-new-service.form.label.removeItemFilter": "Remove",
+
   "ldn-register-new-service.breadcrumbs": "New Service",
+
   "service.overview.delete.body": "Are you sure you want to delete this service?",
+
   "service.overview.edit.body": "Do you confirm the changes?",
+
   "service.overview.edit.modal": "Edit Service",
+
   "service.detail.update": "Confirm",
+
   "service.detail.return": "Cancel",
+
   "service.overview.reset-form.body": "Are you sure you want to discard the changes and leave?",
+
   "service.overview.reset-form.modal": "Discard Changes",
+
   "service.overview.reset-form.reset-confirm": "Discard",
+
   "admin.registries.services-formats.modify.success.head": "Successful Edit",
+
   "admin.registries.services-formats.modify.success.content": "The service has been edited",
+
   "admin.registries.services-formats.modify.failure.head": "Failed Edit",
+
   "admin.registries.services-formats.modify.failure.content": "The service has not been edited",
+
   "ldn-service-notification.created.success.title": "Successful Create",
+
   "ldn-service-notification.created.success.body": "The service has been created",
+
   "ldn-service-notification.created.failure.title": "Failed Create",
+
   "ldn-service-notification.created.failure.body": "The service has not been created",
+
   "ldn-service-notification.created.warning.title": "Please select at least one Inbound Pattern",
+
   "ldn-enable-service.notification.success.title": "Successful status updated",
+
   "ldn-enable-service.notification.success.content": "The service status has been updated",
+
   "ldn-service-delete.notification.success.title": "Successful Deletion",
+
   "ldn-service-delete.notification.success.content": "The service has been deleted",
+
   "ldn-service-delete.notification.error.title": "Failed Deletion",
+
   "ldn-service-delete.notification.error.content": "The service has not been deleted",
+
   "service.overview.reset-form.reset-return": "Cancel",
+
   "service.overview.delete": "Delete service",
+
   "ldn-edit-service.title": "Edit service",
+
   "ldn-edit-service.form.label.name": "Name",
+
   "ldn-edit-service.form.label.description": "Description",
+
   "ldn-edit-service.form.label.url": "Service URL",
+
   "ldn-edit-service.form.label.ldnUrl": "LDN Inbox URL",
+
   "ldn-edit-service.form.label.inboundPattern": "Inbound Pattern",
+
   "ldn-edit-service.form.label.noInboundPatternSelected": "No Inbound Pattern",
+
   "ldn-edit-service.form.label.selectedItemFilter": "Selected Item Filter",
+
   "ldn-edit-service.form.label.selectItemFilter": "No Item Filter",
+
   "ldn-edit-service.form.label.automatic": "Automatic",
+
   "ldn-edit-service.form.label.addInboundPattern": "+ Add more",
+
   "ldn-edit-service.form.label.submit": "Save",
+
   "ldn-edit-service.breadcrumbs": "Edit Service",
+
   "ldn-service.control-constaint-select-none": "Select none",
 
   "ldn-register-new-service.notification.error.title": "Error",
+
   "ldn-register-new-service.notification.error.content": "An error occurred while creating this process",
+
   "ldn-register-new-service.notification.success.title": "Success",
+
   "ldn-register-new-service.notification.success.content": "The process was successfully created",
 
   "submission.sections.notify.info": "The selected service is compatible with the item according to its current status. {{ service.name }}: {{ service.description }}",
@@ -6881,6 +6945,7 @@
   "menu.section.services_new": "LDN Service",
 
   "quality-assurance.topics.description-with-target": "Below you can see all the topics received from the subscriptions to {{source}} in regards to the",
+
   "quality-assurance.events.description": "Below the list of all the suggestions for the selected topic <b>{{topic}}</b>, related to <b>{{source}}</b>.",
 
   "quality-assurance.events.description-with-topic-and-target": "Below the list of all the suggestions for the selected topic <b>{{topic}}</b>, related to <b>{{source}}</b> and ",
@@ -6945,13 +7010,13 @@
 
   "error.validation.coarnotify.invalidfilter": "Invalid filter, try to select another service or none.",
 
-  "request-status-alert-box.accepted": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'>{{ serviceName }}</a> has been taken in charge.",
+  "request-status-alert-box.accepted": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'> {{ serviceName }}  </a> has been taken in charge.",
 
-  "request-status-alert-box.rejected": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'>{{ serviceName }}</a> has been rejected.",
+  "request-status-alert-box.rejected": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'> {{ serviceName }}  </a> has been rejected.",
 
-  "request-status-alert-box.tentative_rejected": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'>{{ serviceName }}</a> has been tentatively rejected. Revisions are required",
+  "request-status-alert-box.tentative_rejected": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'> {{ serviceName }}  </a> has been tentatively rejected. Revisions are required",
 
-  "request-status-alert-box.requested": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'>{{ serviceName }}</a> is pending.",
+  "request-status-alert-box.requested": "The requested {{ offerType }} for <a href='{{serviceUrl}}' target='_blank'> {{ serviceName }}  </a> is pending.",
 
   "ldn-service-button-mark-inbound-deletion": "Mark supported pattern for deletion",
 
@@ -7345,17 +7410,13 @@
 
   "form.date-picker.placeholder.day": "Day",
 
-  "item.page.license.title": "Rights and licensing",
-
   "item.page.cc.license.title": "Creative Commons license",
 
-  "item.page.cc.license.disclaimer": "Except where otherwise noted, this item's license is described as",
+  "item.page.cc.license.disclaimer": "Except where otherwised noted, this item's license is described as",
 
   "browse.search-form.placeholder": "Search the repository",
 
   "file-download-link.download": "Download ",
-
-  "file-download-button.download": "Download",
 
   "register-page.registration.aria.label": "Enter your e-mail address",
 
@@ -7365,7 +7426,7 @@
 
   "live-region.ordering.instructions": "Press spacebar to reorder {{ itemName }}.",
 
-  "live-region.ordering.status": "{{ itemName }}, grabbed. Current position in list: {{ index }} of {{ length }}. Press up and down arrow keys to change position, SpaceBar to drop, Escape to cancel.",
+  "live-region.ordering.status": "{{ itemName }}, grabbed. Current position in list: {{ index }} of  {{ length }}. Press up and down arrow keys to change position, SpaceBar to drop, Escape to cancel.",
 
   "live-region.ordering.moved": "{{ itemName }}, moved to position {{ index }} of {{ length }}. Press up and down arrow keys to change position, SpaceBar to drop, Escape to cancel.",
 
@@ -7477,173 +7538,1042 @@
 
   "file-download-link.request-copy": "Request a copy of ",
 
-  "file-download-button.request-copy": "Request a copy",
-
   "item.preview.organization.url": "URL",
 
   "item.preview.organization.address.addressLocality": "City",
 
   "item.preview.organization.alternateName": "Alternative name",
 
-  "metadata-link-view.orcid.logo": "ORCID logo",
+  "about.badge": "About",
+  "about.subtitle": "Bhasha Sanchika",
 
-  "metadata-link-view.source.logo": "Source logo",
+  "about.title.html": "About <span>Us</span>",
 
-  "metadata-link-view.popover.label.Person.dc.title": "Fullname",
+  "about.section.introduction": "Introduction",
 
-  "metadata-link-view.popover.label.Person.person.affiliation.name": "Main affiliation",
+  "about.intro.text": "Welcome to <strong>Bhasha Sanchika</strong>, the digital language repository of the Central Institute of Indian Languages (CIIL), where language preservation, dissemination, and technological advancement converge in a pioneering initiative. Established in 1969, CIIL plays a pivotal role in the multifaceted landscape of language development and research in India. One of its primary functions is to advise and assist both the Central and State Governments on language-related matters, fostering linguistic harmony and promoting the learning of <strong>20 Indian languages</strong> by non-native speakers.",
 
-  "metadata-link-view.popover.label.Person.person.email": "Email",
+  "about.section.commitment": "CIIL's Commitment",
 
-  "metadata-link-view.popover.label.Person.person.identifier.orcid": "ORCID",
+  "about.commitment.text": "CIIL's commitment extends to the development of all Indian languages, exemplified through the creation of content and corpora. The institute is dedicated to protecting and documenting minor, minority, and tribal languages, recognizing their cultural significance. The institute's responsibilities encompass language analysis, pedagogy, technology, and use, addressing challenges in education, literacy, mass media, governance, and emotional integration. Moreover, CIIL functions as a catalyst for convergence of diverse disciplines and institutions, fostering collaboration and idea exchange.",
 
-  "metadata-link-view.popover.label.Person.dc.description.abstract": "Abstract",
+  "about.feature.title": "Introducing<br>Bhasha Sanchika",
 
-  "metadata-link-view.popover.label.Person.person.jobTitle": "Job title",
+  "about.feature.desc": "A dedicated step launched as a dynamic digital archive contributing to the bonds of unity among different Indian languages.",
 
-  "metadata-link-view.popover.label.other.dc.title": "Title",
+  "about.feature.powered-by": "Powered By:",
 
-  "metadata-link-view.popover.label.other.dc.description.abstract": "Description",
+  "about.feature.dspace": "D-Space Platform",
 
-  "metadata-link-view.popover.label.more-info": "More info",
+  "about.feature.opensource": "Open Source",
 
-  "item.page.extended-file-section": "Bitstreams",
+  "about.section.journey": "Our Journey",
 
-  "file.section.name": "Document",
+  "about.timeline.2024.year": "2024",
 
-  "file.section.type": "Type",
+  "about.timeline.2024.title": "Foundation",
 
-  "file.section.size": "Size",
+  "about.timeline.2024.desc": "Foundation Stone for Starting Bhasha Sanchika",
 
-  "dataset.page.titleprefix": "Dataset",
+  "about.timeline.2025.year": "2025",
 
-  "dataset.listelement.badge": "Dataset",
+  "about.timeline.2025.title": "Bhasha Sanchika Launch",
 
-  "dataset.page.options": "Options",
+  "about.timeline.2025.desc": "Transitioning into a world-class digital repository for the modern era.",
 
-  "dataset.page.edit": "Edit this Dataset",
+  "about.timeline.2026.year": "2026",
 
-  "relationships.Dataset.isAuthorOfDataset.Person": "Authors (Persons)",
+  "about.timeline.2026.title": "Bhasha Sanchika Ver.2",
 
-  "relationships.Dataset.isProjectOfDataset.Project": "Research Projects",
+  "about.timeline.2026.desc": "Launch of Bhasha Sanchika Version 2.0 with enhanced features and improved user experience.",
 
-  "relationships.Dataset.isAuthorOfDataset.OrgUnit": "Organizational Units",
+  "about.section.objectives": "Core Objectives",
 
-  "relationships.Dataset.isOrgUnitOfDataset.OrgUnit": "Authors (Organizational Units)",
+  "about.obj.preservation.title": "Preservation",
 
-  "relationships.Dataset.isPublicationOfDataset.Publication": "Publications",
+  "about.obj.preservation.desc": "Ensuring the enduring storage of linguistic and cultural data.",
 
-  "relationships.Publication.isDatasetOfPublication.Dataset": "Datasets",
+  "about.obj.digital.title": "Digital Presence",
 
-  "relationships.Person.isDatasetOfAuthor.Dataset": "Datasets",
+  "about.obj.digital.desc": "Enhancing Indian languages and mother tongues across the web.",
 
-  "relationships.Project.isDatasetOfProject.Dataset": "Datasets",
+  "about.obj.formats.title": "Diverse Formats",
 
-  "relationships.OrgUnit.isDatasetOfAuthor.Dataset": "Authored Datasets",
+  "about.obj.formats.desc": "Resources available in text, image, audio, and video formats.",
 
-  "relationships.OrgUnit.isDatasetOfOrgUnit.Dataset": "Organisation Datasets",
+  "about.obj.langtech.title": "Language Tech",
 
-  "submission.sections.describe.relationship-lookup.title.Dataset": "Datasets",
+  "about.obj.langtech.desc": "Creating technology resources and pedagogy materials for all.",
 
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.Dataset": "Local Datasets",
+  "about.heritage.title": "Explore India's Rich Linguistic Heritage",
 
-  "dataset.search.results.head": "Dataset Search Results",
+  "about.heritage.text": "In essence, <strong>Bhasha Sanchika</strong> emerges as a comprehensive digital repository aligning with national initiatives such as <strong>NEP-2020, Ek Bharat Shreshtha Bharat, Digital India, and Atmanirbhar Bharat</strong>. Beyond preserving linguistic diversity, it serves as a catalyst for research, education, and the promotion of Indian languages in the digital age.",
 
-  "submission.sections.describe.relationship-lookup.title.isAuthorOfDataset": "Authors",
+  "about.heritage.tag.nep": "NEP-2020",
 
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.isAuthorOfDataset": "Local Authors ({{ count }})",
+  "about.heritage.tag.digital": "Digital India",
 
-  "submission.sections.describe.relationship-lookup.title.isPublicationOfDataset": "Publications",
+  "about.heritage.tag.atmanirbhar": "Atmanirbhar Bharat",
 
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.isPublicationOfDataset": "Local Publications ({{ count }})",
+  "about.heritage.tag.ekbharat": "Ek Bharat Shreshtha Bharat",
 
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.cinii": "CiNii ({{ count }})",
+  "about.section.specialised": "Specialised Sections",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.head.cinii": "Importing from CiNii",
+  "about.tab.sppel": "SPPEL",
 
-  "submission.sections.describe.relationship-lookup.selection-tab.title.cinii": "Search Results",
+  "about.tab.bhasha": "Bhasha Mandakini",
 
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.datacite": "DataCite ({{ count }})",
+  "about.tab.bharat": "Bharatavani",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.head.datacite": "Importing from DataCite",
+  "about.tab.ciil": "CIIL Publications",
 
-  "submission.sections.describe.relationship-lookup.selection-tab.title.datacite": "Search Results",
+  "about.sppel.title": "SPPEL",
 
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.doi": "DOI ({{ count }})",
+  "about.sppel.text": "The dedicated Scheme for Protection and Preservation of Endangered Languages (SPPEL) focuses on endangered mother tongues and languages. This section encompasses raw audio files, transcriptions, translations, photographs, and videos to document languages at risk.",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.head.doi": "Importing from DOI",
+  "about.bhasha.title": "Bhasha Mandakini",
 
-  "submission.sections.describe.relationship-lookup.selection-tab.title.doi": "Search Results",
+  "about.bhasha.text": "This section features video documentaries covering various aspects of Bangla, Marathi, Kannada, and Tamil language and literature. These visual resources contribute to a deeper understanding of cultural nuances and literary history.",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isPublicationOfDataset.title": "Import Remote Publication",
+  "about.bharat.title": "Bharatavani",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isPublicationOfDataset.added.local-entity": "Successfully added local publication to the selection",
+  "about.bharat.text": "Providing brief details of content in 121 languages, Bharatavani provides a portal for reading and downloading books collected from various sources across India. It acts as a single point of reference for knowledge in and about Indian languages.",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isPublicationOfDataset.added.new-entity": "Successfully imported and added external publication to the selection",
+  "about.ciil.title": "CIIL Publications",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isAuthorOfDataset.title": "Import Remote Author",
+  "about.ciil.text": "An overview of all CIIL publications, potentially including scanned copies of rare academic books, linguistic research papers, and pedagogical materials available on the Bharatavani portal for public access.",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isAuthorOfDataset.added.local-entity": "Successfully added local author to the selection",
+  "about.section.leadership": "Our Leadership",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isAuthorOfDataset.added.new-entity": "Successfully imported and added external author to the selection",
+  "about.leader1.name": "Prof. Shailendra Mohan",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isProjectOfDataset.title": "Import Remote Project",
+  "about.leader1.role": "Director, CIIL",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isProjectOfDataset.added.local-entity": "Successfully added local project to the selection",
+  "about.leader2.name": "Dr. Sujoy Sarkar",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isProjectOfDataset.added.new-entity": "Successfully imported and added external project to the selection",
+  "about.leader2.role": "Officer-in-Charge",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isOrgUnitOfDataset.title": "Import Remote Organization",
+  "about.section.contact": "Contact Us",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isOrgUnitOfDataset.added.local-entity": "Successfully added local organization to the selection",
+  "about.contact.address.title": "Official Address",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-modal.isOrgUnitOfDataset.added.new-entity": "Successfully imported and added external organization to the selection",
+  "about.contact.address.text": "Central Institute of Indian Languages<br>Department of Higher Education<br>Ministry of Education, Government of India<br>Mysuru 570006",
 
-  "admin.edit-cms-metadata.success": "Metadata successfully updated",
+  "about.contact.person.title": "Contact Person",
 
-  "admin.edit-cms-metadata.back-button": "Back",
+  "about.contact.person.name": "Dr. Sujoy Sarkar",
 
-  "admin.edit-cms-metadata.save-button": "Save",
+  "about.contact.person.tel": "Tel: 0821 2345000 (Reception)",
 
-  "admin.edit-cms-metadata.select-metadata": "Select metadata to edit",
+  "about.contact.email.title": "Email Us",
 
-  "admin.edit-cms-metadata.edit-button": "Edit",
+  "about.contact.email.address": "lgarchciil[at]gmail[dot]com",
 
-  "admin.edit-cms-metadata.breadcrumbs": "Edit CMS Metadata",
+  "contrib.badge": "Credits",
 
-  "admin.edit-cms-metadata.title": "Edit CMS Metadata",
+  "contrib.title.html": "Contributors <span>Page</span>",
 
-  "admin.edit-cms-metadata.error": "An error occurred while updating the metadata",
+  "contrib.section.initiative": "About the Initiative",
 
-  "menu.section.edit-cms-metadata": "Edit CMS Metadata",
+  "contrib.intro.p1": "The <strong>Bhasha Sanchika</strong>, a digital language repository by the Central Institute of Indian Languages (CIIL), stands as a testament to the collective efforts dedicated to preserving Indian languages. Established over 56 years ago, CIIL actively engages diverse stakeholders in its mission. Collaboration is the linchpin, weaving together government initiatives, educational institutions, technological innovations, and grassroots community involvement.",
 
-  "menu.section.cms.edit.metadata.head": "Edit Metadata",
+  "contrib.intro.p2": "This collaborative approach is crucial in navigating the intricate landscape of linguistic diversity in India, ensuring that the repository becomes a shared resource for language preservation, dissemination, and technological advancement. We take this opportunity to acknowledge all the contributions that made Bhasha Sanchika a reality",
 
-  "admin.edit-user-agreement.breadcrumbs": "Edit User Agreement",
+  "contrib.section.leadership": "Our Leadership",
 
-  "admin.edit-user-agreement.confirm.title": "Force acceptance",
+  "contrib.leader1.name": "Prof. Shailendra Mohan",
 
-  "admin.edit-user-agreement.confirm.info": "Do you want to force all users to accept the new user agreement?",
+  "contrib.leader1.role": "Director, CIIL",
 
-  "admin.edit-user-agreement.confirm.cancel": "Cancel",
+  "contrib.leader2.name": "Dr. Sujoy Sarkar",
 
-  "admin.edit-user-agreement.confirm.no": "No, update only",
+  "contrib.leader2.role": "Officer-in-Charge",
 
-  "admin.edit-user-agreement.confirm.yes": "Yes, update and force",
+  "contrib.section.contributors": "Contributors to Bhasha Sanchika",
 
-  "menu.section.edit-user-agreement": "Edit User Agreement",
+  "contrib.accordion.design": "Archive Design and Implementation",
 
-  "admin.edit-user-agreement.save-button": "Save",
+  "contrib.accordion.project": "Project Assistance",
 
-  "admin.edit-user-agreement.markdown": "<i>End User Agreement</i> text supports <a href=\"https://www.markdownguide.org/basic-syntax/\" target=\"_blank\">Markdown</a> language.",
+  "contrib.accordion.sppel": "SPPEL Contributors",
 
-  "admin.edit-cms-metadata.markdown": "<i>CMS Metadata</i> text supports <a href=\"https://www.markdownguide.org/basic-syntax/\" target=\"_blank\">Markdown</a> language.",
+  "contrib.accordion.bhasha": "Bhasha Mandakini Contributors",
 
-  "admin.edit-user-agreement.header": "Edit User Agreement",
+  "contrib.accordion.bharatavani": "Bharatavani Contributors",
 
-  "admin.edit-user-agreement.success": "User agreement successfully updated",
+  "contrib.accordion.ciil": "CIIL Publication & Other Contributors",
 
-  "admin.edit-user-agreement.error": "An error occurred while updating the user agreement",
+  "contrib.ciil.sub.publications": "CIIL Publications",
 
-  "admin.edit-user-agreement.title": "Edit User Agreement",
+  "contrib.ciil.sub.tape-archive": "National Tape Archive",
+
+  "contrib.ciil.sub.classical": "Classical Languages",
+
+  "contrib.role.design-impl": "Design & Implementation",
+
+  "contrib.role.impl": "Implementation",
+
+  "contrib.role.archive-coord": "Archive Coordinator",
+
+  "contrib.role.iface-metadata": "Interface Design & Metadata Editor",
+
+  "contrib.role.tech-assist": "Technical Assistance",
+
+  "contrib.role.net-server": "Network & Server",
+
+  "contrib.role.coll-admin": "Collection Administrator",
+
+  "contrib.role.metadata-ed": "Metadata Editor",
+
+  "contrib.role.lang-profile-ed": "Language profile Editor",
+
+  "contrib.role.content-writer": "Content Writer",
+
+  "contrib.role.metadata-lp-ed": "Metadata & LP Editor",
+
+  "contrib.role.tech-support": "Technical Support",
+
+  "contrib.role.data-coll": "Data Collection",
+
+  "contrib.role.metadata-rev": "Metadata Reviewer",
+
+  "contrib.role.content-ed": "Content Editor",
+
+  "contrib.role.contributor": "Contributor",
+
+  "contrib.role.scanner": "Scanner",
+
+  "contrib.role.kannada-admin": "Kannada Admin",
+
+  "contrib.role.telugu-admin": "Telugu Admin",
+
+  "contrib.role.odia-admin": "Odia Admin",
+
+  "contrib.role.acct-assist": "Account Assistant",
+
+  "contrib.role.office-assist": "Office Assistant",
+
+  "contrib.d.p1": "Dr. Narayan Kumar Choudhary",
+
+  "contrib.d.p2": "Prof. A.R.D. Prasad",
+
+  "contrib.d.p3": "Prof. Devika P. Madalli",
+
+  "contrib.d.p4": "Dr. Karthick Narayanan R.",
+
+  "contrib.d.p5": "Dr. Saiful Amin",
+
+  "contrib.pa.p1": "Dr. Nagaraju S.",
+
+  "contrib.pa.p2": "Mr. Saravanan A.S.",
+
+  "contrib.pa.p3": "Mr. Yuvaraj G.",
+
+  "contrib.pa.p4": "Mr. Manohara Shyam V.S.",
+
+  "contrib.pa.p5": "Mr. Veereshprasad Sawadi",
+
+  "contrib.pa.p6": "Ms. Nayema Nasrin",
+
+  "contrib.pa.p7": "Mr. Ramesh Patel M.J.",
+
+  "contrib.pa.p8": "Mr. Arghya Mandal",
+
+  "contrib.pa.p9": "Mr. Varun Kumar V.",
+
+  "contrib.pa.p10": "Mr. Anirudh D.",
+
+  "contrib.pa.p11": "Mr. Pawan Raj M.N.",
+
+  "contrib.pa.p12": "Mr. Thejas H.S.",
+
+  "contrib.sp.p1": "Dr. Nagaraju S.",
+
+  "contrib.sp.p2": "Dr. N. Brojen Singh",
+
+  "contrib.sp.p3": "Dr. Jenifer D.",
+
+  "contrib.sp.p4": "Mr. T. Mahendar Reddy",
+
+  "contrib.sp.p5": "Mr. Dupukuntla Rameshbhushan",
+
+  "contrib.sp.p6": "Dr. Rajakrishna M.",
+
+  "contrib.sp.p7": "Dr. Ngaineiting Baite",
+
+  "contrib.sp.p8": "Mr. Thokchom Sandeepkumar Singh",
+
+  "contrib.sp.p9": "Dr. Hilal Ahmad Dar",
+
+  "contrib.sp.p10": "Dr. V.R. Rajasingh",
+
+  "contrib.sp.p11": "Dr. Hima S.",
+
+  "contrib.sp.p12": "Dr. Reti Sarkar",
+
+  "contrib.sp.p13": "Dr. Ashok Kumar G.",
+
+  "contrib.sp.p14": "Dr. Thejaswini Baja",
+
+  "contrib.sp.p15": "Dr. Elangabam Sharatkumar Singh",
+
+  "contrib.sp.p16": "Dr. Mangvung Hemminlal Haokip",
+
+  "contrib.sp.p17": "Dr. S. Thivyanathan",
+
+  "contrib.sp.p18": "Dr. Jenny Marry Daimarry",
+
+  "contrib.sp.p19": "Dr. Tavamani",
+
+  "contrib.sp.p20": "Mr. Gyandeep Chetia",
+
+  "contrib.sp.p21": "Mr. Neerav Mathur",
+
+  "contrib.sp.p22": "Ms. Arya Navya A.V.",
+
+  "contrib.sp.p23": "Ms. Nivedita Singh",
+
+  "contrib.sp.p24": "Ms. Gargi Dowarah",
+
+  "contrib.sp.p25": "Ms. Nisha Upadhayaya",
+
+  "contrib.sp.p26": "Mr. Anustup Bhattacharyya",
+
+  "contrib.sp.p27": "Ms. Titirsha Chakraborty",
+
+  "contrib.sp.p28": "Ms. Sudeshna Roy",
+
+  "contrib.sp.p29": "Mr. Akshit Singh",
+
+  "contrib.sp.p30": "Mr. Agniv Dutta",
+
+  "contrib.sp.p31": "Ms. Aishee Bhattacharya",
+
+  "contrib.sp.p32": "Ms. Sonal Sinha",
+
+  "contrib.sp.p33": "Ms. Catherine James",
+
+  "contrib.sp.p34": "Ms. Oinam Bina Devi",
+
+  "contrib.sp.p35": "Ms. Rinky Baruah",
+
+  "contrib.sp.p36": "Ms. Anusha Ramasubramoney",
+
+  "contrib.sp.p37": "Mr. Rahul Pachori",
+
+  "contrib.sp.p38": "Ms. Anjali Steephan",
+
+  "contrib.sp.p39": "Ms. Suni Jyoti Kalita",
+
+  "contrib.sp.p40": "Mr. Mandeep Joshi",
+
+  "contrib.sp.p41": "Ms. Sochuila Khayi",
+
+  "contrib.sp.p42": "Ms. Gnanani Shailaja",
+
+  "contrib.sp.p43": "Mr. Lokesh Dehariya",
+
+  "contrib.sp.p44": "Mr. Swaraj Prabha M.P.",
+
+  "contrib.sp.p45": "Mr. Bitupon Gogoi",
+
+  "contrib.sp.p46": "Mr. Shubham Kumar",
+
+  "contrib.sp.p47": "Mr. Aniruddha Poddar",
+
+  "contrib.sp.p48": "Ms. Raima Basu",
+
+  "contrib.sp.p49": "Mr. Puttaraju K.",
+
+  "contrib.sp.p50": "Ms. Amrutha K.N.",
+
+  "contrib.sp.p51": "Ms. Shobha Rani B.",
+
+  "contrib.sp.p52": "Ms. Durga Vanisri D.",
+
+  "contrib.sp.p53": "Mr. Puttaraju S.",
+
+  "contrib.bm.p1": "Dr. Pankaj Dwivedi",
+
+  "contrib.bm.p2": "Dr. Biresh Kumar",
+
+  "contrib.bm.p3": "Dr. R. Shakunthala",
+
+  "contrib.bm.p4": "Dr. Md. Saleem Ahmad",
+
+  "contrib.bm.p5": "Dr. A.R. Muthukkaruppan",
+
+  "contrib.bm.p6": "Dr. A. Eswaran",
+
+  "contrib.bm.p7": "Dr. Murali Mohana N.",
+
+  "contrib.bm.p8": "Dr. Manjunatha M.",
+
+  "contrib.bm.p9": "Mr. Ancy Thomas",
+
+  "contrib.bm.p10": "Ms. G. Uma Maheswari",
+
+  "contrib.bm.p11": "Ms. Lepakshi K.",
+
+  "contrib.bm.p12": "Ms. Ishani Dutta",
+
+  "contrib.bm.p13": "Ms. Irram Irfan",
+
+  "contrib.bm.p14": "Mr. Ashish Ranjan",
+
+  "contrib.bm.p15": "Mr. Ashish Mishra",
+
+  "contrib.bm.p16": "Ms. Sumitra Mishra",
+
+  "contrib.bm.p17": "Ms. Gungun Jaiswal",
+
+  "contrib.bm.p18": "Ms. Vidhya Sahani",
+
+  "contrib.bm.p19": "Ms. Anjali Vijayakumar",
+
+  "contrib.bv.p1": "Dr. L.R. Prem Kumar",
+
+  "contrib.bv.p2": "Dr. Chandan Singh",
+
+  "contrib.bv.p3": "Dr. Subhanan Mandal",
+
+  "contrib.bv.p4": "Dr. Manikanta V.",
+
+  "contrib.bv.p5": "Dr. Harsha Prabhakar",
+
+  "contrib.bv.p6": "Smt. Nengcy Thomsong",
+
+  "contrib.bv.p7": "Smt. Shwetha K.",
+
+  "contrib.bv.p8": "Dr. Umesh Kumar Pathak",
+
+  "contrib.bv.p9": "Dr. Sunil Kumar",
+
+  "contrib.bv.p10": "Mr. Satyam Gupta",
+
+  "contrib.bv.p11": "Mr. BVS Goutham",
+
+  "contrib.bv.p12": "Mr. Satyadev Munda",
+
+  "contrib.bv.p13": "Mr. Utpal Barman",
+
+  "contrib.bv.p14": "Smt. Nagamani R.",
+
+  "contrib.bv.p15": "Smt. Savitha S.",
+
+  "contrib.cp.p1": "Dr. Aleendra Brahma",
+
+  "contrib.cp.p2": "Dr. G. Sandhya Nayak",
+
+  "contrib.cp.p3": "Smt. Veena S.G.",
+
+  "contrib.cp.p4": "Mr. Bhyra M.",
+
+  "contrib.nta.p1": "Dr. Pankaj Dwivedi",
+
+  "contrib.nta.p2": "Dr. Murali Mohana N.",
+
+  "contrib.cl.p1": "Prof. Nilagiri M. Talawar",
+
+  "contrib.cl.p2": "Prof. Madabhusi Sampath Kumar",
+
+  "contrib.cl.p3": "Prof. Basanta Kumar Panda",
+
+  "contrib.gratitude": "\"We express our gratitude to each contributor for their dedicated efforts in making Bhasha Sanchika a comprehensive repository for the development and advancement of Indian languages.\"",
+
+  "help.badge": "Support",
+
+  "help.title.html": "Help &amp; <span>Guide</span>",
+
+  "help.section.access": "Accessing Materials on Sanchika",
+
+  "help.intro": "Welcome to <strong>Bhasha Sanchika</strong>, the digital language repository of the Central Institute of Indian Languages (CIIL). This guide will help you navigate the platform and access the resources effectively.",
+
+  "help.section.platform": "Accessing the Platform",
+
+  "help.platform.text": "Sanchika is available at: <a href=\"https://sanchika.ciil.org/home\" target=\"_blank\">https://sanchika.ciil.org/home</a>",
+
+  "help.section.homepage": "Navigating the Homepage",
+
+  "help.homepage.intro": "Upon visiting the homepage, you will find:",
+
+  "help.homepage.item1": "<strong>Sections &amp; Collections:</strong> Browse materials categorized by the division or projects that are responsible for the creation of resources.",
+
+  "help.homepage.item2": "<strong>Bhasha Sanchika:</strong> Browse materials categorized by author, title, subject, language, or type of resource.",
+
+  "help.homepage.item3": "<strong>Statistics:</strong> This section on the Sanchika homepage provides valuable insights into repository usage.",
+
+  "help.homepage.item4": "<strong>Search Bar:</strong> Quickly locate specific materials by entering relevant keywords.",
+
+  "help.homepage.item5": "<strong>Language Switch:</strong> Allows you to switch between English and Hindi.",
+
+  "help.homepage.item6": "<strong>User Login/Register:</strong> Optional registration for additional features (if applicable).",
+
+  "help.homepage.item7": "At the <strong>Footer</strong> section you will find information About Bhasha Sanchika, Contributors, Privacy policy, Cookie settings, and End User Agreement.",
+
+  "help.section.register": "How to Register",
+
+  "help.register.step1": "Click on the <strong>\"Login\"</strong> button on the top right corner of the homepage.",
+
+  "help.register.step2": "Click <strong>\"New Users? Click here to register.\"</strong>",
+
+  "help.register.step3": "Enter your preferred <strong>Email ID</strong> in the text box provided.",
+
+  "help.register.step4": "A link to the registration form will be sent the Email ID you entered. Please click the link.",
+
+  "help.register.step5": "Agree to the <strong>End User Agreement</strong> by checking the <strong>\"I have read and I agree to the End User Agreement\"</strong> check box.",
+
+  "help.register.step6": "Click <strong>\"Save\"</strong> to access your <strong>Create Profile</strong> page.",
+
+  "help.register.step7": "Enter your identity details and password in the <strong>Create Profile</strong> page.",
+
+  "help.register.step8": "Click <strong>Complete Registration</strong>.",
+
+  "help.section.login": "How to Log In",
+
+  "help.login.step1": "Click on the <strong>\"Log In\"</strong> button on the top right corner of the homepage.",
+
+  "help.login.step2": "Enter your username and password in the respective fields.",
+
+  "help.login.step3": "Click <strong>\"Log In\"</strong> to enter the site as a registered user.",
+
+  "help.section.search": "Searching for Materials",
+
+  "help.search.intro": "You can search for materials in two ways:",
+
+  "help.search.item1": "<strong>Basic Search:</strong> Use the search bar at the top of the homepage to enter keywords to look for the resources you desire.",
+
+  "help.search.item2": "<strong>Advanced Search:</strong> The search page allows you to filter results based on Author, Subject, Language, and Has files. You can also sort the resources based on the relevance and date.",
+
+  "help.section.browse": "Browsing Collections",
+
+  "help.browse.step1": "Click on the <strong>\"Bhasha Sanchika\"</strong> tab to explore categorized linguistic and cultural resources.",
+
+  "help.browse.step2": "Select a Collection to view individual records and metadata.",
+
+  "help.section.download": "How to Download Resources",
+
+  "help.download.step1": "<strong>Locate the Resource:</strong> Use the search bar or browse options to find the material you want to download.",
+
+  "help.download.step2": "<strong>Open the Record:</strong> Click on the title of the resource to open its Simple Item page.",
+
+  "help.download.step3": "<strong>View the Full Item Page:</strong> On the Full Item Page, scroll to the bottom to find the \"Files\" section listing all available files.",
+
+  "help.download.step4": "<strong>Check Access Restrictions:</strong> If the file has restricted access, you may need to log in or request permission from the repository administrator.",
+
+  "help.download.step5": "<strong>Download the File:</strong> Click on the \"Download\" button next to the file name to start the download.",
+
+  "help.section.contact": "Contact and Support",
+
+  "help.contact.email.title": "Support Email",
+
+  "help.contact.email.note": "For any technical issues or access requests, reach out to us. We hope this guide helps you explore the rich linguistic and cultural resources available on Sanchika!",
+
+  "help.contact.further": "Need further assistance?",
+
+  "citation.badge": "Documentation",
+
+  "citation.title.html": "Citation <span>Guidelines</span>",
+
+  "citation.subtitle": "Bhasha Sanchika",
+
+  "citation.section.intro": "Introduction",
+
+  "citation.intro.p1": "Bhasha Sanchika, a digital repository hosted by the Central Institute of Indian Languages (CIIL), Mysuru, serves as a vital resource for preserving and promoting India's linguistic and cultural heritage. Its collections span diverse formats, including text, audio, video, and images, drawn from multiple projects and schemes. Proper citation of items, collections, and assemblages within Bhasha Sanchika ensures acknowledgment of contributors, supports transparency, and enables reproducibility.",
+
+  "citation.intro.p2": "This guideline provides formats for citing individual items, collections, and assemblages in accordance with best practices, such as the Tromsø Recommendations.",
+
+  "citation.section.principles": "General Citation Principles",
+
+  "citation.principle.acknowledgment": "<strong>Acknowledgment:</strong> Credit all contributors, including creators, communities, and institutions.",
+
+  "citation.principle.transparency": "<strong>Transparency:</strong> Include sufficient metadata to identify and locate the resource.",
+
+  "citation.principle.consistency": "<strong>Consistency:</strong> Use uniform formatting for all citations to ensure clarity.",
+
+  "citation.principle.access-date": "<strong>Access Date:</strong> Mention the date when the material was accessed online.",
+
+  "citation.section.formats": "Citation Formats",
+
+  "citation.label.format": "Format",
+
+  "citation.label.example": "Example",
+
+  "citation.formats.items.subtitle": "1. Individual Items",
+
+  "citation.formats.items.format": "Creator(s). Title/Description of Item. Date. Collection Name, Bhasha Sanchika, Central Institute of Indian Languages (CIIL), Mysuru. Permanent URI: [URL/Handle] (accessed [date]).",
+
+  "citation.formats.items.example": "Barman, Kh. Debajyoti, Chonging Taulai, Gyandeep Chetia, and K.V. Subbarao. Elicitation of Words About Transport and Related. 2018. Saihriem Language Resources, Bhasha Sanchika, CIIL, Mysuru. Permanent URI: https://sanchika.ciil.org/handle/1/5140 (accessed 24 December 2024).",
+
+  "citation.formats.collections.subtitle": "2. Collections",
+
+  "citation.formats.collections.format": "Title of Collection. Date Range (if applicable). Bhasha Sanchika, Central Institute of Indian Languages (CIIL), Mysuru. Permanent URI: [URL/Handle] (accessed [date]).",
+
+  "citation.formats.collections.example": "Didayi Resources. 2023. Bhasha Sanchika, Central Institute of Indian Languages (CIIL), Mysuru. Permanent URI: https://sanchika.ciil.org/handle/1/12429 (accessed 24 December 2024).",
+
+  "citation.formats.assemblages.subtitle": "3. Assemblages (Multiple Collections)",
+
+  "citation.formats.assemblages.format": "Title of Assemblage. Date Range (if applicable). Bhasha Sanchika, Central Institute of Indian Languages (CIIL), Mysuru. Permanent URI: [URL/Handle] (accessed [date]).",
+
+  "citation.formats.assemblages.example": "Scheme for Protection and Preservation of Endangered Languages (SPPEL). An Initiative for Documenting and Preserving Endangered Languages in India. 2013-present. Bhasha Sanchika, Central Institute of Indian Languages (CIIL), Mysuru. Permanent URI: https://sanchika.ciil.org/handle/1/155 (accessed 24 December 2024).",
+
+  "citation.section.checklist": "Metadata Checklist for Citations",
+
+  "citation.checklist.intro": "Ensure your citation includes the following:",
+
+  "citation.checklist.creators": "<strong>Creators and Contributors:</strong> List all known contributors in hierarchical order.",
+
+  "citation.checklist.title-desc": "<strong>Title/Description:</strong> Use the exact title or provide a brief description.",
+
+  "citation.checklist.date": "<strong>Date:</strong> Include the date of creation or publication.",
+
+  "citation.checklist.repository": "<strong>Repository Details:</strong> Mention Bhasha Sanchika and CIIL, Mysuru.",
+
+  "citation.checklist.identifier": "<strong>Persistent Identifier:</strong> Use a permanent URI or handle.",
+
+  "citation.checklist.access-date": "<strong>Access Date:</strong> Note the date of access for online resources.",
+
+  // Citation widget (popup)
+  "citation.widget.trigger": "Cite This",
+  "citation.widget.title": "Cite This Item",
+  "citation.widget.close": "Close",
+  "citation.widget.tab.plaintext": "Plain Text",
+  "citation.widget.tab.bibtex": "BibTeX",
+  "citation.widget.tab.ris": "RIS",
+  "citation.widget.format.apa": "APA 7th Edition",
+  "citation.widget.format.bibtex": "BibTeX — LaTeX / Overleaf",
+  "citation.widget.format.ris": "RIS — Zotero / Mendeley / EndNote",
+  "citation.widget.include.abstract": "Citation & Abstract",
+  "citation.widget.copy": "Copy to Clipboard",
+  "citation.widget.copied": "Copied!",
+  "citation.widget.download.bib": "Download .bib",
+  "citation.widget.download.ris": "Download .ris",
+
+  "auth.hero.badge": "Account",
+
+  "auth.hero.subtitle": "Bhasha Sanchika",
+
+  "auth.hero.forgot.title.html": "Forgot <span>Password</span>",
+
+  "auth.hero.register.title.html": "User <span>Registration</span>",
+
+  "eua.badge": "Legal",
+
+  "eua.title.html": "User <span>Agreement</span>",
+
+  "eua.subtitle": "Bhasha Sanchika",
+
+  "eua.main.title": "End User Agreement",
+
+  "eua.last-updated": "Last updated November 14, 2023",
+
+  "eua.section.agreement": "Agreement to Terms",
+
+  "eua.agreement.p1": "These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (\"you\") and Central Institute of Indian Languages (\"CIIL\", \"we\", \"us\", or \"our\"), concerning your access to and use of this website as well as any other media form, media channel, mobile website, or mobile application related, linked, or otherwise connected thereto (collectively, the \"Site\"). You agree that by accessing the Site, you have read, understood, and agreed to be bound by all of these Terms of Use and any future amendments thereof.",
+
+  "eua.agreement.p2": "Supplemental terms and conditions or documents that may be posted on the Site from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Use at any time and for any reason. We will alert you about any changes by updating the \"Last updated\" date of these Terms of Use, and you waive any right to receive specific notice of each such change. Please ensure that you check the applicable Terms every time you use our Site so that you understand which Terms apply. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms of Use by your continued use of the Site after the date such revised Terms of Use are posted.",
+
+  "eua.agreement.p3": "The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country. Accordingly, those persons who choose to access the Site from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable.",
+
+  "eua.section.ip": "Intellectual Property Rights",
+
+  "eua.ip.p1": "Unless otherwise indicated, this Site is the proprietary property of Central Institute of Indian Languages, and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the \"Content\") and the trademarks, service marks, and logos contained therein (the \"Marks\") are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws and various other intellectual property rights and unfair competition laws of India, international copyright laws, and international conventions. The Content and the Marks are provided on the Site \"AS IS\" for your information and personal use only. Except as expressly provided in these Terms of Use, no part of the Site and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.",
+
+  "eua.ip.p2": "All Bhasha Sanchika Content legally and primarily belongs to those organizations, institutions, and depositors who created this content, including its part thereof. Provided that you are eligible to use the Site, you are granted a limited license to access and use the Site and to download or print a copy of any portion of the Content to which you have properly gained access solely for your personal educational, research purposes, and non-commercial use. Any person distributing or communicating the Content to the public, either in whole or in part, shall make a clear, conspicuous, and unambiguous attribution, both of authorship and of copyright ownership, in favor of the respective author / copyright holder. Any violation of these conditions will be liable for suitable legal action under the Indian Copyright Act, 2012 and other laws as applicable. We reserve all rights not expressly granted to you in and to the Site, the Content, and the Marks.",
+
+  "eua.section.representations": "User Representations",
+
+  "eua.representations.p1": "By using the Site, you represent and warrant that: (1) all registration information you submit will be true, accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update such registration information as necessary; (3) you have the legal capacity and you agree to comply with these Terms of Use; (4) you will not use the Site for any illegal or unauthorized purpose; and (5) your use of the Site will not violate any applicable law or regulation.",
+
+  "eua.representations.p2": "If you provide any information that is untrue, inaccurate, not current, or incomplete, we have the right to suspend or terminate your account and refuse any and all current or future use of the Site (or any portion thereof).",
+
+  "eua.section.registration": "User Registration",
+
+  "eua.registration.p1": "You may be required to register with the Site. You agree to keep your password confidential and will be responsible for all use of your account and password. We reserve the right to remove, reclaim, or change a username you select if we determine, in our sole discretion, that such username is inappropriate, obscene, or otherwise objectionable.",
+
+  "eua.section.prohibited": "Prohibited Activities",
+
+  "eua.prohibited.p1": "You may not access or use the Site for any purpose other than that for which we make the Site available. The Site may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.",
+
+  "eua.prohibited.p2": "As a user of the Site, you agree not to:",
+
+  "eua.prohibited.li1": "Systematically retrieve data or other content from the Site to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.",
+
+  "eua.prohibited.li2": "Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords.",
+
+  "eua.prohibited.li3": "Circumvent, disable, or otherwise interfere with security-related features of the Site, including features that prevent or restrict the use or copying of any Content or enforce limitations on the use of the Site and/or the Content contained therein.",
+
+  "eua.prohibited.li4": "Disparage, tarnish, or otherwise harm, in our opinion, us and/or the Site.",
+
+  "eua.prohibited.li5": "Use any information obtained from the Site in order to harass, abuse, or harm another person.",
+
+  "eua.prohibited.li6": "Make improper use of our support services or submit false reports of abuse or misconduct.",
+
+  "eua.prohibited.li7": "Use the Site in a manner inconsistent with any applicable laws or regulations.",
+
+  "eua.prohibited.li8": "Engage in unauthorized framing of or linking to the Site.",
+
+  "eua.prohibited.li9": "Upload or transmit (or attempt to upload or to transmit) viruses, Trojan horses, or other material, including excessive use of capital letters and spamming (continuous posting of repetitive text), that interferes with any party's uninterrupted use and enjoyment of the Site or modifies, impairs, disrupts, alters, or interferes with the use, features, functions, operation, or maintenance of the Site.",
+
+  "eua.prohibited.li10": "Delete the copyright or other proprietary rights notice from any Content.",
+
+  "eua.prohibited.li11": "Attempt to impersonate another user or person or use the username and password of another user.",
+
+  "eua.prohibited.li12": "Upload or transmit (or attempt to upload or to transmit) any material that acts as a passive or active information collection or transmission mechanism, including without limitation, clear graphics interchange formats (\"gifs\"), 1x1 pixels, web bugs, cookies, or other similar devices (sometimes referred to as \"spyware\" or \"passive collection mechanisms\" or \"pcms\").",
+
+  "eua.prohibited.li13": "Interfere with, disrupt, or create an undue burden on the Site or the networks or services connected to the Site.",
+
+  "eua.prohibited.li14": "Harass, annoy, intimidate, or threaten any of our employees or agents engaged in providing any portion of the Site to you.",
+
+  "eua.prohibited.li15": "Attempt to bypass any measures of the Site designed to prevent or restrict access to the Site, or any portion of the Site.",
+
+  "eua.prohibited.li16": "Make any unauthorized use of the Site, including collecting usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email or other forms of electronic communication, or creating user accounts by automated means or under false pretenses.",
+
+  "eua.section.contributions": "User Generated Contributions",
+
+  "eua.contributions.p1": "The Site may provide you with the opportunity to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or on the Site, including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, \"Contributions\").",
+
+  "eua.contributions.p2": "Contributions may be viewable by other users of the Site and through third-party websites. As such, any Contributions you transmit may be treated as non-confidential and non-proprietary. When you create or make available any Contributions, you thereby represent and warrant that:",
+
+  "eua.contributions.li1": "The creation, distribution, transmission, public display, or performance, and the accessing, downloading, or copying of your Contributions do not and will not infringe the proprietary rights, including but not limited to the copyright, patent, trademark, trade secret, or moral rights of any third party.",
+
+  "eua.contributions.li2": "You are the creator and owner of or have the necessary licenses, rights, consents, releases, and permissions to use and to authorize us, the Site, and other users of the Site to use your Contributions in any manner contemplated by the Site and these Terms of Use.",
+
+  "eua.contributions.li3": "You have the written consent, release, and/or permission of each and every identifiable individual person in your Contributions to use the name or likeness of each and every such identifiable individual person to enable inclusion and use of your Contributions in any manner contemplated by the Site and these Terms of Use.",
+
+  "eua.contributions.li4": "Your Contributions are not false, inaccurate, or misleading.",
+
+  "eua.contributions.li5": "Your Contributions are not unsolicited or unauthorized advertising, promotional materials, pyramid schemes, chain letters, spam, mass mailings, or other forms of solicitation.",
+
+  "eua.contributions.li6": "Your Contributions are not obscene, lewd, lascivious, filthy, violent, harassing, libelous, slanderous, or otherwise objectionable (as determined by us).",
+
+  "eua.contributions.li7": "Your Contributions do not ridicule, mock, disparage, intimidate, or abuse anyone.",
+
+  "eua.contributions.li8": "Your Contributions are not used to harass or threaten (in the legal sense of those terms) any other person, do not create and are not used to promote violence against a specific person or class of people.",
+
+  "eua.contributions.li9": "Your Contributions do not violate any applicable law, regulation, or rule.",
+
+  "eua.contributions.li10": "Your Contributions do not violate the privacy or publicity rights of any third party.",
+
+  "eua.contributions.li11": "Your Contributions do not violate any applicable law concerning child pornography, or otherwise intended to protect the health or well-being of minors.",
+
+  "eua.contributions.li12": "Your Contributions do not include any offensive comments that are connected to race, national origin, gender, sexual preference, colour, religion, creed or physical handicap.",
+
+  "eua.contributions.li13": "Your Contributions do not otherwise violate, or link to material that violates, any provision of these Terms of Use, or any applicable law or regulation.",
+
+  "eua.contributions.p3": "Any use of the Site in violation of the foregoing violates these Terms of Use and may result in, among other things, termination or suspension of your rights to use the Site.",
+
+  "eua.section.site-management": "Site Management",
+
+  "eua.site-management.p1": "We reserve the right, but not the obligation, to: (1) monitor the Site for violations of these Terms of Use; (2) take appropriate legal action against anyone who, in our sole discretion, violates the law or these Terms of Use, including without limitation, reporting such user to law enforcement authorities; (3) in our sole discretion and without limitation, refuse, restrict access to, limit the availability of, or disable (to the extent technologically feasible) any of your Contributions or any portion thereof; (4) in our sole discretion and without limitation, notice, or liability, to remove from the Site or otherwise disable all files and content that are excessive in size or are in any way burdensome to our systems; and (5) otherwise manage the Site in a manner designed to protect our rights and property and to facilitate the proper functioning of the Site.",
+
+  "eua.section.privacy": "Privacy Policy",
+
+  "eua.privacy.p1.before": "We care about data privacy and security. Please review our",
+
+  "eua.privacy.p1.link": "Privacy Policy",
+
+  "eua.privacy.p1.after": ". By using the Site, you agree to be bound by our Privacy Policy, which is incorporated into these Terms of Use.",
+
+  "eua.privacy.p2": "Please be advised the Site is hosted in India. If you access the Site from any other region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ from applicable laws in India, then through your continued use of the Site, you are transferring your data to India, and you agree to have your data transferred to and processed in India.",
+
+  "eua.section.termination": "Term and Termination",
+
+  "eua.termination.p1": "These Terms of Use shall remain in full force and effect while you use the Site. WITHOUT LIMITING ANY OTHER PROVISION OF THESE TERMS OF USE, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SITE (INCLUDING BLOCKING CERTAIN IP ADDRESSES), TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE TERMS OF USE OR OF ANY APPLICABLE LAW OR REGULATION. WE MAY TERMINATE YOUR USE OR PARTICIPATION IN THE SITE OR DELETE YOUR ACCOUNT AND ANY CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION.",
+
+  "eua.termination.p2": "If we terminate or suspend your account for any reason, you are prohibited from registering and creating a new account under your name, a fake or borrowed name, or the name of any third party, even if you may be acting on behalf of the third party. In addition to terminating or suspending your account, we reserve the right to take appropriate legal action, including without limitation pursuing civil, criminal, and injunctive redress.",
+
+  "eua.termination.p3": "",
+
+  "eua.section.modifications": "Modifications and Interruptions",
+
+  "eua.modifications.p1": "We reserve the right to change, modify, or remove the contents of the Site at any time or for any reason at our sole discretion without notice. However, we have no obligation to update any information on our Site. We also reserve the right to modify or discontinue all or part of the Site without notice at any time. We will not be liable to you or any third party for any modification, change, suspension, or discontinuance of the Site.",
+
+  "eua.modifications.p2": "We cannot guarantee the Site will be available at all times. We may experience hardware, software, or other problems or need to perform maintenance related to the Site, resulting in interruptions, delays, or errors. We reserve the right to change, revise, update, suspend, discontinue, or otherwise modify the Site at any time or for any reason without notice to you. You agree that we have no liability whatsoever for any loss, damage, or inconvenience caused by your inability to access or use the Site during any downtime or discontinuance of the Site. Nothing in these Terms of Use will be construed to obligate us to maintain and support the Site or to supply any corrections, updates, or releases in connection therewith.",
+
+  "eua.section.corrections": "Corrections",
+
+  "eua.corrections.p1": "There may be information on the Site that contains typographical errors, inaccuracies, or omissions. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update the information on the Site at any time, without prior notice.",
+
+  "eua.section.disclaimer": "Disclaimer",
+
+  "eua.disclaimer.p1": "THE SITE IS PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE THAT YOUR USE OF THE SITE AND OUR SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SITE AND YOUR USE THEREOF, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE MAKE NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE SITE'S CONTENT OR THE CONTENT OF ANY WEBSITES LINKED TO THE SITE AND WE WILL ASSUME NO LIABILITY OR RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT AND MATERIALS, (2) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF THE SITE, (3) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (4) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE SITE, (5) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH THE SITE BY ANY THIRD PARTY, AND/OR (6) ANY ERRORS OR OMISSIONS IN ANY CONTENT AND MATERIALS OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE SITE. WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH THE SITE, ANY HYPERLINKED WEBSITE, OR ANY WEBSITE OR MOBILE APPLICATION FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND WE WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND ANY THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES. AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE.",
+
+  "eua.section.liability": "Limitations of Liability",
+
+  "eua.liability.p1": "IN NO EVENT WILL WE OR OUR OFFICERS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING FROM YOUR USE OF THE SITE, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.",
+
+  "eua.section.indemnification": "Indemnification",
+
+  "eua.indemnification.p1": "You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and all of our respective officers, agents, partners, and employees, from and against any loss, damage, liability, claim, or demand, including reasonable attorneys' fees and expenses, made by any third party due to or arising out of: (1) your Contributions; (2) use of the Site; (3) breach of these Terms of Use; (4) any breach of your representations and warranties set forth in these Terms of Use; (5) your violation of the rights of a third party, including but not limited to intellectual property rights; or (6) any overt harmful act toward any other user of the Site with whom you connected via the Site. Notwithstanding the foregoing, we reserve the right, at your expense, to assume the exclusive defense and control of any matter for which you are required to indemnify us, and you agree to cooperate, at your expense, with our defense of such claims. We will use reasonable efforts to notify you of any such claim, action, or proceeding which is subject to this indemnification upon becoming aware of it.",
+
+  "eua.section.user-data": "User Data",
+
+  "eua.user-data.p1": "We will maintain certain data that you transmit to the Site for the purpose of managing the performance of the Site, as well as data relating to your use of the Site. Although we perform regular routine backups of data, you are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Site. You agree that we shall have no liability to you for any loss or corruption of any such data, and you hereby waive any right of action against us arising from any such loss or corruption of such data.",
+
+  "eua.section.miscellaneous": "Miscellaneous",
+
+  "eua.miscellaneous.p1": "These Terms of Use and any policies or operating rules posted by us on the Site or in respect to the Site constitute the entire agreement and understanding between you and us. Our failure to exercise or enforce any right or provision of these Terms of Use shall not operate as a waiver of such right or provision. These Terms of Use operate to the fullest extent permissible by law. We may assign any or all of our rights and obligations to others at any time. We shall not be responsible or liable for any loss, damage, delay, or failure to act caused by any cause beyond our reasonable control. If any provision or part of a provision of these Terms of Use is determined to be unlawful, void, or unenforceable, that provision or part of the provision is deemed severable from these Terms of Use and does not affect the validity and enforceability of any remaining provisions. There is no joint venture, partnership, employment or agency relationship created between you and us as a result of these Terms of Use or use of the Site. You agree that these Terms of Use will not be construed against us by virtue of having drafted them. You hereby waive any and all defenses you may have based on the electronic form of these Terms of Use and the lack of signing by the parties hereto to execute these Terms of Use.",
+
+  "eua.section.contact": "Contact Us",
+
+  "eua.contact.p1": "Any visitor to this portal may kindly bring to our attention any wrong data, information etc. which, in turn, would be brought to the notice of the concerned editorial committees and will be corrected as per their recommendations. Visitors are hereby requested to email their grievances, complaints, suggestions etc. to lgarchciil[at]gmail[.]com.",
+
+  "pp.badge": "Legal",
+
+  "pp.title.html": "Privacy <span>Policy</span>",
+
+  "pp.subtitle": "Bhasha Sanchika",
+
+  "pp.main.title": "Privacy Statement",
+
+  "pp.last-updated": "Last updated November 14, 2023",
+
+  "pp.section.introduction": "Introduction",
+
+  "pp.section.collect": "Information we collect about you and how we collect it",
+
+  "pp.section.provide": "Information you provide to us",
+
+  "pp.section.auto": "Information we collect through automatic data collection technologies",
+
+  "pp.section.protect": "How we protect your information",
+
+  "pp.section.use": "How we use your information",
+
+  "pp.section.disclosure": "Disclosure of Your Information",
+
+  "pp.section.sharing": "Sharing Your Personal Information",
+
+  "pp.section.changes": "Changes to Our Privacy Policy",
+
+  "pp.section.acceptance": "Your Acceptance of These Terms",
+
+  "pp.section.contact": "Contact Us",
+
+  "pp.intro.p1": "Central Institute of Indian Languages (&ldquo;CIIL&rdquo; or &ldquo;We&rdquo;) respects your privacy and is committed to protecting it through our compliance with this policy. This policy describes the types of information we may collect from you or that you may provide when you visit this website (our &ldquo;Website&rdquo;) and our practices for collecting, using, maintaining, protecting, and disclosing that information.",
+
+  "pp.intro.p2": "This policy applies to information we collect:",
+
+  "pp.intro.li1": "On this Website.",
+
+  "pp.intro.li2": "In email, text, and other electronic messages between you and this Website.",
+
+  "pp.intro.p3": "It does not apply to information collected by:",
+
+  "pp.intro.li3": "us offline or through any other means, including on any other website operated by CIIL or any third party; or",
+
+  "pp.intro.li4": "any third party, including through any application or content (including advertising) that may link to or be accessible from or on the Website.",
+
+  "pp.intro.p4": "Please read this policy carefully to understand our policies and practices regarding your information and how we will treat it. If you do not agree with our policies and practices, your choice is not to use our Website. By accessing or using this Website, you agree to this privacy policy. This policy may change from time to time. Your continued use of this Website after we make changes is deemed to be acceptance of those changes, so please check the policy periodically for updates.",
+
+  "pp.collect.p1": "We collect several types of information from and about users of our Website, including information:",
+
+  "pp.collect.li1": "By which you may be personally identified, such as name, e-mail address, telephone number, or any other identifier by which you may be contacted online or offline (&ldquo;personal information&rdquo;); and/or",
+
+  "pp.collect.li2": "About your internet connection, the equipment you use to access our Website and usage details.",
+
+  "pp.collect.p2": "We collect this information:",
+
+  "pp.collect.li3": "Directly from you when you provide it to us.",
+
+  "pp.collect.li4": "Automatically as you navigate through the site. Information collected automatically may include usage details, IP addresses, and information collected through cookies, web beacons, and other tracking technologies.",
+
+  "pp.provide.p1": "We will collect personal identification information from Users only if they voluntarily submit such information to us. Users can always refuse to supply personal identification information, except that it may prevent them from engaging in certain Site related activities.",
+
+  "pp.provide.p2": "The information we collect on or through our Website may include:",
+
+  "pp.provide.li1": "Information that you provide by filling in forms on our Website. We may also ask you for information when you report a problem with our Website.",
+
+  "pp.provide.li2": "Records and copies of your correspondence (including email addresses), if you contact us.",
+
+  "pp.provide.li3": "Your responses to surveys that we might ask you to complete for research purposes.",
+
+  "pp.auto.p1": "As you navigate through and interact with our Website, we may use automatic data collection technologies to collect certain information about your equipment, browsing actions, and patterns, including:",
+
+  "pp.auto.li1": "Details of your visits to our Website, including traffic data, location data, logs, and other communication data and the resources that you access and use on the Website.",
+
+  "pp.auto.li2": "Information about your computer and internet connection, including your IP address, operating system, and browser type.",
+
+  "pp.auto.p2": "The information we collect automatically is statistical data and does not include personal information, but we may maintain it or associate it with personal information we collect in other ways or receive from third parties. It helps us to improve our Website and to deliver a better and more personalized service, including by enabling us to:",
+
+  "pp.auto.li3": "Estimate our audience size and usage patterns.",
+
+  "pp.auto.li4": "Store information about your preferences, allowing us to customize our Website according to your individual interests.",
+
+  "pp.auto.li5": "Speed up your searches.",
+
+  "pp.auto.li6": "Recognize you when you return to our Website.",
+
+  "pp.auto.p3": "The technologies we use for this automatic data collection may include:",
+
+  "pp.auto.li7": "<strong>Cookies (or browser cookies).</strong> A cookie is a small file placed on the hard drive of your computer. You may refuse to accept browser cookies by activating the appropriate setting on your browser. However, if you select this setting you may be unable to access certain parts of our Website. Unless you have adjusted your browser setting so that it will refuse cookies, our system will issue cookies when you direct your browser to our Website.",
+
+  "pp.protect.p1": "We adopt appropriate data collection, storage and processing practices and security measures to protect against unauthorized access, alteration, disclosure or destruction of your personal information, username, password, transaction information and data stored on our Site.",
+
+  "pp.use.p1": "We use information that we collect about you or that you provide to us, including any personal information:",
+
+  "pp.use.li1": "To present our Website and its contents to you.",
+
+  "pp.use.li2": "To provide you with information, products, or services that you request from us.",
+
+  "pp.use.li3": "We may use feedback you provide to improve our products and services.",
+
+  "pp.use.li4": "To fulfill any other purpose for which you provide it.",
+
+  "pp.use.li5": "To carry out our obligations and enforce our rights arising from any contracts entered into between you and us.",
+
+  "pp.use.li6": "To notify you about changes to our Website or any products or services we offer or provide through it.",
+
+  "pp.use.li7": "In any other way we may describe when you provide the information.",
+
+  "pp.use.li8": "For any other purpose with your consent.",
+
+  "pp.disclosure.p1": "We may disclose aggregated information about our users, and information that does not identify any individual, without restriction.",
+
+  "pp.sharing.p1": "We do not sell, trade, or rent Users' personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information regarding visitors and users with our business partners, trusted affiliates, and advertisers for the purposes outlined above.",
+
+  "pp.sharing.p2": "We may disclose personal information that we collect or you provide as described in this privacy policy:",
+
+  "pp.sharing.li1": "To contractors, service providers, and other third parties we use to support our business and who are bound by contractual obligations to keep personal information confidential and use it only for the purposes for which we disclose it to them.",
+
+  "pp.sharing.li2": "To fulfill the purpose for which you provide it.",
+
+  "pp.sharing.li3": "For any other purpose disclosed by us when you provide the information.",
+
+  "pp.sharing.li4": "With your consent.",
+
+  "pp.sharing.p3": "We may also disclose your personal information:",
+
+  "pp.sharing.li5": "To comply with any court order, law, or legal process, including to respond to any government or regulatory request.",
+
+  "pp.sharing.li6.before": "To enforce or apply our ",
+
+  "pp.sharing.li6.link": "End User Agreement",
+
+  "pp.sharing.li6.after": " and other agreements.",
+
+  "pp.sharing.li7": "If we believe disclosure is necessary or appropriate to protect the rights, property, or safety of CIIL, our collaborators, or others.",
+
+  "pp.changes.p1": "It is our policy to post any changes we make to our privacy policy on this page. The date the privacy policy was last revised is identified at the top of the page. You are responsible for periodically visiting our Website and this privacy policy to check for any changes.",
+
+  "pp.acceptance.p1": "By using this Site, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our Site. Your continued use of the Site following the posting of changes to this policy will be deemed your acceptance of those changes.",
+
+  "pp.contact.address.title": "Official Address",
+
+  "pp.contact.address.body.html": "Central Institute of Indian Languages<br>Department of Higher Education<br>Ministry of Education, Government of India<br>Mysuru 570006",
+
+  "pp.contact.person.title": "Contact Person",
+
+  "pp.contact.person.name": "Dr. Sujoy Sarkar",
+
+  "pp.contact.person.tel": "Tel: 0821 2345000 (Reception)",
+
+  "pp.contact.email.title": "Email Us",
+
+  "cl.badge": "Section List",
+
+  "cl.title.html": "Sections <span>&amp; Collections</span>",
+
+  "cl.subtitle": "bhasha sanchika",
+
+  "cl.page-title": "List of Sections",
+
+  "cl.items": "Items",
+
+  "cl.view-collection": "View Collection",
+
+  "ip.home": "Home",
+
+  "ip.title-label": "Title",
+
+  "ip.authors-label": "Author(s)",
+
+  "ip.date-publication": "Date of Publication",
+
+  "ip.date-created": "Date Created",
+
+  "ip.date-accessioned": "Date Accessioned",
+
+  "ip.sidebar.contents": "Contents",
+
+  "ip.sidebar.overview": "Overview",
+
+  "ip.sidebar.who": "Who",
+
+  "ip.sidebar.what": "What",
+
+  "ip.sidebar.when": "When",
+
+  "ip.sidebar.actions": "Actions",
+
+  "ip.sidebar.print": "Print",
+
+  "ip.sidebar.share": "Share",
+
+  "ip.sidebar.analytics": "Analytics",
+
+  "ip.sidebar.item-statistics": "Item Statistics",
+  "ip.statistics.badge": "Metrics",
+  "ip.statistics.title-prefix": "Item",
+  "ip.statistics.title-highlight": "Statistics",
+  "ip.statistics.subtitle": "Bhasha Sanchika",
+  "ip.statistics.total-visits": "Total Visits",
+  "ip.community.statistics.title-prefix": "Community",
+  "ip.collection.statistics.title-prefix": "Collection",
+  "ip.community.statistics-btn": "Community Statistics",
+
+  "ip.section.who": "Who",
+
+  "ip.section.what": "What",
+
+  "ip.section.when": "When",
+
+  "ip.table.title": "Title",
+
+  "ip.table.type": "Type",
+
+  "ip.table.format": "Format",
+
+  "ip.table.language": "Language",
+
+  "ip.table.keywords": "Keywords",
+
+  "ip.table.notes": "Notes",
+
+  "fip.badge": "Full Item Record",
+
+  "fip.title.html": "Item <span>Record</span>",
+
+  "fip.subtitle": "Bhasha Sanchika",
+
+  "fip.simple-view": "Simple View",
+
+  "fip.all-metadata": "All Metadata",
+
+  "fip.field": "Field",
+
+  "fip.value": "Value",
+
+  "fip.files": "Files",
+
+  "coar.badge": "Support",
+
+  "coar.title.html": "COAR Notify <span>Support</span>",
+
+  "coar.subtitle": "Bhasha Sanchika",
+
+  "community.badge": "Special Collection",
+
+  "community.uri-label": "Permanent URI for this community",
+
+  "community.browse-heading": "Browse",
+
+  "community.browse-intro": "Explore a vast digital repository of knowledge, featuring multilingual resources across diverse disciplines and formats.",
+  "collection.badge": "Collection",
+  "collection.uri-label": "Permanent URI for this collection",
+  "collection.browse-heading": "Browse",
+  "collection.browse-intro": "Explore the items in this collection.",
+  "ip.collection.statistics-btn": "Collection Statistics",
+  "collection.hero-type": "Catalogue",
 }

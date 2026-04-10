@@ -1,7 +1,3 @@
-import {
-  hasValue,
-  hasValueOperator,
-} from '@dspace/shared/utils/empty.util';
 import { Observable } from 'rxjs';
 import {
   filter,
@@ -10,6 +6,10 @@ import {
   tap,
 } from 'rxjs/operators';
 
+import {
+  hasValue,
+  hasValueOperator,
+} from '../../shared/empty.util';
 import { RequestService } from '../data/request.service';
 import { RequestEntry } from '../data/request-entry.model';
 import { ResponseState } from '../data/response-state.model';

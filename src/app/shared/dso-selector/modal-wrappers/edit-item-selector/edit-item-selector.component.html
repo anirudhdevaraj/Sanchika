@@ -7,9 +7,6 @@
     @if (header) {
       <span class="h5 px-2">{{header | translate}}</span>
     }
-    <ds-authorized-item-selector [currentDSOId]="dsoRD?.payload.uuid"
-                                       [types]="selectorTypes"
-                                       [action]="rpActionType"
-                                       (onSelect)="selectObject($event)"></ds-authorized-item-selector>
+    <ds-dso-selector [currentDSOId]="dsoRD?.payload.uuid" [types]="selectorTypes" (onSelect)="selectObject($event)"></ds-dso-selector>
   </div>
 </div>

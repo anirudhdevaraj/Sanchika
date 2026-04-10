@@ -6,12 +6,14 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { WidthCategory } from '@dspace/core/shared/host-window-type';
 import { Observable } from 'rxjs';
 
 import { ThemedHeaderComponent } from '../header/themed-header.component';
 import { ThemedNavbarComponent } from '../navbar/themed-navbar.component';
-import { HostWindowService } from '../shared/host-window.service';
+import {
+  HostWindowService,
+  WidthCategory,
+} from '../shared/host-window.service';
 import { MenuService } from '../shared/menu/menu.service';
 import { MenuID } from '../shared/menu/menu-id.model';
 

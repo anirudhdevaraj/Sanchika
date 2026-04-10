@@ -1,9 +1,9 @@
 /* eslint-disable max-classes-per-file */
 // import @ngrx
-// import type function
 import { Action } from '@ngrx/store';
 
-import { type } from '../ngrx/type';
+// import type function
+import { type } from '../../shared/ngrx/type';
 import { AuthMethod } from './models/auth.method';
 import { AuthStatus } from './models/auth-status.model';
 // import models
@@ -69,16 +69,8 @@ export class AuthenticatedAction implements Action {
   public type: string = AuthActionTypes.AUTHENTICATED;
   payload: AuthTokenInfo;
 
-  /**
-   * Whether we should consider the given authentication info final.
-   * If the backend restarted we may have a token that hasn't expired yet, but it will be invalid anyway.
-   * In this case we'll have to check twice.
-   */
-  checkAgain: boolean;
-
-  constructor(token: AuthTokenInfo, checkAgain = false) {
+  constructor(token: AuthTokenInfo) {
     this.payload = token;
-    this.checkAgain = checkAgain;
   }
 }
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import {
   createSelector,
   MemoizedSelector,
@@ -9,6 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { hasValue } from '../empty.util';
 import {
   TruncatableCollapseAction,
   TruncatableExpandAction,

@@ -16,7 +16,7 @@ import {
   take,
 } from 'rxjs/operators';
 
-import { CoreState } from '../core-state.model';
+import { AppState } from '../../app.reducer';
 import { isAuthenticationBlocking } from './selectors';
 
 /**
@@ -27,7 +27,7 @@ import { isAuthenticationBlocking } from './selectors';
 export const authBlockingGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot,
-  store: Store<CoreState> = inject(Store<CoreState>),
+  store: Store<AppState> = inject(Store<AppState>),
 ): Observable<boolean> => {
   return store.pipe(select(isAuthenticationBlocking)).pipe(
     map((isBlocking: boolean) => isBlocking === false),

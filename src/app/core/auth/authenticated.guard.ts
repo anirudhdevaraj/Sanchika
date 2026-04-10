@@ -18,7 +18,7 @@ import {
   switchMap,
 } from 'rxjs/operators';
 
-import { CoreState } from '../core-state.model';
+import { AppState } from '../../app.reducer';
 import {
   AuthService,
   LOGIN_ROUTE,
@@ -39,7 +39,7 @@ export const authenticatedGuard: CanActivateFn = (
   state: RouterStateSnapshot,
   authService: AuthService = inject(AuthService),
   router: Router = inject(Router),
-  store: Store<CoreState> = inject(Store<CoreState>),
+  store: Store<AppState> = inject(Store<AppState>),
 ): Observable<boolean | UrlTree> => {
   const url = state.url;
   // redirect to sign in page if user is not authenticated

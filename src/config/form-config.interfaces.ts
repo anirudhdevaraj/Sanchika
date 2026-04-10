@@ -7,5 +7,4 @@ export interface ValidatorMap {
 export interface FormConfig extends Config {
   spellCheck: boolean;
   validatorMap: ValidatorMap;
-  showInlineGroupDuplicateButton: boolean;
 }

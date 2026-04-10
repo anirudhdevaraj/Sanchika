@@ -11,7 +11,6 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { HostWindowServiceStub } from '@dspace/core/testing/host-window-service.stub';
 import { of } from 'rxjs';
 
 import { HostWindowService } from '../../shared/host-window.service';
@@ -21,7 +20,8 @@ import {
   MenuItemModels,
   MenuSection,
 } from '../../shared/menu/menu-section.model';
-import { MenuServiceStub } from '../../shared/menu/menu-service.stub';
+import { HostWindowServiceStub } from '../../shared/testing/host-window-service.stub';
+import { MenuServiceStub } from '../../shared/testing/menu-service.stub';
 import { HoverOutsideDirective } from '../../shared/utils/hover-outside.directive';
 import { ExpandableNavbarSectionComponent } from './expandable-navbar-section.component';
 

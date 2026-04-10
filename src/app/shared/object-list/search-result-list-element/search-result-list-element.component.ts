@@ -3,18 +3,18 @@ import {
   Inject,
   OnInit,
 } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import {
   APP_CONFIG,
   AppConfig,
-} from '@dspace/config/app-config.interface';
-import { DSONameService } from '@dspace/core/breadcrumbs/dso-name.service';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { Metadata } from '@dspace/core/shared/metadata.utils';
-import { SearchResult } from '@dspace/core/shared/search/models/search-result.model';
-import { hasValue } from '@dspace/shared/utils/empty.util';
-import { Observable } from 'rxjs';
-
+} from '../../../../config/app-config.interface';
+import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { DSpaceObject } from '../../../core/shared/dspace-object.model';
+import { Metadata } from '../../../core/shared/metadata.utils';
+import { hasValue } from '../../empty.util';
 import { AbstractListableElementComponent } from '../../object-collection/shared/object-collection-element/abstract-listable-element.component';
+import { SearchResult } from '../../search/models/search-result.model';
 import { TruncatableService } from '../../truncatable/truncatable.service';
 
 @Component({
@@ -28,11 +28,6 @@ export class SearchResultListElementComponent<T extends SearchResult<K>, K exten
   dso: K;
   dsoTitle: string;
 
-  /**
-   * Limit of additional metadata values to show
-   */
-  additionalMetadataLimit: number;
-
   public constructor(protected truncatableService: TruncatableService,
                      public dsoNameService: DSONameService,
                      @Inject(APP_CONFIG) protected appConfig?: AppConfig) {
@@ -43,7 +38,6 @@ export class SearchResultListElementComponent<T extends SearchResult<K>, K exten
    * Retrieve the dso from the search result
    */
   ngOnInit(): void {
-    this.additionalMetadataLimit = this.appConfig?.searchResult?.followAuthorityMetadataValuesLimit;
     if (hasValue(this.object)) {
       this.dso = this.object.indexableObject;
       this.dsoTitle = this.dsoNameService.getHitHighlights(this.object, this.dso, true);

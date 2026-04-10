@@ -4,7 +4,7 @@ import {
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { BreadcrumbsComponent as BaseComponent } from '../../../../app/breadcrumbs/breadcrumbs.component';
@@ -18,7 +18,7 @@ import { VarDirective } from '../../../../app/shared/utils/var.directive';
   styleUrls: ['../../../../app/breadcrumbs/breadcrumbs.component.scss'],
   imports: [
     AsyncPipe,
-    NgbTooltip,
+    NgbTooltipModule,
     NgTemplateOutlet,
     RouterLink,
     TranslateModule,

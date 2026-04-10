@@ -1,5 +1,3 @@
-import { RelationshipOptions } from '@dspace/core/shared/relationship-options.model';
-import { hasValue } from '@dspace/shared/utils/empty.util';
 import {
   DynamicFormArrayModel,
   DynamicFormArrayModelConfig,
@@ -7,6 +5,9 @@ import {
   DynamicFormControlRelation,
   serializable,
 } from '@ng-dynamic-forms/core';
+
+import { hasValue } from '../../../../empty.util';
+import { RelationshipOptions } from '../../models/relationship-options.model';
 
 export interface DynamicRowArrayModelConfig extends DynamicFormArrayModelConfig {
   notRepeatable: boolean;
@@ -33,7 +34,6 @@ export class DynamicRowArrayModel extends DynamicFormArrayModel {
   @serializable() isDraggable: boolean;
   @serializable() showButtons = true;
   @serializable() typeBindRelations: DynamicFormControlRelation[];
-  @serializable() toggleSecurityVisibility?: boolean;
   isRowArray = true;
   isInlineGroupArray = false;
 
@@ -56,6 +56,5 @@ export class DynamicRowArrayModel extends DynamicFormArrayModel {
     this.isDraggable = config.isDraggable;
     this.typeBindRelations = config.typeBindRelations ? config.typeBindRelations : [];
     this.isInlineGroupArray = config.isInlineGroupArray ? config.isInlineGroupArray : false;
-    this.toggleSecurityVisibility = false;
   }
 }

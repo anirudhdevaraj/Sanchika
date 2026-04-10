@@ -4,10 +4,10 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { AppliedFilter } from '@dspace/core/shared/search/models/applied-filter.model';
 import { BehaviorSubject } from 'rxjs';
 
-import { SearchService } from '../search.service';
+import { SearchService } from '../../../core/shared/search/search.service';
+import { AppliedFilter } from '../models/applied-filter.model';
 import { SearchLabelLoaderComponent } from './search-label-loader/search-label-loader.component';
 
 @Component({

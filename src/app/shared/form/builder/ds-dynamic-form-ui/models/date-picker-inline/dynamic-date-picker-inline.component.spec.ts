@@ -38,7 +38,7 @@ describe('DsDatePickerInlineComponent test suite', () => {
         ReactiveFormsModule,
         NoopAnimationsModule,
         NgbDatepickerModule,
-        DynamicFormsCoreModule,
+        DynamicFormsCoreModule.forRoot(),
         DsDatePickerInlineComponent,
       ],
     }).compileComponents().then(() => {

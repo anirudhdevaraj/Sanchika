@@ -5,16 +5,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { BitstreamFormatDataService } from '@dspace/core/data/bitstream-format-data.service';
-import { FindListOptions } from '@dspace/core/data/find-list-options.model';
-import { PaginatedList } from '@dspace/core/data/paginated-list.model';
-import { RemoteData } from '@dspace/core/data/remote-data';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { PaginationService } from '@dspace/core/pagination/pagination.service';
-import { PaginationComponentOptions } from '@dspace/core/pagination/pagination-component-options.model';
-import { BitstreamFormat } from '@dspace/core/shared/bitstream-format.model';
-import { NoContent } from '@dspace/core/shared/NoContent.model';
-import { getFirstCompletedRemoteData } from '@dspace/core/shared/operators';
 import {
   TranslateModule,
   TranslateService,
@@ -28,8 +18,17 @@ import {
   toArray,
 } from 'rxjs/operators';
 
+import { BitstreamFormatDataService } from '../../../core/data/bitstream-format-data.service';
+import { FindListOptions } from '../../../core/data/find-list-options.model';
+import { PaginatedList } from '../../../core/data/paginated-list.model';
+import { RemoteData } from '../../../core/data/remote-data';
+import { PaginationService } from '../../../core/pagination/pagination.service';
+import { BitstreamFormat } from '../../../core/shared/bitstream-format.model';
+import { NoContent } from '../../../core/shared/NoContent.model';
+import { getFirstCompletedRemoteData } from '../../../core/shared/operators';
+import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import { PaginationComponent } from '../../../shared/pagination/pagination.component';
-import { BitstreamFormatService } from './bitstream-format.service';
+import { PaginationComponentOptions } from '../../../shared/pagination/pagination-component-options.model';
 
 /**
  * This component renders a list of bitstream formats
@@ -68,8 +67,7 @@ export class BitstreamFormatsComponent implements OnInit, OnDestroy {
 
   constructor(private notificationsService: NotificationsService,
               private translateService: TranslateService,
-              private bitstreamFormatDataService: BitstreamFormatDataService,
-              private bitstreamFormatService: BitstreamFormatService,
+              private bitstreamFormatService: BitstreamFormatDataService,
               private paginationService: PaginationService,
   ) {
   }
@@ -79,13 +77,13 @@ export class BitstreamFormatsComponent implements OnInit, OnDestroy {
    * Deletes the currently selected formats from the registry and updates the presented list
    */
   deleteFormats() {
-    this.bitstreamFormatDataService.clearBitStreamFormatRequests();
+    this.bitstreamFormatService.clearBitStreamFormatRequests();
     this.bitstreamFormatService.getSelectedBitstreamFormats().pipe(
       take(1),
       // emit all formats in the array one at a time
       mergeMap((formats: BitstreamFormat[]) => formats),
       // delete each format
-      mergeMap((format: BitstreamFormat) => this.bitstreamFormatDataService.delete(format.id).pipe(
+      mergeMap((format: BitstreamFormat) => this.bitstreamFormatService.delete(format.id).pipe(
         // wait for each response to come back
         getFirstCompletedRemoteData(),
         // return a boolean to indicate whether a response succeeded
@@ -165,7 +163,7 @@ export class BitstreamFormatsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.bitstreamFormats$ = this.paginationService.getFindListOptions(this.pageConfig.id, this.pageConfig).pipe(
       switchMap((findListOptions: FindListOptions) => {
-        return this.bitstreamFormatDataService.findAll(findListOptions);
+        return this.bitstreamFormatService.findAll(findListOptions);
       }),
     );
     this.selectedBitstreamFormatIDs$ = this.selectedBitstreamFormatIDs();

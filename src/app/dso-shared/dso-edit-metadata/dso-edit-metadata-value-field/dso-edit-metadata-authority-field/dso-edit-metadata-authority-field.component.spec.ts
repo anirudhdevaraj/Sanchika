@@ -4,31 +4,26 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ItemDataService } from '@dspace/core/data/item-data.service';
-import { APP_DATA_SERVICES_MAP } from '@dspace/core/data-services-map-type';
-import { MetadataField } from '@dspace/core/metadata/metadata-field.model';
-import { MetadataSchema } from '@dspace/core/metadata/metadata-schema.model';
-import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
-import { Collection } from '@dspace/core/shared/collection.model';
-import { ConfidenceType } from '@dspace/core/shared/confidence-type';
-import { DSpaceObject } from '@dspace/core/shared/dspace-object.model';
-import { Item } from '@dspace/core/shared/item.model';
-import { MetadataValue } from '@dspace/core/shared/metadata.models';
-import { Vocabulary } from '@dspace/core/submission/vocabularies/models/vocabulary.model';
-import { VocabularyService } from '@dspace/core/submission/vocabularies/vocabulary.service';
-import { SubmissionServiceStub } from '@dspace/core/testing/submission-service.stub';
-import { createPaginatedList } from '@dspace/core/testing/utils.test';
-import { VocabularyServiceStub } from '@dspace/core/testing/vocabulary-service.stub';
-import { createSuccessfulRemoteDataObject$ } from '@dspace/core/utilities/remote-data.utils';
-import { provideMockStore } from '@ngrx/store/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { RegistryService } from '../../../../admin/admin-registries/registry/registry.service';
+import { ItemDataService } from '../../../../core/data/item-data.service';
+import { MetadataField } from '../../../../core/metadata/metadata-field.model';
+import { MetadataSchema } from '../../../../core/metadata/metadata-schema.model';
+import { RegistryService } from '../../../../core/registry/registry.service';
+import { Collection } from '../../../../core/shared/collection.model';
+import { ConfidenceType } from '../../../../core/shared/confidence-type';
+import { DSpaceObject } from '../../../../core/shared/dspace-object.model';
+import { Item } from '../../../../core/shared/item.model';
+import { MetadataValue } from '../../../../core/shared/metadata.models';
+import { Vocabulary } from '../../../../core/submission/vocabularies/models/vocabulary.model';
+import { VocabularyService } from '../../../../core/submission/vocabularies/vocabulary.service';
 import { DynamicOneboxModel } from '../../../../shared/form/builder/ds-dynamic-form-ui/models/onebox/dynamic-onebox.model';
 import { DsDynamicScrollableDropdownComponent } from '../../../../shared/form/builder/ds-dynamic-form-ui/models/scrollable-dropdown/dynamic-scrollable-dropdown.component';
 import { DynamicScrollableDropdownModel } from '../../../../shared/form/builder/ds-dynamic-form-ui/models/scrollable-dropdown/dynamic-scrollable-dropdown.model';
-import { FormBuilderService } from '../../../../shared/form/builder/form-builder.service';
-import { SubmissionService } from '../../../../submission/submission.service';
+import { NotificationsService } from '../../../../shared/notifications/notifications.service';
+import { createSuccessfulRemoteDataObject$ } from '../../../../shared/remote-data.utils';
+import { createPaginatedList } from '../../../../shared/testing/utils.test';
+import { VocabularyServiceStub } from '../../../../shared/testing/vocabulary-service.stub';
 import { DsoEditMetadataValue } from '../../dso-edit-metadata-form';
 import { DsoEditMetadataAuthorityFieldComponent } from './dso-edit-metadata-authority-field.component';
 
@@ -62,8 +57,6 @@ describe('DsoEditMetadataAuthorityFieldComponent', () => {
     scrollable: true,
     hierarchical: false,
     preloadLevel: 0,
-    entity: 'Person',
-    multiValueOnGenerator: false,
     type: 'vocabulary',
     _links: {
       self: {
@@ -82,8 +75,6 @@ describe('DsoEditMetadataAuthorityFieldComponent', () => {
     hierarchical: true,
     preloadLevel: 2,
     type: 'vocabulary',
-    entity: 'Publication',
-    multiValueOnGenerator: false,
     _links: {
       self: {
         href: 'self',
@@ -100,8 +91,6 @@ describe('DsoEditMetadataAuthorityFieldComponent', () => {
     scrollable: false,
     hierarchical: false,
     preloadLevel: 0,
-    entity: 'Person',
-    multiValueOnGenerator: false,
     type: 'vocabulary',
     _links: {
       self: {
@@ -164,10 +153,6 @@ describe('DsoEditMetadataAuthorityFieldComponent', () => {
         { provide: ItemDataService, useValue: itemService },
         { provide: RegistryService, useValue: registryService },
         { provide: NotificationsService, useValue: notificationsService },
-        { provide: FormBuilderService },
-        { provide: SubmissionService, useClass: SubmissionServiceStub },
-        { provide: APP_DATA_SERVICES_MAP, useValue: {} },
-        provideMockStore({ initialState: { core: { index: { } } } }),
       ],
     }).overrideComponent(DsoEditMetadataAuthorityFieldComponent, {
       remove: {

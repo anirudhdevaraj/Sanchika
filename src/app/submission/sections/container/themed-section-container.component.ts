@@ -15,9 +15,8 @@ export class ThemedSubmissionSectionContainerComponent extends ThemedComponent<S
   @Input() collectionId: string;
   @Input() sectionData: SectionDataObject;
   @Input() submissionId: string;
-  @Input() entityType: string;
 
-  protected inAndOutputNames: (keyof SubmissionSectionContainerComponent & keyof this)[] = ['collectionId', 'sectionData', 'submissionId', 'entityType'];
+  protected inAndOutputNames: (keyof SubmissionSectionContainerComponent & keyof this)[] = ['collectionId', 'sectionData', 'submissionId'];
 
   protected getComponentName(): string {
     return 'SubmissionSectionContainerComponent';

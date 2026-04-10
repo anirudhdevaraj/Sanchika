@@ -1,5 +1,4 @@
 export enum SubmissionScopeType {
-  WorkspaceItem = 'submission',
-  WorkflowItem = 'workflow',
-  EditItem = 'edit'
+  WorkspaceItem = 'WORKSPACE',
+  WorkflowItem = 'WORKFLOW',
 }

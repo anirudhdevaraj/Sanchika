@@ -10,10 +10,6 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { authReducer } from '@dspace/core/auth/auth.reducer';
-import { EPerson } from '@dspace/core/eperson/models/eperson.model';
-import { EPersonMock } from '@dspace/core/testing/eperson.mock';
-import { RouterStub } from '@dspace/core/testing/router.stub';
 import {
   Store,
   StoreModule,
@@ -21,6 +17,10 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AppState } from '../../app.reducer';
+import { authReducer } from '../../core/auth/auth.reducer';
+import { EPerson } from '../../core/eperson/models/eperson.model';
+import { EPersonMock } from '../testing/eperson.mock';
+import { RouterStub } from '../testing/router.stub';
 import { LogOutComponent } from './log-out.component';
 
 describe('LogOutComponent', () => {

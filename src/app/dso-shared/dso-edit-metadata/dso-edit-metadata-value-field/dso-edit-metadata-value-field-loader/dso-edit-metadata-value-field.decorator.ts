@@ -1,6 +1,5 @@
-import { Context } from '@dspace/core/shared/context.model';
-import { hasValue } from '@dspace/shared/utils/empty.util';
-
+import { Context } from '../../../../core/shared/context.model';
+import { hasValue } from '../../../../shared/empty.util';
 import {
   DEFAULT_CONTEXT,
   DEFAULT_THEME,

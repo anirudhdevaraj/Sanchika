@@ -6,12 +6,12 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { isNotEmpty } from '@dspace/shared/utils/empty.util';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { AbstractMenuSectionComponent } from 'src/app/shared/menu/menu-section/abstract-menu-section.component';
 
 import { BtnDisabledDirective } from '../../../btn-disabled.directive';
+import { isNotEmpty } from '../../../empty.util';
 import { MenuService } from '../../../menu/menu.service';
 import { MenuID } from '../../../menu/menu-id.model';
 import { MenuSection } from '../../../menu/menu-section.model';
@@ -25,7 +25,7 @@ import { MenuSection } from '../../../menu/menu-section.model';
   styleUrls: ['./dso-edit-menu-section.component.scss'],
   imports: [
     BtnDisabledDirective,
-    NgbTooltip,
+    NgbTooltipModule,
     RouterLink,
     TranslateModule,
   ],

@@ -3,26 +3,17 @@
     <ds-metadata-field-wrapper [label]="label | translate">
       <div class="file-section">
         @for (file of bitstreams; track file; let last = $last) {
-          <ng-template #fileContent>
-            <span>
-              @if (primaryBitstreamId === file.id) {
-                <span class="badge bg-primary">
-                  {{ 'item.page.bitstreams.primary' | translate }}
-                </span>
-              }
-              {{ dsoNameService.getName(file) }}
-            </span>
-
-            <span>({{ file?.sizeBytes | dsFileSize }})</span>
-
-            @if (!last) {
-              <span [innerHTML]="separator"></span>
+          <ds-file-download-link [bitstream]="file" [item]="item">
+          <span>
+            @if (primaryBitstreamId === file.id) {
+              <span class="badge bg-primary">{{ 'item.page.bitstreams.primary' | translate }}</span>
             }
-          </ng-template>
-          <ds-file-download-link
-            [bitstream]="file"
-            [item]="item">
-            <ng-container *ngTemplateOutlet="fileContent"></ng-container>
+            {{ dsoNameService.getName(file) }}
+          </span>
+            <span> ({{(file?.sizeBytes) | dsFileSize }})</span>
+            @if (!last) {
+              <span innerHTML="{{separator}}"></span>
+            }
           </ds-file-download-link>
         }
         @if (isLoading) {
