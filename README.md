@@ -1,7 +1,6 @@
 # Bhasha Sanchika
 
 > **Digital Language Repository of the Central Institute of Indian Languages (CIIL)**  
-> Ministry of Education, Government of India
 
 🌐 **Website:** [https://sanchika.ciil.org](https://sanchika.ciil.org)
 
@@ -13,14 +12,6 @@
 
 CIIL, founded in 1969, plays a central role in language development and research across India. The institute advises and assists Central and State Governments on language-related matters and promotes learning of **20 Indian languages** among non-native speakers.
 
-Bhasha Sanchika aligns with major national initiatives including:
-
-- **NEP-2020** (National Education Policy)
-- **Digital India**
-- **Atmanirbhar Bharat**
-- **Ek Bharat Shreshtha Bharat**
-
----
 
 ## Core Objectives
 
@@ -73,15 +64,6 @@ Resources focused on endangered mother tongues and languages, including raw audi
 
 ---
 
-## Timeline
-
-| Year | Milestone |
-|------|-----------|
-| 2024 | Foundation Stone — Bhasha Sanchika initiated |
-| 2025 | Official Launch of Bhasha Sanchika |
-| 2026 | Launch of **Version 2.0** with enhanced features and improved user experience |
-
----
 
 ## Getting Started
 
