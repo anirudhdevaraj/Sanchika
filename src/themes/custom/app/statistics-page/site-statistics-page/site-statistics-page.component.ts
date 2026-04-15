@@ -79,10 +79,14 @@ export class SiteStatisticsPageComponent extends BaseComponent implements OnInit
       shareReplay(1),
     );
 
-    // Only fetch visit count in browser — relative URL /api/visit-count cannot be resolved during SSR
     if (isPlatformBrowser(this.platformId)) {
-      this.visitCount$ = this.http.get<{ total: number }>('/api/visit-count').pipe(
-        map((r) => r?.total ?? 0),
+      this.visitCount$ = this.http.get<any>(
+        `${this.appConfig.rest.baseUrl}/api/statistics/usagereports/409dfd12-03f5-4ef6-b1a0-98b09312735a_TotalVisits`,
+      ).pipe(
+        map((r: any) => {
+          const points: any[] = r?.points ?? [];
+          return points.reduce((sum: number, p: any) => sum + (p?.values?.views ?? 0), 0);
+        }),
         catchError(() => of(0)),
         shareReplay(1),
       );
