@@ -371,6 +371,10 @@
   transition: background 0.2s;
 
   &:hover { background: #fffdf5; border-color: rgba(214, 158, 46, 0.3); }
+
+  &.no-flag {
+    grid-template-columns: 28px 1fr 50px 100px;
+  }
 }
 
 .geo-rank {
@@ -443,5 +447,8 @@
   .geo-item {
     grid-template-columns: 24px 28px 1fr 44px;
     .geo-bar-bg { display: none; }
+    &.no-flag {
+      grid-template-columns: 24px 1fr 44px;
+    }
   }
 }

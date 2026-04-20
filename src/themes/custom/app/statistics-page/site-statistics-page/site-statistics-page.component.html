@@ -122,7 +122,7 @@
               @if (citiesReport && citiesReport.points.length > 0) {
                 <div class="geo-list">
                   @for (point of citiesReport.points; track point; let i = $index) {
-                    <div class="geo-item">
+                    <div class="geo-item no-flag">
                       <span class="geo-rank">{{ i + 1 }}</span>
                       <span class="geo-label">{{ point.label }}</span>
                       <span class="geo-count">{{ getPointValue(point, 'views') }}</span>
