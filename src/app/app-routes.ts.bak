@@ -83,11 +83,6 @@ export const APP_ROUTES: Route[] = [
         canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
-        path: 'id/:suffix',
-        pathMatch: 'full',
-        redirectTo: 'handle/20.500.14705/:suffix',
-      },
-      {
         path: 'id',
         loadChildren: () => import('./lookup-by-id/lookup-by-id-routes')
           .then((m) => m.ROUTES),

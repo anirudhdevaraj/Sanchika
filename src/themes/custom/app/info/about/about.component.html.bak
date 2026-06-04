@@ -101,8 +101,8 @@
     </section>
 
     <h2 class="about-section-title">{{ 'about.section.specialised' | translate }}</h2>
-    <div class="about-tabs-container" [class.is-tabs-at-end]="tabsAtEnd">
-      <div class="about-tabs-nav" #tabsNav (scroll)="onTabsScroll($event)">
+    <div class="about-tabs-container">
+      <div class="about-tabs-nav">
         <button class="about-tab-btn" [class.active]="activeTab === 'sppel'" (click)="setTab('sppel')">{{ 'about.tab.sppel' | translate }}</button>
         <button class="about-tab-btn" [class.active]="activeTab === 'bhasha'" (click)="setTab('bhasha')">{{ 'about.tab.bhasha' | translate }}</button>
         <button class="about-tab-btn" [class.active]="activeTab === 'bharat'" (click)="setTab('bharat')">{{ 'about.tab.bharat' | translate }}</button>

@@ -7664,7 +7664,7 @@
 
   "about.leader1.name": "Prof. Basavaraja Kodagunti",
 
-  "about.leader1.role": "Director",
+  "about.leader1.role": "Director-in-Charge",
 
   "about.leader2.name": "Dr. Sujoy Sarkar",
 
@@ -7700,7 +7700,7 @@
 
   "contrib.leader1.name": "Prof. Basavaraja Kodagunti",
 
-  "contrib.leader1.role": "Director",
+  "contrib.leader1.role": "Director-in-Charge",
 
   "contrib.leader2.name": "Dr. Sujoy Sarkar",
 
@@ -8098,7 +8098,7 @@
 
   "citation.intro.p1": "Bhasha Sanchika, a digital repository hosted by the Central Institute of Indian Languages (CIIL), Mysuru, serves as a vital resource for preserving and promoting India's linguistic and cultural heritage. Its collections span diverse formats, including text, audio, video, and images, drawn from multiple projects and schemes. Proper citation of items, collections, and assemblages within Bhasha Sanchika ensures acknowledgment of contributors, supports transparency, and enables reproducibility.",
 
-  "citation.intro.p2": "This guideline provides formats for citing individual items, collections, and assemblages in accordance with best practices, such as the Tromsø Recommendations. In addition, every item page provides a \"Cite This Item\" tool offering ready-made citations in five formats — APA, BibTeX, Chicago, MLA, and RIS — for direct copy or download into reference managers like Zotero, Mendeley, or EndNote.",
+  "citation.intro.p2": "This guideline provides formats for citing individual items, collections, and assemblages in accordance with best practices, such as the Tromsø Recommendations.",
 
   "citation.section.principles": "General Citation Principles",
 
@@ -8157,16 +8157,6 @@
   "citation.widget.close": "Close",
 
   "citation.widget.tab.plaintext": "Plain Text",
-
-  "citation.widget.tab.apa": "APA",
-
-  "citation.widget.tab.mla": "MLA",
-
-  "citation.widget.tab.chicago": "Chicago",
-
-  "citation.widget.format.mla": "MLA 9th Edition",
-
-  "citation.widget.format.chicago": "Chicago 17th Edition (Author-Date)",
 
   "citation.widget.tab.bibtex": "BibTeX",
 

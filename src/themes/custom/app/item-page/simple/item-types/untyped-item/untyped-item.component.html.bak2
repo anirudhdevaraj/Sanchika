@@ -142,12 +142,12 @@
                 <span class="meta-value">{{ object.firstMetadataValue('dc.date.created') }}</span>
               </div>
             }
-            @if (prettyIdSuffix) {
+            @if (object.firstMetadataValue('dc.identifier.uri')) {
               <div class="meta-attr-box">
                 <span class="meta-label"><i class="fas fa-link"></i> {{ 'item.page.uri' | translate }}</span>
                 <span class="meta-value uri-value">
-                  <a [routerLink]="['/id', prettyIdSuffix]">
-                    {{ prettyIdDisplay }}
+                  <a [href]="object.firstMetadataValue('dc.identifier.uri')" target="_blank" rel="noopener">
+                    {{ object.firstMetadataValue('dc.identifier.uri') }}
                   </a>
                 </span>
               </div>

@@ -1,4 +1,4 @@
-import { AsyncPipe, DOCUMENT } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -40,7 +40,6 @@ import { CitationComponent } from '../../citation/citation.component';
 })
 export class UntypedItemComponent extends BaseComponent implements OnInit {
   private readonly breadcrumbsService = inject(BreadcrumbsService);
-  private readonly doc = inject(DOCUMENT);
   readonly breadcrumbs$ = this.breadcrumbsService.breadcrumbs$;
   shareOpen = false;
 
@@ -52,25 +51,6 @@ export class UntypedItemComponent extends BaseComponent implements OnInit {
   scrollTo(event: Event, id: string): void {
     event.preventDefault();
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  get prettyIdSuffix(): string | null {
-    const handle = (this.object as Item | undefined)?.handle;
-    if (!handle || typeof handle !== 'string') {
-      return null;
-    }
-    const suffix = handle.split('/').pop();
-    return suffix ? suffix : null;
-  }
-
-  get prettyIdDisplay(): string {
-    const suffix = this.prettyIdSuffix;
-    if (!suffix) {
-      return '';
-    }
-    const origin = this.doc?.location?.origin ?? '';
-    const host = origin.replace(/^https?:\/\//, '');
-    return host ? `${host}/id/${suffix}` : `/id/${suffix}`;
   }
 
   openShare(platform: string): void {

@@ -2944,14 +2944,13 @@ ds-starts-with-loader {
     gap: 16px;
     justify-content: center;
     box-shadow: 0 3px 0 #d69e2e;
-    border-radius: 0;
   }
 
   .info-icon { width: 56px; height: 56px; font-size: 1.4rem; }
 
   .about-info-box .end-cap { display: none; }
 
-  .about-cream-panel { padding: 20px 24px; border-radius: 0; }
+  .about-cream-panel { padding: 20px 24px; }
 
   .about-cream-panel p {
     font-size: 0.9rem;

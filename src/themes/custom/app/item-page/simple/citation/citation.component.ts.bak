@@ -58,14 +58,13 @@ export class CitationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   get activeText(): string {
     if (!this.citationData) { return ''; }
-    switch (this.activeTab) {
-      case 'mla':     return this.citationService.formatMLA(this.citationData, this.includeDescription);
-      case 'chicago': return this.citationService.formatChicago(this.citationData, this.includeDescription);
-      case 'bibtex':  return this.citationService.formatBibTeX(this.citationData, this.includeDescription);
-      case 'ris':     return this.citationService.formatRIS(this.citationData, this.includeDescription);
-      case 'apa':
-      default:        return this.citationService.formatAPA(this.citationData, this.includeDescription);
+    if (this.activeTab === 'bibtex') {
+      return this.citationService.formatBibTeX(this.citationData, this.includeDescription);
     }
+    if (this.activeTab === 'ris') {
+      return this.citationService.formatRIS(this.citationData, this.includeDescription);
+    }
+    return this.citationService.formatAPA(this.citationData, this.includeDescription);
   }
 
   get hasDescription(): boolean {

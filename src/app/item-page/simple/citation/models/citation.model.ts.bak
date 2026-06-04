@@ -12,4 +12,4 @@ export interface CitationData {
   description?: string;
 }
 
-export type CitationTab = 'apa' | 'mla' | 'chicago' | 'bibtex' | 'ris';
+export type CitationTab = 'apa' | 'bibtex' | 'ris';

@@ -95,9 +95,6 @@
               <button class="social-btn x-btn" (click)="openShare('x')" title="Share on X">
                 <i class="fab fa-x-twitter"></i>
               </button>
-              <button class="social-btn wa" (click)="openShare('whatsapp')" title="Share on WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-              </button>
             </div>
           }
           <ds-item-cite [item]="object"></ds-item-cite>
@@ -142,12 +139,12 @@
                 <span class="meta-value">{{ object.firstMetadataValue('dc.date.created') }}</span>
               </div>
             }
-            @if (prettyIdSuffix) {
+            @if (object.firstMetadataValue('dc.identifier.uri')) {
               <div class="meta-attr-box">
                 <span class="meta-label"><i class="fas fa-link"></i> {{ 'item.page.uri' | translate }}</span>
                 <span class="meta-value uri-value">
-                  <a [routerLink]="['/id', prettyIdSuffix]">
-                    {{ prettyIdDisplay }}
+                  <a [href]="object.firstMetadataValue('dc.identifier.uri')" target="_blank" rel="noopener">
+                    {{ object.firstMetadataValue('dc.identifier.uri') }}
                   </a>
                 </span>
               </div>

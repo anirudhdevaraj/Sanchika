@@ -8,9 +8,7 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { firstValueFrom } from 'rxjs';
 
-import { Item } from '../../../../../app/core/shared/item.model';
 import { ThemedItemAlertsComponent } from '../../../../../app/item-page/alerts/themed-item-alerts.component';
 import { CollectionsComponent } from '../../../../../app/item-page/field-components/collections/collections.component';
 import { ThemedFullFileSectionComponent } from '../../../../../app/item-page/full/field-components/file-section/themed-full-file-section.component';
@@ -48,57 +46,4 @@ import { VarDirective } from '../../../../../app/shared/utils/var.directive';
   ],
 })
 export class FullItemPageComponent extends BaseComponent {
-
-  async downloadMetadataPdf(item: Item): Promise<void> {
-    const [{ default: jsPDF }, { default: autoTable }] = await Promise.all([
-      import('jspdf'),
-      import('jspdf-autotable'),
-    ]);
-
-    const metadata = await firstValueFrom(this.metadata$);
-
-    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-    const title = item.firstMetadataValue('dc.title') ?? 'Item';
-    const displayTitle = title.length > 90 ? title.slice(0, 90) + '…' : title;
-
-    doc.setFontSize(14);
-    doc.setTextColor(26, 54, 93);
-    doc.text(displayTitle, 14, 18);
-
-    const handle = item.handle;
-    if (handle) {
-      const suffix = handle.split('/').pop();
-      const origin = typeof window !== 'undefined' ? window.location.origin : '';
-      doc.setFontSize(9);
-      doc.setTextColor(100, 116, 139);
-      doc.text(`${origin}/id/${suffix}`, 14, 24);
-    }
-
-    const rows: string[][] = [];
-    for (const [key, values] of Object.entries(metadata ?? {})) {
-      if (key === 'dc.identifier.uri') {
-        continue;
-      }
-      for (const v of values) {
-        rows.push([key, v?.value ?? '']);
-      }
-    }
-
-    autoTable(doc, {
-      head: [['Field', 'Value']],
-      body: rows,
-      startY: 30,
-      styles: { fontSize: 9, cellPadding: 3, overflow: 'linebreak' },
-      headStyles: { fillColor: [26, 54, 93], textColor: 255 },
-      alternateRowStyles: { fillColor: [248, 250, 252] },
-      columnStyles: { 0: { cellWidth: 55, fontStyle: 'bold' } },
-      margin: { left: 14, right: 14 },
-    });
-
-    const safeTitle = (title || 'item')
-      .slice(0, 60)
-      .replace(/[^a-zA-Z0-9_-]+/g, '_')
-      .replace(/^_+|_+$/g, '');
-    doc.save(`${safeTitle || 'item'}_metadata.pdf`);
-  }
 }

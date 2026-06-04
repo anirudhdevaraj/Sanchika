@@ -58,40 +58,6 @@ export class CitationFormatterService {
     return citation;
   }
 
-  formatMLA(data: CitationData, includeDescription = false): string {
-    const authors = this.formatAuthorsMLA(data.authors);
-    let citation = '';
-    if (authors) { citation += `${authors}. `; }
-    citation += `"${data.title}." `;
-    if (data.publisher) { citation += `${data.publisher}, `; }
-    citation += `${data.year}, `;
-    citation += data.doi ? `https://doi.org/${data.doi}.` : `${data.url}.`;
-    if (data.language)   { citation += `\nLanguage: ${data.language}`; }
-    if (data.glottocode) { citation += `\nGlottocode: ${data.glottocode}`; }
-    if (data.formatOs)   { citation += `\nOS/Format: ${data.formatOs}`; }
-    if (includeDescription && data.description) {
-      citation += `\n\nAbstract: ${data.description}`;
-    }
-    return citation;
-  }
-
-  formatChicago(data: CitationData, includeDescription = false): string {
-    const authors = this.formatAuthorsChicago(data.authors);
-    let citation = '';
-    if (authors) { citation += `${authors}. `; }
-    citation += `${data.year}. `;
-    citation += `"${data.title}." `;
-    if (data.publisher) { citation += `${data.publisher}. `; }
-    citation += data.doi ? `https://doi.org/${data.doi}.` : `${data.url}.`;
-    if (data.language)   { citation += `\nLanguage: ${data.language}`; }
-    if (data.glottocode) { citation += `\nGlottocode: ${data.glottocode}`; }
-    if (data.formatOs)   { citation += `\nOS/Format: ${data.formatOs}`; }
-    if (includeDescription && data.description) {
-      citation += `\n\nAbstract: ${data.description}`;
-    }
-    return citation;
-  }
-
   formatBibTeX(data: CitationData, includeDescription = false): string {
     const key = this.generateBibTeXKey(data);
     const authors = data.authors.join(' and ');
@@ -141,50 +107,6 @@ export class CitationFormatterService {
     if (fmt.length === 1) { return fmt[0]; }
     if (fmt.length === 2) { return `${fmt[0]}, & ${fmt[1]}`; }
     return `${fmt.slice(0, -1).join(', ')}, & ${fmt[fmt.length - 1]}`;
-  }
-
-  /**
-   * MLA 9th: first author "Last, First Middle";
-   * second author flips to "First Middle Last".
-   * 3+ authors: first author + ", et al."
-   */
-  private formatAuthorsMLA(authors: string[]): string {
-    if (!authors || authors.length === 0) { return ''; }
-    const lastFirst = (a: string): string => {
-      const parts = a.split(',').map(s => s.trim());
-      return parts.length >= 2 ? `${parts[0]}, ${parts[1]}` : a;
-    };
-    const firstLast = (a: string): string => {
-      const parts = a.split(',').map(s => s.trim());
-      return parts.length >= 2 ? `${parts[1]} ${parts[0]}` : a;
-    };
-    if (authors.length === 1) { return lastFirst(authors[0]); }
-    if (authors.length === 2) { return `${lastFirst(authors[0])}, and ${firstLast(authors[1])}`; }
-    return `${lastFirst(authors[0])}, et al.`;
-  }
-
-  /**
-   * Chicago 17 author-date:
-   * 1: Last, First Middle.
-   * 2-10: Last, First, First Last, and First Last.
-   * 11+: Last, First, et al.
-   */
-  private formatAuthorsChicago(authors: string[]): string {
-    if (!authors || authors.length === 0) { return ''; }
-    const lastFirst = (a: string): string => {
-      const parts = a.split(',').map(s => s.trim());
-      return parts.length >= 2 ? `${parts[0]}, ${parts[1]}` : a;
-    };
-    const firstLast = (a: string): string => {
-      const parts = a.split(',').map(s => s.trim());
-      return parts.length >= 2 ? `${parts[1]} ${parts[0]}` : a;
-    };
-    if (authors.length === 1) { return lastFirst(authors[0]); }
-    if (authors.length > 10) { return `${lastFirst(authors[0])}, et al`; }
-    const rest = authors.slice(1, -1).map(firstLast);
-    const last = firstLast(authors[authors.length - 1]);
-    const head = [lastFirst(authors[0]), ...rest].join(', ');
-    return `${head}, and ${last}`;
   }
 
   private generateBibTeXKey(data: CitationData): string {

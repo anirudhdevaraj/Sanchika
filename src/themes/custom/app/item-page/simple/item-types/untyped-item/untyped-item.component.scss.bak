@@ -242,7 +242,6 @@ $border-light: #E2E8F0;
   &.fb { background: #1877F2; }
   &.li { background: #0A66C2; }
   &.x-btn { background: #000; }
-  &.wa { background: #25D366; }
 }
 
 .edit-menu-wrap {

@@ -11,12 +11,6 @@ import { AboutComponent as BaseComponent } from '../../../../../app/info/about/a
 })
 export class AboutComponent extends BaseComponent {
   activeTab = 'sppel';
-  tabsAtEnd = false;
-
-  onTabsScroll(e: Event): void {
-    const el = e.target as HTMLElement;
-    this.tabsAtEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 2;
-  }
 
   setTab(tab: string): void {
     this.activeTab = tab;

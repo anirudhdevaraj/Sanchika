@@ -27,7 +27,7 @@
       </button>
     </div>
 
-    <!-- Tabs (alphabetical: APA, BibTeX, Chicago, MLA, RIS) -->
+    <!-- Tabs -->
     <div class="cite-tabs">
       <button class="cite-tab" type="button"
               [ngClass]="{ active: activeTab === 'apa' }"
@@ -35,9 +35,9 @@
         {{ 'citation.widget.tab.apa' | translate }}
       </button>
       <button class="cite-tab" type="button"
-              [ngClass]="{ active: activeTab === 'bibtex' }"
-              (click)="setTab('bibtex')">
-        {{ 'citation.widget.tab.bibtex' | translate }}
+              [ngClass]="{ active: activeTab === 'mla' }"
+              (click)="setTab('mla')">
+        {{ 'citation.widget.tab.mla' | translate }}
       </button>
       <button class="cite-tab" type="button"
               [ngClass]="{ active: activeTab === 'chicago' }"
@@ -45,9 +45,9 @@
         {{ 'citation.widget.tab.chicago' | translate }}
       </button>
       <button class="cite-tab" type="button"
-              [ngClass]="{ active: activeTab === 'mla' }"
-              (click)="setTab('mla')">
-        {{ 'citation.widget.tab.mla' | translate }}
+              [ngClass]="{ active: activeTab === 'bibtex' }"
+              (click)="setTab('bibtex')">
+        {{ 'citation.widget.tab.bibtex' | translate }}
       </button>
       <button class="cite-tab" type="button"
               [ngClass]="{ active: activeTab === 'ris' }"
@@ -62,14 +62,14 @@
       @if (activeTab === 'apa') {
         <p class="cite-format-label">{{ 'citation.widget.format.apa' | translate }}</p>
       }
-      @if (activeTab === 'bibtex') {
-        <p class="cite-format-label">{{ 'citation.widget.format.bibtex' | translate }}</p>
+      @if (activeTab === 'mla') {
+        <p class="cite-format-label">{{ 'citation.widget.format.mla' | translate }}</p>
       }
       @if (activeTab === 'chicago') {
         <p class="cite-format-label">{{ 'citation.widget.format.chicago' | translate }}</p>
       }
-      @if (activeTab === 'mla') {
-        <p class="cite-format-label">{{ 'citation.widget.format.mla' | translate }}</p>
+      @if (activeTab === 'bibtex') {
+        <p class="cite-format-label">{{ 'citation.widget.format.bibtex' | translate }}</p>
       }
       @if (activeTab === 'ris') {
         <p class="cite-format-label">{{ 'citation.widget.format.ris' | translate }}</p>
