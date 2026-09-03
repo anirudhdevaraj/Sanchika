@@ -1,0 +1,183 @@
+$navy-deep: #1A365D;
+$navy-mid: #2A4365;
+$accent-gold: #D69E2E;
+$text-dark: #1E293B;
+$white: #ffffff;
+$border-light: #E2E8F0;
+
+:host {
+  display: block;
+
+  // Modern Facet Accordions - Flattened
+  ::ng-deep .facet-filter {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid $border-light !important;
+    border-radius: 0 !important;
+    padding: 14px 0 !important;
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+    
+    &:last-child {
+      border-bottom: none !important;
+    }
+
+    // Remove focus outline ring if it's messy, or style it cleanly
+    &.focus {
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    // Toggle button (Author, Subject, etc.)
+    .filter-name {
+      display: flex !important;
+      justify-content: space-between !important;
+      background: transparent;
+      border: none;
+      padding: 0;
+      width: 100%;
+      align-items: center;
+
+      span.h4 {
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        color: $navy-deep !important;
+        margin: 0 !important;
+        text-transform: capitalize;
+        text-align: left;
+      }
+
+      .filter-toggle {
+        color: $accent-gold;
+        font-size: 0.85rem;
+        flex-grow: 0 !important;
+        margin: 0 !important;
+        
+        // Override FontAwesome +/- with Up/Down Chevrons
+        &.fa-plus::before {
+          content: "\f078" !important; // fa-chevron-down
+        }
+        &.fa-minus::before {
+          content: "\f077" !important; // fa-chevron-up
+        }
+      }
+    }
+
+    // Checkboxes and labels inside filters
+    .search-filter-wrapper {
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px solid #e2e8f0;
+
+      .form-check {
+        margin-bottom: 8px;
+        
+        .form-check-input {
+          cursor: pointer;
+          &:checked {
+            background-color: $navy-deep;
+            border-color: $navy-deep;
+          }
+        }
+        
+        .form-check-label {
+          font-family: 'Poppins', sans-serif !important;
+          font-size: 0.9rem;
+          color: $text-dark;
+          cursor: pointer;
+        }
+      }
+
+      // Badges (counts)
+      .badge {
+        font-family: 'Poppins', sans-serif !important;
+        background-color: $navy-deep !important;
+        color: $white !important;
+        border-radius: 20px;
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        float: right;
+      }
+
+      // Show more / less buttons
+      a.float-start, a.float-end {
+        font-family: 'Poppins', sans-serif !important;
+        color: $navy-deep !important;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      // Filter text input (e.g., search author name)
+      input.form-control {
+        font-family: 'Poppins', sans-serif !important;
+        background-color: $white !important;
+        border-radius: 6px;
+        border: 1px solid $border-light;
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        
+        &:focus {
+          border-color: $accent-gold;
+          box-shadow: 0 0 0 2px rgba(214, 158, 46, 0.15);
+        }
+      }
+    }
+  }
+
+  // Icons for specific facet names
+  ::ng-deep .facet-wrapper .filter-name span.h4::before {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome !important;
+    font-weight: 900 !important;
+    color: $accent-gold;
+    margin-right: 8px;
+  }
+  
+  ::ng-deep .facet-author .filter-name span.h4::before { content: "\f007"; } /* fa-user */
+  ::ng-deep .facet-subject .filter-name span.h4::before { content: "\f02b"; } /* fa-tags */
+  ::ng-deep .facet-has_content_in_original_bundle .filter-name span.h4::before { content: "\f15b"; } /* fa-file */
+  
+  // Adding all possible variants for Access Type
+  ::ng-deep .facet-access_type .filter-name span.h4::before { content: "\f023"; } /* fa-lock */
+  ::ng-deep .facet-access .filter-name span.h4::before { content: "\f023"; } /* fa-lock */
+  ::ng-deep .facet-item_access_type .filter-name span.h4::before { content: "\f023"; } /* fa-lock */
+  ::ng-deep .facet-accessType .filter-name span.h4::before { content: "\f023"; } /* fa-lock */
+  ::ng-deep .facet-access_status .filter-name span.h4::before { content: "\f023"; } /* fa-lock */
+
+  ::ng-deep .facet-language .filter-name span.h4::before { content: "\f1ab"; } /* fa-language */
+  ::ng-deep .facet-media .filter-name span.h4::before { content: "\f03e"; } /* fa-image */
+  ::ng-deep .facet-linguistic_type .filter-name span.h4::before { content: "\f02c"; } /* fa-tags */
+
+  // Reset Filters Button
+  ::ng-deep button.btn-primary {
+    background: $navy-deep !important;
+    color: $white !important;
+    border: 2px solid $accent-gold !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.2s ease-in-out;
+
+    i {
+      color: $accent-gold !important;
+      margin-right: 6px;
+    }
+
+    &:hover {
+      background: $navy-mid !important;
+      border-color: $accent-gold !important;
+      color: $white !important;
+      
+      i { color: $accent-gold !important; }
+    }
+  }
+}

@@ -1,0 +1,122 @@
+<ds-metadata-field-wrapper [label]="label | translate">
+  <div *ngVar="(originals$ | async)?.payload as originals">
+    @if (hasValuesInBundle(originals)) {
+    <div class="file-bundle-card">
+      <h3 class="file-bundle-header">
+        <i class="fas fa-layer-group"></i> {{ "item.page.filesection.original.bundle" | translate }}
+      </h3>
+      @if (originals?.page?.length > 0) {
+      <ds-pagination [hideGear]="true" [hidePagerWhenSinglePage]="true" [paginationOptions]="originalOptions"
+        [collectionSize]="originals?.totalElements" [retainScrollPosition]="true">
+        @for (file of originals?.page; track file) {
+        <div class="file-item-row">
+          <div class="file-card-thumb">
+            <div *ngVar="(file.thumbnail | async)?.payload as thumb">
+              @if (thumb) {
+                <ds-thumbnail [thumbnail]="thumb"></ds-thumbnail>
+              } @else {
+                <div class="format-icon-placeholder"
+                     [style.background]="getFormatIcon(dsoNameService.getName(file)).bg">
+                  <i [class]="getFormatIcon(dsoNameService.getName(file)).icon"
+                     [style.color]="getFormatIcon(dsoNameService.getName(file)).color"></i>
+                </div>
+              }
+            </div>
+          </div>
+          <div class="file-card-info">
+            <div class="file-info-grid">
+              <div class="file-meta-row">
+                <span class="file-meta-label">{{ "item.page.filesection.name" | translate }}</span>
+                <span class="file-meta-value filename">{{ dsoNameService.getName(file) }}</span>
+              </div>
+              <div class="file-meta-row">
+                <span class="file-meta-label">{{ "item.page.filesection.size" | translate }}</span>
+                <span class="file-meta-value">{{ file.sizeBytes | dsFileSize }}</span>
+              </div>
+              <div class="file-meta-row">
+                <span class="file-meta-label">{{ "item.page.filesection.format" | translate }}</span>
+                <span class="file-meta-value">{{ (file.format | async)?.payload?.description }}</span>
+              </div>
+              @if (file.hasMetadata('dc.description')) {
+              <div class="file-meta-row">
+                <span class="file-meta-label">{{ "item.page.filesection.description" | translate }}</span>
+                <span class="file-meta-value">{{ file.firstMetadataValue("dc.description") }}</span>
+              </div>
+              }
+            </div>
+          </div>
+          <div class="file-card-action">
+            <ds-file-download-link [showIcon]="true" [bitstream]="file" [item]="item" cssClasses="btn-download-file">
+              <span>
+                {{ "item.page.filesection.download" | translate }}
+              </span>
+            </ds-file-download-link>
+          </div>
+        </div>
+        }
+      </ds-pagination>
+      }
+    </div>
+    }
+  </div>
+  <div *ngVar="(licenses$ | async)?.payload as licenses">
+    @if (hasValuesInBundle(licenses)) {
+    <div class="file-bundle-card">
+      <h3 class="file-bundle-header">
+        <i class="fas fa-certificate"></i> {{ "item.page.filesection.license.bundle" | translate }}
+      </h3>
+      @if (licenses?.page?.length > 0) {
+      <ds-pagination [hideGear]="true" [hidePagerWhenSinglePage]="true" [paginationOptions]="licenseOptions"
+        [collectionSize]="licenses?.totalElements" [retainScrollPosition]="true">
+        @for (file of licenses?.page; track file) {
+        <div class="file-item-row">
+          <div class="file-card-thumb">
+            <div *ngVar="(file.thumbnail | async)?.payload as thumb">
+              @if (thumb) {
+                <ds-thumbnail [thumbnail]="thumb"></ds-thumbnail>
+              } @else {
+                <div class="format-icon-placeholder"
+                     [style.background]="getFormatIcon(dsoNameService.getName(file)).bg">
+                  <i [class]="getFormatIcon(dsoNameService.getName(file)).icon"
+                     [style.color]="getFormatIcon(dsoNameService.getName(file)).color"></i>
+                </div>
+              }
+            </div>
+          </div>
+          <div class="file-card-info">
+            <div class="file-info-grid">
+              <div class="file-meta-row">
+                <span class="file-meta-label">{{ "item.page.filesection.name" | translate }}</span>
+                <span class="file-meta-value filename">{{ dsoNameService.getName(file) }}</span>
+              </div>
+              <div class="file-meta-row">
+                <span class="file-meta-label">{{ "item.page.filesection.size" | translate }}</span>
+                <span class="file-meta-value">{{ file.sizeBytes | dsFileSize }}</span>
+              </div>
+              <div class="file-meta-row">
+                <span class="file-meta-label">{{ "item.page.filesection.format" | translate }}</span>
+                <span class="file-meta-value">{{ (file.format | async)?.payload?.description }}</span>
+              </div>
+              @if (file.hasMetadata('dc.description')) {
+              <div class="file-meta-row">
+                <span class="file-meta-label">{{ "item.page.filesection.description" | translate }}</span>
+                <span class="file-meta-value">{{ file.firstMetadataValue("dc.description") }}</span>
+              </div>
+              }
+            </div>
+          </div>
+          <div class="file-card-action">
+            <ds-file-download-link [showIcon]="true" [bitstream]="file" [item]="item" cssClasses="btn-download-file">
+              <span>
+                {{ "item.page.filesection.download" | translate }}
+              </span>
+            </ds-file-download-link>
+          </div>
+        </div>
+        }
+      </ds-pagination>
+      }
+    </div>
+    }
+  </div>
+</ds-metadata-field-wrapper>

@@ -1,0 +1,70 @@
+<div class="custom-grid-card">
+  <!-- Top: Badges overlay -->
+  <div class="card-badges">
+    @if (showLabel) {
+      <ds-badges [object]="dso" [context]="context" [showAccessStatus]="true"></ds-badges>
+    }
+  </div>
+
+  <!-- Top: Thumbnail -->
+  <div class="card-thumbnail-wrapper">
+    @if (linkType !== linkTypes.None) {
+      <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]" tabindex="-1">
+        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [defaultImage]="defaultThumbnail" [limitWidth]="false"></ds-thumbnail>
+      </a>
+    }
+    @if (linkType === linkTypes.None) {
+      <span>
+        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [defaultImage]="defaultThumbnail" [limitWidth]="false"></ds-thumbnail>
+      </span>
+    }
+  </div>
+
+  <!-- Body: Content -->
+  <div class="card-content">
+    <ds-truncatable [id]="dso.id">
+      <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
+        <h4 class="card-title">
+          @if (linkType !== linkTypes.None) {
+            <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]" [innerHTML]="dsoTitle"></a>
+          }
+          @if (linkType === linkTypes.None) {
+            <span [innerHTML]="dsoTitle"></span>
+          }
+        </h4>
+      </ds-truncatable-part>
+
+      @if (dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0) {
+        <ds-truncatable-part [id]="dso.id" [minLines]="2">
+          <p class="card-authors text-muted">
+            <i class="fas fa-user author-icon" style="color: #D69E2E; margin-right: 6px;"></i>
+            @for (author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']); track author; let last = $last) {
+              <span>
+                <span [innerHTML]="author"></span>
+                @if (!last) {
+                  <span>; </span>
+                }
+              </span>
+            }
+          </p>
+        </ds-truncatable-part>
+      }
+
+      @if (dso.hasMetadata('dc.description.abstract')) {
+        <ds-truncatable-part [id]="dso.id" [minLines]="2">
+          <p class="card-abstract text-muted">
+            <span [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>
+          </p>
+        </ds-truncatable-part>
+      }
+    </ds-truncatable>
+  </div>
+
+  <!-- Footer: Button -->
+  <div class="card-footer-box">
+    @if (linkType !== linkTypes.None) {
+      <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
+      class="btn btn-primary premium-view-btn">{{ 'search.results.view-result' | translate}}</a>
+    }
+  </div>
+</div>

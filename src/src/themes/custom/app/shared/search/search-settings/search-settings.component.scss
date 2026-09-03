@@ -1,0 +1,61 @@
+$navy-deep: #1A365D;
+$navy-mid: #2A4365;
+$accent-gold: #D69E2E;
+$text-dark: #1E293B;
+$white: #ffffff;
+$border-light: #E2E8F0;
+
+:host {
+  display: block;
+  margin-top: 30px; // Add space between filters and settings
+
+  ::ng-deep .setting-option {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 12px 0 !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid $border-light !important;
+    
+    h4 {
+      margin-bottom: 10px;
+      label {
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        color: $navy-deep !important;
+        margin: 0 !important;
+
+        &::before {
+          font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome !important;
+          font-weight: 900 !important;
+          color: $accent-gold;
+          margin-right: 8px;
+        }
+      }
+    }
+    
+    select.form-select {
+      border-radius: 6px;
+      border: 1px solid $border-light;
+      font-size: 0.85rem;
+      padding: 10px 12px;
+      color: $text-dark;
+      background-color: $white;
+      cursor: pointer;
+      box-shadow: none;
+      
+      &:focus {
+        border-color: $accent-gold;
+        box-shadow: 0 0 0 2px rgba(214, 158, 46, 0.15);
+      }
+    }
+  }
+
+  ::ng-deep ds-sidebar-dropdown .setting-option h4 label::before {
+    content: "\f0dc"; // fa-sort
+  }
+
+  ::ng-deep ds-page-size-selector .setting-option h4 label::before {
+    content: "\f0cb"; // fa-list-ul or fa-bars
+  }
+}

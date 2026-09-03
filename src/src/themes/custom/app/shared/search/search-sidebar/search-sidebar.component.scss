@@ -1,0 +1,44 @@
+$navy-deep: #1A365D;
+$navy-mid: #2A4365;
+$accent-gold: #D69E2E;
+$text-dark: #1E293B;
+$white: #ffffff;
+$border-light: #E2E8F0;
+
+:host {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 30px;
+
+    .results {
+        line-height: var(--ds-button-height);
+        color: $navy-mid;
+        font-weight: 500;
+    }
+    ds-view-mode-switch {
+        margin-bottom: var(--bs-spacer);
+    }
+    
+    // Base spacing
+    .sidebar-content > *:not(:last-child):not(ds-search-switch-configuration) {
+        margin-bottom: calc(2 * var(--bs-spacer));
+        display: block;
+    }
+    ds-search-switch-configuration {
+      margin-bottom: calc(2 * var(--bs-spacer));
+      display: block;
+    }
+
+    // Modernize Headers (Filters & Settings)
+    ::ng-deep h2, ::ng-deep h3 {
+        font-size: 1.15rem;
+        color: $navy-deep;
+        font-weight: 700;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid $accent-gold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}

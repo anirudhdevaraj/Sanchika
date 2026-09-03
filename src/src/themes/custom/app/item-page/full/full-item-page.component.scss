@@ -1,0 +1,408 @@
+// ---- VARIABLES ----
+$navy-deep: #1A365D;
+$navy-mid: #2A4365;
+$accent-gold: #D69E2E;
+$bg-light: #EDF2F7;
+$text-dark: #1E293B;
+$white: #ffffff;
+$border-light: #E2E8F0;
+
+// ---- HERO ----
+.full-hero {
+  background:
+    linear-gradient(rgba(26, 54, 93, 0.95), rgba(26, 54, 93, 0.95)),
+    url('/assets/custom/images/carbon-fibre.png'),
+    $navy-deep;
+  padding: 50px 0 100px;
+  border-bottom: 8px solid $accent-gold;
+  color: $white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -50px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -50px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: rgba(214, 158, 46, 0.05);
+    pointer-events: none;
+  }
+
+  h1 {
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    margin: 0 auto 15px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    line-height: 1.3;
+
+    // ::ng-deep needed so [innerHTML]-injected span gets the gold color
+    // (Angular encapsulation attributes aren't applied to innerHTML content)
+    ::ng-deep span {
+      color: $accent-gold;
+      font-weight: 400;
+    }
+  }
+}
+
+.full-badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: $white;
+  padding: 5px 18px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.hero-subtitle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: 5px auto 0;
+}
+
+.hero-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $accent-gold);
+  flex-grow: 1;
+  opacity: 0.7;
+  &.right { background: linear-gradient(90deg, $accent-gold, transparent); }
+}
+
+.hero-subtitle {
+  color: $accent-gold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+// ---- MAIN WRAPPER ----
+.full-item-wrapper {
+  max-width: 1200px;
+  margin: -60px auto 80px;
+  position: relative;
+  z-index: 10;
+  padding: 0 25px;
+}
+
+// ---- CARD ----
+.full-item-card {
+  background: $white;
+  border-radius: 20px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+// ---- TOP BAR ----
+.full-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 30px;
+  background: $bg-light;
+  border-bottom: 1px solid $border-light;
+}
+
+.btn-switch-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: $navy-deep;
+  color: $white;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  border: 1.5px solid $navy-deep;
+
+  i { font-size: 0.95rem; color: $accent-gold; }
+  &:hover { background: transparent; color: $navy-deep; }
+}
+
+.btn-back-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  color: $navy-deep;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  border: 1.5px solid $navy-deep;
+  cursor: pointer;
+
+  &:hover { background: $navy-deep; color: $white; }
+}
+
+.top-bar-edit {
+  margin-left: auto;
+}
+
+// ---- SECTIONS ----
+.full-section {
+  padding: 35px 40px;
+}
+
+.full-section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $navy-deep;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  i {
+    color: $accent-gold;
+    margin-right: 10px;
+    font-size: 1rem;
+  }
+
+  &::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: $accent-gold;
+    margin-left: 18px;
+    opacity: 0.5;
+  }
+}
+
+// ---- METADATA TABLE ----
+.table-responsive {
+  border-radius: 12px;
+  border: 1px solid $border-light;
+  overflow: hidden;
+}
+
+.meta-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead tr {
+    background: $navy-deep;
+    color: $white;
+  }
+
+  th {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    
+    &:last-child { border-right: none; }
+  }
+
+  .th-field { width: 300px; }
+
+  tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    
+    &:nth-child(even) {
+      background: #f8fafc;
+    }
+    &:nth-child(odd) {
+      background: #ffffff;
+    }
+
+    &:hover { background: #f1f5f9; }
+    &:last-child { border-bottom: none; }
+  }
+
+  td {
+    padding: 16px 20px;
+    font-size: 0.95rem;
+    vertical-align: top;
+    line-height: 1.5;
+    border-right: 1px solid $border-light;
+    
+    &:last-child { border-right: none; }
+  }
+
+  .td-field {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    color: $navy-deep;
+    font-weight: 700;
+  }
+
+  .td-value {
+    color: $text-dark;
+    word-break: break-word;
+    font-weight: 500;
+  }
+}
+
+// ---- COLLECTIONS ----
+::ng-deep ds-item-page-collections {
+  display: block;
+  
+  .metadata-field-wrapper {
+    margin: 0;
+  }
+  
+  a {
+    display: inline-flex;
+    align-items: center;
+    background: #f8fafc;
+    color: $navy-deep;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid $accent-gold;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    
+    &::before {
+      content: '\f07b';
+      font-family: "Font Awesome 5 Free", "Font Awesome 6 Free", FontAwesome, sans-serif;
+      font-weight: 900;
+      margin-right: 10px;
+      color: $accent-gold;
+    }
+    
+    &:hover {
+      background: $navy-deep;
+      color: $white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+      
+      &::before {
+        color: $accent-gold;
+      }
+    }
+  }
+}
+
+
+// ---- RESPONSIVE ----
+@media (max-width: 992px) {
+  .full-item-wrapper { padding: 0 15px; margin-top: -40px; }
+  .full-section { padding: 25px 22px; }
+  .full-top-bar { padding: 14px 22px; flex-wrap: wrap; }
+  .meta-table .th-field { width: 180px; }
+}
+
+@media (max-width: 768px) {
+  .full-hero { padding: 40px 0 80px; h1 { font-size: 1.5rem; } }
+  .full-item-wrapper { padding: 0 12px; }
+  .full-section { padding: 20px 16px; }
+  .meta-table .th-field { width: 130px; }
+  .meta-table td { padding: 10px 8px; font-size: 0.88rem; }
+}
+
+.metadata-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+
+  .full-section-title {
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .metadata-section-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .btn-switch-view.btn-download-meta {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    
+    i {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+/* Download metadata button — gold text override */
+.btn-switch-view.btn-download-meta {
+  color: $white;
+  padding: 8px 24px;
+
+  i { color: $accent-gold; font-size: 0.95rem; }
+
+  &:hover {
+    background: $navy-mid;
+    color: $white;
+    border-color: $navy-mid;
+    i { color: $accent-gold; }
+  }
+}
+
+/* Mobile: keep long metadata field names from squeezing the value column */
+@media (max-width: 768px) {
+  .meta-table {
+    table-layout: fixed;
+    width: 100%;
+    
+    th {
+      font-size: 0.82rem;
+    }
+
+    .th-field, .td-field {
+      width: 38%;
+      word-break: break-word;
+      vertical-align: top;
+      padding-right: 8px;
+    }
+    
+    .td-field {
+      font-size: 0.82rem;
+    }
+
+    .th-value, .td-value {
+      width: 62%;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      vertical-align: top;
+    }
+    
+    .td-value {
+      font-size: 0.88rem;
+    }
+  }
+}
+
+// ---- HIDE DUPLICATE HEADERS ----
+::ng-deep ds-item-page-full-file-section .simple-view-element-header,
+::ng-deep ds-item-page-collections .simple-view-element-header {
+  display: none !important;
+}
